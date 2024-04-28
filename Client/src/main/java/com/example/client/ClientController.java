@@ -17,7 +17,6 @@ public class ClientController {
     private Button downloadMaterial = new Button();
     @FXML
     private TableView tableViewListOfMaterial = new TableView();
-
     private ObservableList<ListOfMaterial> listOfMaterialData = FXCollections.<ListOfMaterial>observableArrayList();
     @FXML
     TableColumn<ListOfMaterial, String> id_material = new TableColumn<ListOfMaterial, String>("№");
@@ -32,7 +31,6 @@ public class ClientController {
     private Button linkInVideo = new Button();
     @FXML
     private TableView tableViewListOfVideo = new TableView();
-
     private ObservableList<ListOfVideo> listOfVideoData = FXCollections.<ListOfVideo>observableArrayList();
     @FXML
     TableColumn<ListOfVideo, String> id_video = new TableColumn<ListOfVideo, String>("№");
@@ -43,5 +41,5 @@ public class ClientController {
     //_____________________________________________________________________________________________________________//
     //_____________________________________________________________________________________________________________//
     //Элементы вкладки "Администратор"
-    
+
 }
