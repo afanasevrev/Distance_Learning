@@ -5,7 +5,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.FileChooser;
-
 /**
  * Класс контроллер для взаимодействия с основной формой FX
  */
@@ -53,9 +52,21 @@ public class ClientController {
     private Button createVideo = new Button();
     @FXML
     private Button createFileMaterial = new Button();
+    //Открыть диалоговое окно, чтобы выбрать файл для отправки на сервер
     private FileChooser fileChooser = new FileChooser();
     @FXML
     private TableView tableViewStudents = new TableView();
     @FXML
-    private TableColumn<>
+    private TableColumn<Students, String> id_student = new TableColumn<Students, String>("№");
+    @FXML
+    private TableColumn<Students, String> surname = new TableColumn<Students, String>("Фамилия");
+    @FXML
+    private TableColumn<Students, String> name = new TableColumn<Students, String>("Имя");
+    @FXML
+    private Button upDateListStudents = new Button();
+    @FXML
+    private Button dismiss = new Button();
+    //_____________________________________________________________________________________________________________//
+    //_____________________________________________________________________________________________________________//
+
 }
