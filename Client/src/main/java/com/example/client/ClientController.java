@@ -37,9 +37,9 @@ public class ClientController {
     @FXML
     TableColumn<ListOfVideo, String> id_video = new TableColumn<ListOfVideo, String>("№");
     @FXML
-    TableColumn<ListOfVideo, String> nameVideo = new TableColumn<ListOfVideo, String>("Наименование");
+    TableColumn<ListOfVideo, String> videoName = new TableColumn<ListOfVideo, String>("Наименование");
     @FXML
-    TableColumn<ListOfVideo, String> linkVideo = new TableColumn<ListOfVideo, String>("Ссылка");
+    TableColumn<ListOfVideo, String> videoLink = new TableColumn<ListOfVideo, String>("Ссылка");
     //_____________________________________________________________________________________________________________//
     //_____________________________________________________________________________________________________________//
     //Элементы вкладки "Администратор"

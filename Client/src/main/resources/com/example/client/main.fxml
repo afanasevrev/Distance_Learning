@@ -38,16 +38,16 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutX="14.0" layoutY="23.0" prefHeight="343.0" prefWidth="564.0">
+                        <TableView fx:id="tableViewListOfVideo" layoutX="14.0" layoutY="23.0" prefHeight="343.0" prefWidth="564.0">
                           <columns>
-                            <TableColumn prefWidth="46.4000244140625" text="№" />
-                            <TableColumn prefWidth="282.39996337890625" text="Наименование" />
-                              <TableColumn prefWidth="229.5999755859375" text="Ссылка" />
+                            <TableColumn fx:id="id_video" prefWidth="46.4000244140625" text="№" />
+                            <TableColumn fx:id="videoName" prefWidth="282.39996337890625" text="Наименование" />
+                              <TableColumn fx:id="videoLink" prefWidth="229.5999755859375" text="Ссылка" />
                           </columns>
                         </TableView>
                         <TextArea layoutX="606.0" layoutY="29.0" prefHeight="196.0" prefWidth="175.0" text="Чтобы посмотреть видео, &#10;выберите на таблице &#10;строку и нажмите кнопку &#10;&quot;Перейти по ссылке&quot;" />
-                        <Button layoutX="14.0" layoutY="390.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Обновить" />
-                        <Button layoutX="156.0" layoutY="390.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" text="Перейти по ссылке" />
+                        <Button fx:id="updateListVideo" layoutX="14.0" layoutY="390.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Обновить" />
+                        <Button fx:id="linkInVideo" layoutX="156.0" layoutY="390.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" text="Перейти по ссылке" />
                      </children></AnchorPane>
             </content>
           </Tab>
