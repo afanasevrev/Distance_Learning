@@ -1,4 +1,4 @@
-package com.example.client;
+package com.example.client.video;
 
 import lombok.Getter;
 import lombok.Setter;

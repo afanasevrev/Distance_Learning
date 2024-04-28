@@ -1,5 +1,8 @@
-package com.example.client;
+package com.example.client.controller;
 
+import com.example.client.material.ListOfMaterial;
+import com.example.client.video.ListOfVideo;
+import com.example.client.students.Students;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

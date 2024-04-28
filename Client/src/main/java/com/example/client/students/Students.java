@@ -1,4 +1,4 @@
-package com.example.client;
+package com.example.client.students;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;

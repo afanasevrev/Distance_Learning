@@ -1,4 +1,4 @@
-package com.example.client;
+package com.example.client.video;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
