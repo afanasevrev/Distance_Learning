@@ -22,14 +22,14 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutX="14.0" layoutY="24.0" prefHeight="340.0" prefWidth="468.0">
+                        <TableView fx:id="tableViewListOfMaterial" layoutX="14.0" layoutY="24.0" prefHeight="340.0" prefWidth="468.0">
                           <columns>
-                            <TableColumn prefWidth="99.20001220703125" text="№" />
-                            <TableColumn prefWidth="363.20001220703125" text="Наименование" />
+                            <TableColumn fx:id="id" prefWidth="99.20001220703125" text="№" />
+                            <TableColumn fx:id="materialName" prefWidth="363.20001220703125" text="Наименование" />
                           </columns>
                         </TableView>
-                        <Button layoutX="14.0" layoutY="389.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Обновить список" />
-                        <Button layoutX="152.0" layoutY="389.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Скачать материал" />
+                        <Button fx:id="updateList" layoutX="14.0" layoutY="389.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Обновить список" />
+                        <Button fx:id="downloadMaterial" layoutX="152.0" layoutY="389.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Скачать материал" />
                         <TextArea layoutX="502.0" layoutY="24.0" prefHeight="75.0" prefWidth="275.0" text="Чтобы скачать материал, сначала выберите &#10;его в таблице, затем нажмите кнопку &#10;&quot;Скачать материал&quot;" wrapText="true" />
                      </children></AnchorPane>
             </content>
