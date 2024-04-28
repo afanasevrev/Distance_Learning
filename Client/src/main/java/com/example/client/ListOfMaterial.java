@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 /**
  * Класс для учебных материалов
+ * тесно взаимосвязан с таблицей FX
  */
 @Setter
 @Getter
