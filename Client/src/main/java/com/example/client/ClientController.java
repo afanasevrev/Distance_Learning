@@ -25,5 +25,11 @@ public class ClientController {
     //_____________________________________________________________________________________________________________//
     //_____________________________________________________________________________________________________________//
     //Элементы вкладки "Видеоуроки"
-
+    @FXML
+    private Button updateListVideo = new Button();
+    @FXML
+    private Button linkInVideo = new Button();
+    @FXML
+    private TableView tableViewListOfVideo = new TableView();
+    
 }
