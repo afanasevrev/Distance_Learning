@@ -30,7 +30,7 @@
                         </TableView>
                         <Button layoutX="14.0" layoutY="389.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Обновить список" />
                         <Button layoutX="152.0" layoutY="389.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Скачать материал" />
-                        <TextArea layoutX="502.0" layoutY="24.0" prefHeight="75.0" prefWidth="275.0" text="Чтобы скачать материал, сначала выберите &#10;его в таблице, затем нажмите кнопку &#10;&quot;Скачать материал&quot;" />
+                        <TextArea layoutX="502.0" layoutY="24.0" prefHeight="75.0" prefWidth="275.0" text="Чтобы скачать материал, сначала выберите &#10;его в таблице, затем нажмите кнопку &#10;&quot;Скачать материал&quot;" wrapText="true" />
                      </children></AnchorPane>
             </content>
           </Tab>

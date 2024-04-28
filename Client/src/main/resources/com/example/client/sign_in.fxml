@@ -11,24 +11,24 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.client.SignInController">
    <children>
       <Separator layoutX="297.0" layoutY="16.0" orientation="VERTICAL" prefHeight="368.0" prefWidth="6.0" />
-      <TextField layoutX="120.0" layoutY="75.0" prefHeight="25.0" prefWidth="140.0" promptText="Login" />
+      <TextField fx:id="login" layoutX="120.0" layoutY="75.0" prefHeight="25.0" prefWidth="140.0" promptText="Login" />
       <Label layoutX="30.0" layoutY="75.0" prefHeight="18.0" prefWidth="74.0" text="Логин" />
       <Label layoutX="30.0" layoutY="125.0" text="Пароль" />
-      <Button layoutX="30.0" layoutY="175.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="230.0" text="Войти" />
-      <PasswordField layoutX="120.0" layoutY="125.0" prefHeight="25.0" prefWidth="140.0" promptText="Password" />
+      <Button fx:id="signIn" layoutX="30.0" layoutY="175.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="230.0" text="Войти" />
+      <PasswordField fx:id="password" layoutX="120.0" layoutY="125.0" prefHeight="25.0" prefWidth="140.0" promptText="Password" />
       <Label layoutX="90.0" layoutY="30.0" text="Вход в приложение" />
       <Label layoutX="380.0" layoutY="30.0" prefHeight="18.0" prefWidth="150.0" text="Регистрация для учеников" textAlignment="CENTER" />
       <Label layoutX="315.0" layoutY="75.0" text="Фамилия" />
-      <TextField layoutX="380.0" layoutY="75.0" prefHeight="25.0" prefWidth="180.0" promptText="surname" />
+      <TextField fx:id="surname" layoutX="380.0" layoutY="75.0" prefHeight="25.0" prefWidth="180.0" promptText="surname" />
       <Label layoutX="315.0" layoutY="125.0" text="Имя" />
-      <TextField layoutX="380.0" layoutY="125.0" prefHeight="25.0" prefWidth="180.0" promptText="name" />
+      <TextField fx:id="name" layoutX="380.0" layoutY="125.0" prefHeight="25.0" prefWidth="180.0" promptText="name" />
       <Label layoutX="315.0" layoutY="175.0" text="Отчество" />
       <Label layoutX="315.0" layoutY="225.0" text="Логин" />
-      <TextField layoutX="380.0" layoutY="225.0" prefHeight="25.0" prefWidth="180.0" promptText="Login for registration" />
-      <TextField layoutX="380.0" layoutY="175.0" prefHeight="25.0" prefWidth="180.0" promptText="patronymic" />
+      <TextField fx:id="loginForRegistration" layoutX="380.0" layoutY="225.0" prefHeight="25.0" prefWidth="180.0" promptText="Login for registration" />
+      <TextField fx:id="patronymic" layoutX="380.0" layoutY="175.0" prefHeight="25.0" prefWidth="180.0" promptText="patronymic" />
       <Label layoutX="315.0" layoutY="275.0" text="Пароль" />
-      <PasswordField layoutX="380.0" layoutY="275.0" prefHeight="25.0" prefWidth="180.0" promptText="Password for registration" />
-      <Button layoutX="315.0" layoutY="320.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="245.0" text="Зарегистрироваться" />
-      <TextArea layoutX="30.0" layoutY="234.0" prefHeight="135.0" prefWidth="230.0" promptText="Логи" wrapText="true" />
+      <PasswordField fx:id="passwordForRegistration" layoutX="380.0" layoutY="275.0" prefHeight="25.0" prefWidth="180.0" promptText="Password for registration" />
+      <Button fx:id="registration" layoutX="315.0" layoutY="320.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="245.0" text="Зарегистрироваться" />
+      <TextArea fx:id="logs" layoutX="30.0" layoutY="234.0" prefHeight="135.0" prefWidth="230.0" promptText="Логи" wrapText="true" />
    </children>
 </AnchorPane>
