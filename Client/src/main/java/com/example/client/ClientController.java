@@ -17,6 +17,7 @@ public class ClientController {
     private Button downloadMaterial = new Button();
     @FXML
     private TableView tableViewListOfMaterial = new TableView();
+
     private ObservableList<ListOfMaterial> listOfMaterialData = FXCollections.<ListOfMaterial>observableArrayList();
     @FXML
     TableColumn<ListOfMaterial, String> id = new TableColumn<ListOfMaterial, String>("№");
@@ -31,5 +32,5 @@ public class ClientController {
     private Button linkInVideo = new Button();
     @FXML
     private TableView tableViewListOfVideo = new TableView();
-    
+
 }
