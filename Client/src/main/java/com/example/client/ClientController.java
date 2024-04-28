@@ -3,9 +3,9 @@ package com.example.client;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+import javafx.stage.FileChooser;
+
 /**
  * Класс контроллер для взаимодействия с основной формой FX
  */
@@ -41,5 +41,21 @@ public class ClientController {
     //_____________________________________________________________________________________________________________//
     //_____________________________________________________________________________________________________________//
     //Элементы вкладки "Администратор"
-
+    @FXML
+    private TextField loginAdministrator = new TextField();
+    @FXML
+    private PasswordField passwordAdministrator = new PasswordField();
+    @FXML
+    private Button createAdministrator = new Button();
+    @FXML
+    private TextField linkInVideoYoutube = new TextField();
+    @FXML
+    private Button createVideo = new Button();
+    @FXML
+    private Button createFileMaterial = new Button();
+    private FileChooser fileChooser = new FileChooser();
+    @FXML
+    private TableView tableViewStudents = new TableView();
+    @FXML
+    private TableColumn<>
 }
