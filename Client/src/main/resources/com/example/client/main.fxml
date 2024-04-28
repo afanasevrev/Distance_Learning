@@ -24,7 +24,7 @@
                      <children>
                         <TableView fx:id="tableViewListOfMaterial" layoutX="14.0" layoutY="24.0" prefHeight="340.0" prefWidth="468.0">
                           <columns>
-                            <TableColumn fx:id="id" prefWidth="99.20001220703125" text="№" />
+                            <TableColumn fx:id="id_material" prefWidth="99.20001220703125" text="№" />
                             <TableColumn fx:id="materialName" prefWidth="363.20001220703125" text="Наименование" />
                           </columns>
                         </TableView>

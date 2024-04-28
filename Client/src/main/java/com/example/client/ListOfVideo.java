@@ -2,7 +2,10 @@ package com.example.client;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-
+/**
+ * Класс для видеоматериалов,
+ * Тесно связан с таблицей FX
+ */
 public class ListOfVideo {
     private StringProperty id;
     private StringProperty videoName;

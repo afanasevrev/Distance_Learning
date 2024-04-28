@@ -20,7 +20,7 @@ public class ClientController {
 
     private ObservableList<ListOfMaterial> listOfMaterialData = FXCollections.<ListOfMaterial>observableArrayList();
     @FXML
-    TableColumn<ListOfMaterial, String> id = new TableColumn<ListOfMaterial, String>("№");
+    TableColumn<ListOfMaterial, String> id_material = new TableColumn<ListOfMaterial, String>("№");
     @FXML
     TableColumn<ListOfMaterial, String> materialName = new TableColumn<ListOfMaterial, String>("Наименование");
     //_____________________________________________________________________________________________________________//
@@ -33,4 +33,15 @@ public class ClientController {
     @FXML
     private TableView tableViewListOfVideo = new TableView();
 
+    private ObservableList<ListOfVideo> listOfVideoData = FXCollections.<ListOfVideo>observableArrayList();
+    @FXML
+    TableColumn<ListOfVideo, String> id_video = new TableColumn<ListOfVideo, String>("№");
+    @FXML
+    TableColumn<ListOfVideo, String> nameVideo = new TableColumn<ListOfVideo, String>("Наименование");
+    @FXML
+    TableColumn<ListOfVideo, String> linkVideo = new TableColumn<ListOfVideo, String>("Ссылка");
+    //_____________________________________________________________________________________________________________//
+    //_____________________________________________________________________________________________________________//
+    //Элементы вкладки "Администратор"
+    
 }
