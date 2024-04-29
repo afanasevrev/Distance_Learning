@@ -41,7 +41,8 @@ public class SignInController {
     private TextArea logs = new TextArea();
     public SignInController(){}
     /**
-     * При нажатии кнопки "Войти в систему" открываем главное окно приложения
+     * При нажатии кнопки "Войти в систему" проходим
+     * атуенти
      */
     @FXML
     private void signInApplication() {
