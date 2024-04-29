@@ -22,7 +22,7 @@ public class ServerController {
     @GetMapping("/authenticate/{login}&{password}")
     private Direction getAuthentication(@PathVariable String login, @PathVariable String password) {
         if (getAdmins(login, password)) {
-            return Direction.AUTHENTICATED;
+            return Direction.AUTHENTICATED_ADMIN;
         } else {
             return Direction.NOT_AUTHENTICATED;
         }
@@ -60,5 +60,9 @@ public class ServerController {
             }
         }
         return result;
+    }
+    private boolean getStudents(String login, String password) {
+
+        return false;
     }
 }

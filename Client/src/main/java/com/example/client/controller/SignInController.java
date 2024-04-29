@@ -4,10 +4,7 @@ import com.example.client.Direction;
 import com.example.client.MainApplication;
 import com.example.client.Variables;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import java.io.IOException;
 import org.apache.log4j.Logger;
@@ -28,6 +25,8 @@ public class SignInController {
     Logger logger = Logger.getLogger(MainApplication.class);
     //Добавляем Stage
     Stage stage = new Stage();
+    @FXML
+    private Tab adminsTab = new Tab();
     @FXML
     private TextField login = new TextField();
     @FXML
@@ -56,12 +55,23 @@ public class SignInController {
      */
     @FXML
     private void signInApplication() {
-        authentication("root", "root");
-
-        try {
-            mainApplication.start(stage);
-        } catch (IOException e) {
-            logger.error(e);
+        if (!login.getText().isEmpty() && !password.getText().isEmpty()) {
+            String getAuth = authentication(login.getText(), password.getText());
+            if(getAuth.equals(Direction.AUTHENTICATED_ADMIN)) {
+                try {
+                    mainApplication.start(stage);
+                } catch (IOException e) {
+                    logger.error(e);
+                }
+            } else if (getAuth.equals(Direction.AUTHENTICATED_STUDENT)) {
+                try {
+                    mainApplication.start(stage);
+                } catch (IOException e) {
+                    logger.error(e);
+                }
+            } else {
+                logs.setText("Неверный логин или пароль");
+            }
         }
     }
     private String authentication(String login, String password) {
