@@ -22,10 +22,12 @@ public class ServerController {
     }
     @GetMapping("/authenticate/{login}&{password}")
     private Direction getAuthentication(@PathVariable String login, @PathVariable String password) {
-        getAdmins(login, password);
-        return Direction.AUTHENTICATED;
+        if (getAdmins(login, password)) {
+            return Direction.AUTHENTICATED;
+        } else {
+            return Direction.NOT_AUTHENTICATED;
+        }
     }
-
     /**
      * Метод вытягивает из БД список администраторов системы
      * и проверяет поступивший логин и пароль со списком,
@@ -33,7 +35,7 @@ public class ServerController {
      * иначе false
      * @param login - полученный логин
      * @param password - полученный пароль
-     * @return
+     * @return тип boolean
      */
     private boolean getAdmins(String login, String password) {
         boolean result = false;
@@ -51,7 +53,13 @@ public class ServerController {
             }
             logger.error(e);
         }
-        
+
+        for(Admins admin: admins) {
+            if (admin.getLogin().equals(login)) {
+
+            }
+        }
+
         return result;
     }
 }
