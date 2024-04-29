@@ -25,8 +25,14 @@ public class ServerController {
         getAdmins(login, password);
         return Direction.AUTHENTICATED;
     }
+
     /**
-     *
+     * Метод вытягивает из БД список администраторов системы
+     * и проверяет поступивший логин и пароль со списком,
+     * в случае положительного решения, метод возвращает true,
+     * иначе false
+     * @param login - полученный логин
+     * @param password - полученный пароль
      * @return
      */
     private boolean getAdmins(String login, String password) {
@@ -45,7 +51,7 @@ public class ServerController {
             }
             logger.error(e);
         }
-        logger.info(admins);
+        
         return result;
     }
 }
