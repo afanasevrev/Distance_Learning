@@ -9,10 +9,13 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.IOException;
 import org.apache.log4j.Logger;
+import org.springframework.web.client.RestTemplate;
 /**
  * Класс контроллер предназначен для входа в систему и регистрации
  */
 public class SignInController {
+    //Создаем экземпляр класса RestTemplate, чтобы отправить запросы на сервер
+    private RestTemplate restTemplate = new RestTemplate();
     //Создаем экземпляр класса MainApplication
     private MainApplication mainApplication = MainApplication.getInstance();
     //Добавляем Logger;

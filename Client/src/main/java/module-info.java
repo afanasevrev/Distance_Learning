@@ -3,6 +3,7 @@ module com.example.client {
     requires javafx.fxml;
     requires static lombok;
     requires log4j;
+    requires spring.web;
 
     opens com.example.client to javafx.fxml;
     exports com.example.client;
