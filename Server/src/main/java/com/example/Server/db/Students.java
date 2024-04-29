@@ -3,6 +3,9 @@ package com.example.Server.db;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+/**
+ * Класс для взаимодействия с БД для учеников
+ */
 @Setter
 @Getter
 @Entity
