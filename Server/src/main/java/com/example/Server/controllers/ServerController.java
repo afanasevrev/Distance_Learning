@@ -3,6 +3,7 @@ package com.example.Server.controllers;
 import com.example.Server.Direction;
 import com.example.Server.db.Admins;
 import com.example.Server.hibernate.HibernateUtil;
+import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @RestController
 public class ServerController {
+    Logger logger = Logger.getLogger(ServerController.class);
     @GetMapping("/")
     private String getInfo() {
         return "Дистанционное обучение для охранников 4-5-6 разряда";
@@ -26,7 +28,7 @@ public class ServerController {
      *
      * @return
      */
-    private boolean getAdmins() {
+    private boolean getAdmins(String login, String password) {
         boolean result = false;
         List<Admins> admins;
         Transaction transaction = null;
@@ -40,10 +42,9 @@ public class ServerController {
             if (transaction != null) {
                 transaction.rollback();
             }
-            e.printStackTrace();
-            result = false;
+            logger.error(e);
         }
-
+        
         return result;
     }
 }
