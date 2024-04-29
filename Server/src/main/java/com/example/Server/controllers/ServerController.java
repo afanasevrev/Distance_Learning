@@ -53,13 +53,13 @@ public class ServerController {
             }
             logger.error(e);
         }
-
         for(Admins admin: admins) {
             if (admin.getLogin().equals(login)) {
-
+                if (admin.getPassword().equals(password)) {
+                    result = true;
+                }
             }
         }
-
         return result;
     }
 }
