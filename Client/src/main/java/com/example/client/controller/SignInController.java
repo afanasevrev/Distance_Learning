@@ -62,8 +62,10 @@ public class SignInController {
                 } catch (IOException e) {
                     logger.error(e);
                 }
-                //Stage stage = signIn.getParent()
+                Stage stage = (Stage) signIn.getScene().getWindow();
+                stage.close();
             } else {
+                logs.setText("");
                 logs.setText("Неверный логин или пароль");
             }
         }
