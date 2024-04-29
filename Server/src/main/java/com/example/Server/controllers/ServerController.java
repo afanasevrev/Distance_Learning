@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -21,7 +22,7 @@ public class ServerController {
     }
     @GetMapping("/authenticate/{login}&{password}")
     private Direction getAuthentication(@PathVariable String login, @PathVariable String password) {
-
+        getAdmins(login, password);
         return Direction.AUTHENTICATED;
     }
     /**
@@ -30,7 +31,7 @@ public class ServerController {
      */
     private boolean getAdmins(String login, String password) {
         boolean result = false;
-        List<Admins> admins;
+        List<Admins> admins = new ArrayList<>();
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             // Старт транзакции
@@ -44,7 +45,7 @@ public class ServerController {
             }
             logger.error(e);
         }
-
+        logger.info(admins);
         return result;
     }
 }
