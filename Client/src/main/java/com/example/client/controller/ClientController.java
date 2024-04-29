@@ -31,7 +31,6 @@ public class ClientController implements Initializable {
     @FXML
     TableColumn<ListOfMaterial, String> materialName = new TableColumn<ListOfMaterial, String>("Наименование");
     //_____________________________________________________________________________________________________________//
-    //_____________________________________________________________________________________________________________//
     //Элементы вкладки "Видеоуроки"
     @FXML
     private Button updateListVideo = new Button();
@@ -46,7 +45,6 @@ public class ClientController implements Initializable {
     TableColumn<ListOfVideo, String> videoName = new TableColumn<ListOfVideo, String>("Наименование");
     @FXML
     TableColumn<ListOfVideo, String> videoLink = new TableColumn<ListOfVideo, String>("Ссылка");
-    //_____________________________________________________________________________________________________________//
     //_____________________________________________________________________________________________________________//
     //Элементы вкладки "Администратор"
     @FXML
@@ -77,7 +75,6 @@ public class ClientController implements Initializable {
     private Button dismiss = new Button();
     @FXML
     private Tab adminsTab = new Tab();
-    //_____________________________________________________________________________________________________________//
     //_____________________________________________________________________________________________________________//
     /**
      * При инициализации проверяем,
