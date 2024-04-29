@@ -9,7 +9,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.IOException;
 import org.apache.log4j.Logger;
-
+/**
+ * Класс контроллер предназначен для входа в систему и регистрации
+ */
 public class SignInController {
     //Создаем экземпляр класса MainApplication
     private MainApplication mainApplication = MainApplication.getInstance();
