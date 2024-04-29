@@ -44,7 +44,7 @@ public class ServerController {
             }
             logger.error(e);
         }
-        
+
         return result;
     }
 }
