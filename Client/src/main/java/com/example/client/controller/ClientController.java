@@ -70,7 +70,7 @@ public class ClientController {
     @FXML
     private Button dismiss = new Button();
     @FXML
-    public static Tab adminsTab = new Tab();
+    private Tab adminsTab = new Tab();
     //_____________________________________________________________________________________________________________//
     //_____________________________________________________________________________________________________________//
 }
