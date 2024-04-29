@@ -42,7 +42,8 @@ public class SignInController {
     public SignInController(){}
     /**
      * При нажатии кнопки "Войти в систему" проходим
-     * атуенти
+     * аутентификацию, если все нормально, то открываем главное
+     * окно приложения
      */
     @FXML
     private void signInApplication() {
