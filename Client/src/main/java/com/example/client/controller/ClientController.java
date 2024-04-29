@@ -1,17 +1,23 @@
 package com.example.client.controller;
 
+import com.example.client.Direction;
 import com.example.client.material.ListOfMaterial;
 import com.example.client.video.ListOfVideo;
 import com.example.client.students.Students;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.FileChooser;
+import java.net.URL;
+import java.util.ResourceBundle;
 /**
  * Класс контроллер для взаимодействия с основной формой FX
  */
-public class ClientController {
+public class ClientController implements Initializable {
+    //Добавим переменную, в которой укажем, зашёл ли пользователь под правами администратора или нет
+    public static String authenticated = Direction.NOT_AUTHENTICATED.toString();
     //Элементы вкладки "Учебные материалы"
     @FXML
     private Button updateList = new Button();
@@ -73,4 +79,18 @@ public class ClientController {
     private Tab adminsTab = new Tab();
     //_____________________________________________________________________________________________________________//
     //_____________________________________________________________________________________________________________//
+    /**
+     * При инициализации проверяем,
+     * зашёл ли пользователь под админом или нет
+     * @param url
+     * @param resourceBundle
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        if (authenticated.equals(Direction.AUTHENTICATED_ADMIN.toString())) {
+            adminsTab.setDisable(false);
+        } else {
+            adminsTab.setDisable(true);
+        }
+    }
 }
