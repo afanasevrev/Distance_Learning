@@ -65,14 +65,14 @@ public class SignInController {
         }
     }
     private Direction authentication(String login, String password) {
-        String url_authentication = this.url + "/authenticate";
+        Direction direction = Direction.NOT_AUTHENTICATED;
+        String url_authentication = this.url + "/authenticate/" + login + "&" + password;
         try {
             ResponseEntity<String> response = restTemplate.exchange(url_authentication, HttpMethod.GET, null, String.class);
-            logger.info(response.getStatusCode());
+            direction = Direction.valueOf(response.getBody());
         } catch (RuntimeException e) {
             logger.error(e);
         }
-
-        return null;
+        return direction;
     }
 }
