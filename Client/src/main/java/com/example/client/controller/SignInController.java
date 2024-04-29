@@ -55,7 +55,7 @@ public class SignInController {
     private void signInApplication() {
         if (!login.getText().isEmpty() && !password.getText().isEmpty()) {
             String getAuth = authentication(login.getText(), password.getText());
-            if(getAuth.equals(Direction.AUTHENTICATED_ADMIN.toString()) || getAuth.equals(Direction.AUTHENTICATED_STUDENT.toString())) {
+            if (getAuth.equals("AUTHENTICATED_ADMIN")) {
                 try {
                     mainApplication.start(stage);
                 } catch (IOException e) {
