@@ -1,6 +1,8 @@
 package com.example.client.controller;
 
+import com.example.client.Direction;
 import com.example.client.MainApplication;
+import com.example.client.Variables;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -14,6 +16,8 @@ import org.springframework.web.client.RestTemplate;
  * Класс контроллер предназначен для входа в систему и регистрации
  */
 public class SignInController {
+    //Указываем url сервера, к которому будем подключаться
+    private String url = "http://" + Variables.ip_server + ":" + Variables.port_server;
     //Создаем экземпляр класса RestTemplate, чтобы отправить запросы на сервер
     private RestTemplate restTemplate = new RestTemplate();
     //Создаем экземпляр класса MainApplication
@@ -55,5 +59,10 @@ public class SignInController {
         } catch (IOException e) {
             logger.error(e);
         }
+    }
+    private Direction authentication() {
+        String url_authenticate = this.url + "/authenticate";
+        
+        return null;
     }
 }
