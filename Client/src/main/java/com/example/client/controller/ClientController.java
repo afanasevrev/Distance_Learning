@@ -69,7 +69,8 @@ public class ClientController {
     private Button upDateListStudents = new Button();
     @FXML
     private Button dismiss = new Button();
+    @FXML
+    public static Tab adminsTab = new Tab();
     //_____________________________________________________________________________________________________________//
     //_____________________________________________________________________________________________________________//
-
 }

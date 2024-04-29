@@ -26,8 +26,6 @@ public class SignInController {
     //Добавляем Stage
     Stage stage = new Stage();
     @FXML
-    private Tab adminsTab = new Tab();
-    @FXML
     private TextField login = new TextField();
     @FXML
     private PasswordField password = new PasswordField();
