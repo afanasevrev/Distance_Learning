@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
  */
 public class ClientController implements Initializable {
     //Добавим переменную, в которой укажем, зашёл ли пользователь под правами администратора или нет
-    public static String authenticated = Direction.NOT_AUTHENTICATED.toString();
+    public static String authenticated = "NOT_AUTHENTICATED";
     //Элементы вкладки "Учебные материалы"
     @FXML
     private Button updateList = new Button();
@@ -87,7 +87,7 @@ public class ClientController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        if (authenticated.equals(Direction.AUTHENTICATED_ADMIN.toString())) {
+        if (authenticated.equals("AUTHENTICATED_ADMIN")) {
             adminsTab.setDisable(false);
         } else {
             adminsTab.setDisable(true);
