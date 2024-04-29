@@ -17,10 +17,11 @@ public class VideoLinks {
     private int id;
     @Column(name = "name")
     private String name;
+    @Lob
     @Column(name = "link")
-    private String link;
+    private byte[] link;
     public VideoLinks(){}
-    public VideoLinks(String name, String link) {
+    public VideoLinks(String name, byte[] link) {
         this.name = name;
         this.link = link;
     }
