@@ -3,5 +3,5 @@ package com.example.client;
  * Перечисления
  */
 public enum Direction {
-    AUTHENTICATED, NOT_AUTHENTICATED;
+    AUTHENTICATED_ADMIN, AUTHENTICATED_STUDENT, NOT_AUTHENTICATED;
 }
