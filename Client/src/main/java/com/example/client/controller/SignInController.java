@@ -11,6 +11,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.IOException;
 import org.apache.log4j.Logger;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 /**
  * Класс контроллер предназначен для входа в систему и регистрации
@@ -54,15 +56,23 @@ public class SignInController {
      */
     @FXML
     private void signInApplication() {
+        authentication("root", "root");
+
         try {
             mainApplication.start(stage);
         } catch (IOException e) {
             logger.error(e);
         }
     }
-    private Direction authentication() {
-        String url_authenticate = this.url + "/authenticate";
-        
+    private Direction authentication(String login, String password) {
+        String url_authentication = this.url + "/authenticate";
+        try {
+            ResponseEntity<String> response = restTemplate.exchange(url_authentication, HttpMethod.GET, null, String.class);
+            logger.info(response.getStatusCode());
+        } catch (RuntimeException e) {
+            logger.error(e);
+        }
+
         return null;
     }
 }
