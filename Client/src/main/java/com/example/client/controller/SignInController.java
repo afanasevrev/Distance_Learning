@@ -56,12 +56,21 @@ public class SignInController {
         if (!login.getText().isEmpty() && !password.getText().isEmpty()) {
             String getAuth = authentication(login.getText(), password.getText());
             if (getAuth.equals("AUTHENTICATED_ADMIN")) {
+                ClientController.authenticated = "AUTHENTICATED_ADMIN";
                 try {
                     mainApplication.start(stage);
                 } catch (IOException e) {
                     logger.error(e);
                 }
-            } else {
+            } else if (getAuth.equals("AUTHENTICATED_STUDENT")) {
+                ClientController.authenticated = "AUTHENTICATED_STUDENT";
+                try {
+                    mainApplication.start(stage);
+                } catch (IOException e) {
+                    logger.error(e);
+                }
+            }
+            else {
                 logs.setText("Неверный логин или пароль");
             }
         }

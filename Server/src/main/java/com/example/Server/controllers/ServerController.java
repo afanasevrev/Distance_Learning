@@ -20,11 +20,11 @@ public class ServerController {
         return "Дистанционное обучение для охранников 4-5-6 разряда";
     }
     @GetMapping("/authenticate/{login}&{password}")
-    private Direction getAuthentication(@PathVariable String login, @PathVariable String password) {
+    private String getAuthentication(@PathVariable String login, @PathVariable String password) {
         if (getAdmins(login, password)) {
-            return Direction.AUTHENTICATED_ADMIN;
+            return Direction.AUTHENTICATED_ADMIN.toString();
         } else {
-            return Direction.NOT_AUTHENTICATED;
+            return Direction.NOT_AUTHENTICATED.toString();
         }
     }
     /**
