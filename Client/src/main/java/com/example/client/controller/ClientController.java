@@ -1,5 +1,6 @@
 package com.example.client.controller;
 
+import com.example.client.Variables;
 import com.example.client.material.ListOfMaterial;
 import com.example.client.video.ListOfVideo;
 import com.example.client.students.Students;
@@ -11,9 +12,14 @@ import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.apache.log4j.Logger;
+import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ResourceBundle;
 /**
  * Класс контроллер для взаимодействия с основной формой FX
@@ -83,7 +89,7 @@ public class ClientController implements Initializable {
     @FXML
     private Tab adminsTab = new Tab();
     @FXML
-    private TextField CreateMaterialName = new TextField();
+    private TextField createMaterialName = new TextField();
     //_____________________________________________________________________________________________________________//
     /**
      * При инициализации проверяем,
@@ -104,11 +110,23 @@ public class ClientController implements Initializable {
      * pdf - файл и отправляем его на сервер
      */
     @FXML
-    private void createPdfFile() {
-        fileChooser.setTitle("Выберите файл");
-        File file = fileChooser.showOpenDialog(new Stage());
-        if (file != null) {
-            logger.info(file.getAbsolutePath());
+    private void createPdfFile() throws IOException {
+        if (!createMaterialName.getText().isEmpty()) {
+            String textCreateMaterialName = createMaterialName.getText();
+            String url_upload = "http://" + Variables.ip_server + ":" + Variables.port_server + "/upload/" + textCreateMaterialName;
+            fileChooser.setTitle("Выберите файл");
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
+            File file = fileChooser.showOpenDialog(new Stage());
+            if (file != null) {
+                logger.info("Выбран файл: " + file.getAbsolutePath());
+            }
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_PDF);
+            Path path = Paths.get(file.getAbsolutePath());
+            byte[] pdfContents = Files.readAllBytes(path);
+            HttpEntity<byte[]> entity = new HttpEntity<>(pdfContents, headers);
+            ResponseEntity<String> response = restTemplate.exchange(url_upload, HttpMethod.POST, entity, String.class);
+            logger.info(response.getStatusCode());
         }
     }
 }
