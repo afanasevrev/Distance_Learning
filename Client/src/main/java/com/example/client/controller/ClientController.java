@@ -119,14 +119,14 @@ public class ClientController implements Initializable {
             File file = fileChooser.showOpenDialog(new Stage());
             if (file != null) {
                 logger.info("Выбран файл: " + file.getAbsolutePath());
+                HttpHeaders headers = new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_PDF);
+                Path path = Paths.get(file.getAbsolutePath());
+                byte[] pdfContents = Files.readAllBytes(path);
+                HttpEntity<byte[]> entity = new HttpEntity<>(pdfContents, headers);
+                ResponseEntity<String> response = restTemplate.exchange(url_upload, HttpMethod.POST, entity, String.class);
+                logger.info(response.getStatusCode());
             }
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_PDF);
-            Path path = Paths.get(file.getAbsolutePath());
-            byte[] pdfContents = Files.readAllBytes(path);
-            HttpEntity<byte[]> entity = new HttpEntity<>(pdfContents, headers);
-            ResponseEntity<String> response = restTemplate.exchange(url_upload, HttpMethod.POST, entity, String.class);
-            logger.info(response.getStatusCode());
         }
     }
 }
