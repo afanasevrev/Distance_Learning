@@ -158,7 +158,7 @@ public class ServerController {
     }
     /**
      * Метод записывает в БД ученика
-     * @param student - передаем в метод полученного студента
+     * @param student - передаем полученного студента
      */
     private synchronized void writeStudent(Students student) {
         Transaction transaction = null;
