@@ -75,7 +75,7 @@ public class SignInController {
      * запрос на аутентификацию и получает ответ
      * @param login - логин
      * @param password - пароль
-     * @return
+     * @return AUTHENTICATED_ADMIN, AUTHENTICATED_STUDENT, NOT_AUTHENTICATED
      */
     private String authentication(String login, String password) {
         String url_authentication = this.url + "/authenticate/" + login + "&" + password;
@@ -97,7 +97,7 @@ public class SignInController {
      * @param patronymic - отчество
      * @param login - логин
      * @param password - пароль
-     * @return
+     * @return REGISTERED_STUDENT, NOT_REGISTERED
      */
     private String registration(String surname, String name, String patronymic, String login, String password) {
         String url_registration = this.url + "/registration/" + surname + "&" + name + "&" + patronymic + "&" + login + "&" + password;
