@@ -53,10 +53,10 @@ public class ServerController {
     @GetMapping("/registration/{surname}&{name}&{patronymic}&{login}&{password}")
     private String setRegistrationStudent(@PathVariable String surname, @PathVariable String name, @PathVariable String patronymic, @PathVariable String login, @PathVariable String password) {
         if (getStudents(login)) {
-            return Direction.REGISTERED_STUDENT.toString();
+            return Direction.NOT_REGISTERED.toString();
         } else {
             writeStudent(new Students(surname, name, patronymic, login, password));
-            return Direction.NOT_REGISTERED.toString();
+            return Direction.REGISTERED_STUDENT.toString();
         }
     }
     /**
