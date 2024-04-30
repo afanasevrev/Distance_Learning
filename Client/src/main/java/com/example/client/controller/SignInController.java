@@ -70,6 +70,12 @@ public class SignInController {
             }
         }
     }
+    /**
+     * Метод отправляет запрос на сервер и получает ответ
+     * @param login
+     * @param password
+     * @return
+     */
     private String authentication(String login, String password) {
         String url_authentication = this.url + "/authenticate/" + login + "&" + password;
         ResponseEntity<String> response = null;
