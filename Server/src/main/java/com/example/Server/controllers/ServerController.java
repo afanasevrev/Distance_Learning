@@ -61,6 +61,15 @@ public class ServerController {
         }
         return result;
     }
+    /**
+     * Метод вытягивает из БД список студентов системы
+     * и проверяет поступивший логин и пароль со списком,
+     * в случае положительного решения, метод возвращает true,
+     * иначе false
+     * @param login - полученный логин
+     * @param password - полученный пароль
+     * @return тип boolean
+     */
     private boolean getStudents(String login, String password) {
 
         return false;
