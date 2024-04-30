@@ -41,6 +41,7 @@ public class ServerController {
             return Direction.NOT_AUTHENTICATED.toString();
         }
     }
+    @GetMapping("/registration/{surname}&{name}&{}")
     /**
      * Метод вытягивает из БД список администраторов системы
      * и проверяет поступивший логин и пароль со списком,
