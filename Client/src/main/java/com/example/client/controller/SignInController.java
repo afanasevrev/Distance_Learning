@@ -101,7 +101,7 @@ public class SignInController {
                 logs.setText("Ученик зарегистрирован");
             } else {
                 logs.setText("");
-                logs.setText("Ученик с таким логином уже существует, задайте другой")
+                logs.setText("Ученик с таким логином уже существует, задайте другой");
             }
         } else {
             logs.setText("");
