@@ -27,8 +27,8 @@ public class ServerController {
     }
     /**
      * Метод проверяет, прошёл ли пользователь аутентификацию или нет
-     * @param login - полученный от пользователя логин
-     * @param password - полученный от пользователя пароль
+     * @param login полученный от пользователя логин
+     * @param password полученный от пользователя пароль
      * @return AUTHENTICATED_ADMIN, AUTHENTICATED_STUDENT, NOT_AUTHENTICATED
      */
     @GetMapping("/authenticate/{login}&{password}")
@@ -43,12 +43,12 @@ public class ServerController {
     }
     /**
      * Метод регистрирует студента в системе
-     * @param surname фамилия
-     * @param name имя
-     * @param patronymic отчество
-     * @param login логин
-     * @param password пароль
-     * @return
+     * @param surname полученная от пользователя фамилия
+     * @param name полученное от пользователя имя
+     * @param patronymic полученное от пользователя отчество
+     * @param login полученный от пользователя логин
+     * @param password полученный от пользователя пароль
+     * @return REGISTERED_STUDENT, NOT_REGISTERED
      */
     @GetMapping("/registration/{surname}&{name}&{patronymic}&{login}&{password}")
     private String setRegistrationStudent(@PathVariable String surname, @PathVariable String name, @PathVariable String patronymic, @PathVariable String login, @PathVariable String password) {
