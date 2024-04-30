@@ -69,7 +69,7 @@
                         <Button fx:id="createVideo" layoutX="107.0" layoutY="332.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Добавить видео" />
                         <Label layoutX="333.0" layoutY="14.0" text="Добавить материал для учебы" />
                         <Accordion layoutX="316.0" layoutY="68.0" />
-                        <Button fx:id="createFileMaterial" layoutX="333.0" layoutY="59.0" mnemonicParsing="false" text="Добавить файл" />
+                        <Button fx:id="createFileMaterial" layoutX="625.0" layoutY="59.0" mnemonicParsing="false" onAction="#createPdfFile" text="Добавить файл" />
                         <Separator layoutX="317.0" layoutY="125.0" prefHeight="0.0" prefWidth="460.0" />
                         <TableView fx:id="tableViewStudents" layoutX="317.0" layoutY="177.0" prefHeight="181.0" prefWidth="459.0">
                           <columns>
@@ -81,6 +81,7 @@
                         <Label layoutX="317.0" layoutY="143.0" text="Ученики" />
                         <Button fx:id="upDateListStudents" layoutX="317.0" layoutY="393.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Обновить список" />
                         <Button fx:id="dismiss" layoutX="458.0" layoutY="393.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Отчислить" />
+                        <TextField fx:id="CreateMaterialName" layoutX="333.0" layoutY="59.0" prefHeight="26.0" prefWidth="276.0" promptText="Напишите наименование учебного материала" />
                      </children></AnchorPane>
               </content>
             </Tab>

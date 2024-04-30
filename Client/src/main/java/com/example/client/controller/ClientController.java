@@ -1,6 +1,5 @@
 package com.example.client.controller;
 
-import com.example.client.Direction;
 import com.example.client.material.ListOfMaterial;
 import com.example.client.video.ListOfVideo;
 import com.example.client.students.Students;
@@ -10,12 +9,20 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import org.apache.log4j.Logger;
+import org.springframework.web.client.RestTemplate;
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 /**
  * Класс контроллер для взаимодействия с основной формой FX
  */
 public class ClientController implements Initializable {
+    //Будем вести лог событий
+    Logger  logger = Logger.getLogger(ClientController.class);
+    //Создаем экземпляр класса RestTemplate
+    RestTemplate restTemplate = new RestTemplate();
     //Добавим переменную, в которой укажем, зашёл ли пользователь под правами администратора или нет
     public static String authenticated = "NOT_AUTHENTICATED";
     //Элементы вкладки "Учебные материалы"
@@ -75,6 +82,8 @@ public class ClientController implements Initializable {
     private Button dismiss = new Button();
     @FXML
     private Tab adminsTab = new Tab();
+    @FXML
+    private TextField CreateMaterialName = new TextField();
     //_____________________________________________________________________________________________________________//
     /**
      * При инициализации проверяем,
@@ -88,6 +97,14 @@ public class ClientController implements Initializable {
             adminsTab.setDisable(false);
         } else {
             adminsTab.setDisable(true);
+        }
+    }
+    @FXML
+    private void createPdfFile() {
+        fileChooser.setTitle("Выберите файл");
+        File file = fileChooser.showOpenDialog(new Stage());
+        if (file != null) {
+            logger.info(file.getAbsolutePath());
         }
     }
 }
