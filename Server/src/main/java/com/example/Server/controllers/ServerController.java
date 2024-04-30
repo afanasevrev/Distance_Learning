@@ -15,11 +15,22 @@ import java.util.List;
 
 @RestController
 public class ServerController {
+    //Ведём лог событий этого класса
     Logger logger = Logger.getLogger(ServerController.class);
+    /**
+     * Отвечает на общий запрос
+     * @return Дистанционное обучение для охранников 4-5-6 разряда
+     */
     @GetMapping("/")
     private String getInfo() {
         return "Дистанционное обучение для охранников 4-5-6 разряда";
     }
+    /**
+     * Метод проверяет, прошёл ли пользователь аутентификацию или нет
+     * @param login - полученный от пользователя логин
+     * @param password - полученный от пользователя пароль
+     * @return AUTHENTICATED, NOT_AUTHENTICATED
+     */
     @GetMapping("/authenticate/{login}&{password}")
     private String getAuthentication(@PathVariable String login, @PathVariable String password) {
         if (getAdmins(login, password)) {
