@@ -2,6 +2,7 @@ package com.example.Server.controllers;
 
 import com.example.Server.Direction;
 import com.example.Server.db.Admins;
+import com.example.Server.db.Students;
 import com.example.Server.hibernate.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
@@ -23,6 +24,8 @@ public class ServerController {
     private String getAuthentication(@PathVariable String login, @PathVariable String password) {
         if (getAdmins(login, password)) {
             return Direction.AUTHENTICATED_ADMIN.toString();
+        } else if (getStudents(login, password)) {
+            return Direction.AUTHENTICATED_STUDENT.toString();
         } else {
             return Direction.NOT_AUTHENTICATED.toString();
         }
@@ -71,7 +74,28 @@ public class ServerController {
      * @return тип boolean
      */
     private boolean getStudents(String login, String password) {
-
-        return false;
+        boolean result = false;
+        List<Students> students = new ArrayList<>();
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            students = session.createQuery("from Students", Students.class).getResultList();
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            logger.error(e);
+        }
+        for(Students student: students) {
+            if (student.getLogin().equals(login)) {
+                if (student.getPassword().equals(password)) {
+                    result = true;
+                }
+            }
+        }
+        return result;
     }
 }
