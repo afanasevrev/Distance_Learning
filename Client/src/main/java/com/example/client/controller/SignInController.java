@@ -93,18 +93,16 @@ public class SignInController {
      */
     @FXML
     private void registrationStudent() {
+        logs.setText("");
         if (!name.getText().isEmpty() && !surname.getText().isEmpty() && !patronymic.getText().isEmpty() && !loginForRegistration.getText().isEmpty() && !passwordForRegistration.getText().isEmpty())
         {
             String getRegistration = registration(name.getText(), surname.getText(), patronymic.getText(), loginForRegistration.getText(), passwordForRegistration.getText());
             if (getRegistration.equals("REGISTERED_STUDENT")) {
-                logs.setText("");
                 logs.setText("Ученик успешно зарегистрирован");
             } else {
-                logs.setText("");
                 logs.setText("Ученик с таким логином уже существует, задайте другой");
             }
         } else {
-            logs.setText("");
             logs.setText("Заполните все поля для регистрации");
         }
     }
