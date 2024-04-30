@@ -98,7 +98,7 @@ public class SignInController {
             String getRegistration = registration(name.getText(), surname.getText(), patronymic.getText(), login.getText(), password.getText());
             if (getRegistration.equals("REGISTERED_STUDENT")) {
                 logs.setText("");
-                logs.setText("Ученик зарегистрирован");
+                logs.setText("Ученик успешно зарегистрирован");
             } else {
                 logs.setText("");
                 logs.setText("Ученик с таким логином уже существует, задайте другой");
