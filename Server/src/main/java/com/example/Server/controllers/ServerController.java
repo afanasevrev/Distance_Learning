@@ -29,7 +29,7 @@ public class ServerController {
      * Метод проверяет, прошёл ли пользователь аутентификацию или нет
      * @param login - полученный от пользователя логин
      * @param password - полученный от пользователя пароль
-     * @return AUTHENTICATED, NOT_AUTHENTICATED
+     * @return AUTHENTICATED_ADMIN, AUTHENTICATED_STUDENT, NOT_AUTHENTICATED
      */
     @GetMapping("/authenticate/{login}&{password}")
     private String getAuthentication(@PathVariable String login, @PathVariable String password) {
@@ -41,7 +41,20 @@ public class ServerController {
             return Direction.NOT_AUTHENTICATED.toString();
         }
     }
-    @GetMapping("/registration/{surname}&{name}&{}")
+    /**
+     * Метод регистрирует студента в системе
+     * @param surname фамилия
+     * @param name имя
+     * @param patronymic отчество
+     * @param login логин
+     * @param password пароль
+     * @return
+     */
+    @GetMapping("/registration/{surname}&{name}&{patronymic}&{login}&{password}")
+    private String setRegistrationStudent(@PathVariable String surname, @PathVariable String name, @PathVariable String patronymic, @PathVariable String login, @PathVariable String password) {
+
+        return null;
+    }
     /**
      * Метод вытягивает из БД список администраторов системы
      * и проверяет поступивший логин и пароль со списком,
@@ -109,5 +122,25 @@ public class ServerController {
             }
         }
         return result;
+    }
+    /**
+     * Метод записывает в БД ученика
+     * @param student - передаем в метод полученного студента
+     */
+    private synchronized void writeStudent(Students student) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            // Добавим в БД сервер
+            session.persist(student);
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
     }
 }
