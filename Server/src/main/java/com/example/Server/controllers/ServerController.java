@@ -52,8 +52,12 @@ public class ServerController {
      */
     @GetMapping("/registration/{surname}&{name}&{patronymic}&{login}&{password}")
     private String setRegistrationStudent(@PathVariable String surname, @PathVariable String name, @PathVariable String patronymic, @PathVariable String login, @PathVariable String password) {
-
-        return null;
+        if (getStudents(login)) {
+            return Direction.REGISTERED_STUDENT.toString();
+        } else {
+            writeStudent(new Students(surname, name, patronymic, login, password));
+            return Direction.NOT_REGISTERED.toString();
+        }
     }
     /**
      * Метод вытягивает из БД список администраторов системы
@@ -62,7 +66,7 @@ public class ServerController {
      * иначе false
      * @param login - полученный логин
      * @param password - полученный пароль
-     * @return тип boolean
+     * @return boolean
      */
     private boolean getAdmins(String login, String password) {
         boolean result = false;
@@ -121,6 +125,35 @@ public class ServerController {
                 }
             }
         }
+        return result;
+    }
+    /**
+     * Метод вытягивает из БД список учеников
+     * и сравнивает его с полученным логином
+     * @param login логин
+     * @return boolean
+     */
+    private boolean getStudents(String login) {
+        boolean result = false;
+        List<Students> students = new ArrayList<>();
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            students = session.createQuery("from Students", Students.class).getResultList();
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            logger.error(e);
+        }
+        for(Students student: students) {
+            if (student.getLogin().equals(login)) {
+                    result = true;
+                }
+            }
         return result;
     }
     /**
