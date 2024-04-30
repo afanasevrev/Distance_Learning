@@ -71,9 +71,10 @@ public class SignInController {
         }
     }
     /**
-     * Метод отправляет запрос на сервер и получает ответ
-     * @param login
-     * @param password
+     * Метод отправляет запрос на сервер
+     * запрос на аутентификацию и получает ответ
+     * @param login - логин
+     * @param password - пароль
      * @return
      */
     private String authentication(String login, String password) {
@@ -81,6 +82,28 @@ public class SignInController {
         ResponseEntity<String> response = null;
         try {
             response = restTemplate.exchange(url_authentication, HttpMethod.GET, null, String.class);
+            logger.info(response.getBody());
+        } catch (RuntimeException e) {
+            logger.error(e);
+        }
+        return response.getBody();
+    }
+
+    /**
+     * Метод отправляет на сервер запрос на регистрацию нового пользователя
+     * и получает соответствующий ответ
+     * @param surname - фамилия
+     * @param name - имя
+     * @param patronymic - отчество
+     * @param login - логин
+     * @param password - пароль
+     * @return
+     */
+    private String registration(String surname, String name, String patronymic, String login, String password) {
+        String url_registration = this.url + "/registration/" + surname + "&" + name + "&" + patronymic + "&" + login + "&" + password;
+        ResponseEntity<String> response = null;
+        try {
+            response = restTemplate.exchange(url_registration, HttpMethod.GET, null, String.class);
             logger.info(response.getBody());
         } catch (RuntimeException e) {
             logger.error(e);
