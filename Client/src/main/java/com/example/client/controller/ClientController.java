@@ -99,6 +99,10 @@ public class ClientController implements Initializable {
             adminsTab.setDisable(true);
         }
     }
+    /**
+     * При нажатии этой кнопки выбираем
+     * pdf - файл и отправляем его на сервер
+     */
     @FXML
     private void createPdfFile() {
         fileChooser.setTitle("Выберите файл");
