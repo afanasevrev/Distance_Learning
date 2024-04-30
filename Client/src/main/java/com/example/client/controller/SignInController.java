@@ -93,9 +93,9 @@ public class SignInController {
      */
     @FXML
     private void registrationStudent() {
-        if (!name.getText().isEmpty() && !surname.getText().isEmpty() && !patronymic.getText().isEmpty() && !login.getText().isEmpty() && !password.getText().isEmpty())
+        if (!name.getText().isEmpty() && !surname.getText().isEmpty() && !patronymic.getText().isEmpty() && !loginForRegistration.getText().isEmpty() && !passwordForRegistration.getText().isEmpty())
         {
-            String getRegistration = registration(name.getText(), surname.getText(), patronymic.getText(), login.getText(), password.getText());
+            String getRegistration = registration(name.getText(), surname.getText(), patronymic.getText(), loginForRegistration.getText(), passwordForRegistration.getText());
             if (getRegistration.equals("REGISTERED_STUDENT")) {
                 logs.setText("");
                 logs.setText("Ученик успешно зарегистрирован");
