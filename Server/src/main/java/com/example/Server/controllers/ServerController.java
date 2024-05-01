@@ -68,6 +68,7 @@ public class ServerController {
      */
     @PostMapping(value = "/upload/{textCreateMaterialName}", consumes = MediaType.APPLICATION_PDF_VALUE)
     private ResponseEntity<String> uploadPDF(@RequestBody byte[] file, @PathVariable String textCreateMaterialName) {
+        writeMaterial(new Materials(textCreateMaterialName, file));
         logger.info(textCreateMaterialName);
         return ResponseEntity.ok("OK");
     }

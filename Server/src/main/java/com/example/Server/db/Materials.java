@@ -17,10 +17,11 @@ public class Materials {
     private int id;
     @Column(name = "name")
     private String name;
+    @Lob
     @Column(name = "pdf_file")
-    private String pdf_file;
+    private byte[] pdf_file;
     public Materials(){}
-    public Materials(String name, String pdf_file) {
+    public Materials(String name, byte[] pdf_file) {
         this.name = name;
         this.pdf_file = pdf_file;
     }
