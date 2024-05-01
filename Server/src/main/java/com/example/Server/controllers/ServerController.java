@@ -14,7 +14,7 @@ import org.springframework.http.MediaType;
 import java.util.ArrayList;
 import java.util.List;
 /**
- * Класс контроллер для сервера
+ * Класс контроллер для сервера,
  * принимает сообщения от клиентов и отвечает на них
  */
 @RestController
