@@ -2,6 +2,7 @@ package com.example.Server.controllers;
 
 import com.example.Server.Direction;
 import com.example.Server.db.Admins;
+import com.example.Server.db.Materials;
 import com.example.Server.db.Students;
 import com.example.Server.hibernate.HibernateUtil;
 import org.apache.log4j.Logger;
@@ -59,12 +60,17 @@ public class ServerController {
             return Direction.REGISTERED_STUDENT.toString();
         }
     }
+    /**
+     *
+     * @param file полученный файл pdf
+     * @param textCreateMaterialName полученное имя материала
+     * @return
+     */
     @PostMapping(value = "/upload/{textCreateMaterialName}", consumes = MediaType.APPLICATION_PDF_VALUE)
     private ResponseEntity<String> uploadPDF(@RequestBody byte[] file, @PathVariable String textCreateMaterialName) {
         logger.info(textCreateMaterialName);
         return ResponseEntity.ok("OK");
     }
-
     /**
      * Метод вытягивает из БД список администраторов системы
      * и проверяет поступивший логин и пароль со списком,
@@ -173,6 +179,26 @@ public class ServerController {
             transaction = session.beginTransaction();
             // Добавим в БД сервер
             session.persist(student);
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
+    /**
+     * Метод записывает в БД материал
+     * @param material
+     */
+    private synchronized void writeMaterial(Materials material) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            // Добавим в БД сервер
+            session.persist(material);
             // Коммит транзакции
             transaction.commit();
         } catch (Exception e) {
