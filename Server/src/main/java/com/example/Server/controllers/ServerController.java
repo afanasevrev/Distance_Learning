@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Класс контроллер для сервера
+ * принимает сообщения от клиентов и отвечает на них
+ */
 @RestController
 public class ServerController {
     //Ведём лог событий этого класса
