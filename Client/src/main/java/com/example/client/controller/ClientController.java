@@ -43,7 +43,7 @@ public class ClientController implements Initializable {
     @FXML
     private Button downloadMaterial = new Button();
     @FXML
-    private TableView tableViewListOfMaterial = new TableView();
+    private TableView<ListOfMaterial> tableViewListOfMaterial = new TableView<ListOfMaterial>();
     private ObservableList<ListOfMaterial> listOfMaterialData = FXCollections.<ListOfMaterial>observableArrayList();
     @FXML
     private TableColumn<ListOfMaterial, String> id_material = new TableColumn<ListOfMaterial, String>("№");
@@ -80,6 +80,8 @@ public class ClientController implements Initializable {
     private Button createFileMaterial = new Button();
     //Открыть диалоговое окно, чтобы выбрать файл для отправки на сервер
     private FileChooser fileChooser = new FileChooser();
+
+    private ObservableList<Students> listOfStudentsData = FXCollections.<Students>observableArrayList();
     @FXML
     private TableView tableViewStudents = new TableView();
     @FXML
@@ -112,19 +114,29 @@ public class ClientController implements Initializable {
         } else {
             adminsTab.setDisable(true);
         }
+        //Обновляем таблицу для материалов
         tableViewListOfMaterial.setItems(listOfMaterialData);
         id_material.setCellValueFactory(cellData -> cellData.getValue().idProperty());
         materialName.setCellValueFactory(cellData -> cellData.getValue().materialNameProperty());
+        //Обновляем таблицу для видеоуроков
+        tableViewListOfVideo.setItems(listOfVideoData);
+        id_video.setCellValueFactory(cellData -> cellData.getValue().idProperty());
+        videoName.setCellValueFactory(cellData -> cellData.getValue().videoNameProperty());
+        videoLink.setCellValueFactory(cellData -> cellData.getValue().linkInVideoProperty());
+        //Обновляем таблицу для учеников
+        tableViewStudents.setItems(listOfStudentsData);
+        id_student.setCellValueFactory(cellData -> cellData.getValue().idProperty());
+        name.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
+        surname.setCellValueFactory(cellData -> cellData.getValue().surnameProperty());
         //Фиксируем строку в таблице для учебных материалов
-        /**
         tableViewListOfMaterial.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             try {
-                valueOfMaterial = newSelection.
+                valueOfMaterial = newSelection.getId();
+                logger.info(valueOfMaterial);
             } catch (NullPointerException e) {
                 valueOfMaterial = null;
             }
         });
-         **/
     }
     /**
      * При нажатии кнопки "Добавить материал" выбираем
