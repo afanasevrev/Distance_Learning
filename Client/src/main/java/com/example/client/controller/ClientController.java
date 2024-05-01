@@ -138,7 +138,7 @@ public class ClientController implements Initializable {
      */
     @FXML
     private void getUpdateList() {
-        String url_materials = "http:/" + Variables.ip_server + ":" + Variables.port_server + "/materials";
+        String url_materials = "http://" + Variables.ip_server + ":" + Variables.port_server + "/materials";
         ResponseEntity<String> response = null;
         try {
             response = restTemplate.exchange(url_materials, HttpMethod.GET, null, String.class);
