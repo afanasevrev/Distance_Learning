@@ -17,7 +17,6 @@ public class VideoLinks {
     private int id;
     @Column(name = "name")
     private String name;
-
     @Column(name = "link")
     private String link;
     public VideoLinks(){}
