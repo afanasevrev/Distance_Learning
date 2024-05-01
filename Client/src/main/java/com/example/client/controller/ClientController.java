@@ -80,7 +80,6 @@ public class ClientController implements Initializable {
     private Button createFileMaterial = new Button();
     //Открыть диалоговое окно, чтобы выбрать файл для отправки на сервер
     private FileChooser fileChooser = new FileChooser();
-
     private ObservableList<Students> listOfStudentsData = FXCollections.<Students>observableArrayList();
     @FXML
     private TableView tableViewStudents = new TableView();
