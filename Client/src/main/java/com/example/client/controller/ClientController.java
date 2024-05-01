@@ -51,12 +51,13 @@ public class ClientController implements Initializable {
     private TableColumn<ListOfMaterial, String> materialName = new TableColumn<ListOfMaterial, String>("Наименование");
     //_____________________________________________________________________________________________________________//
     //Элементы вкладки "Видеоуроки"
+    private String valueOfVideo;
     @FXML
     private Button updateListVideo = new Button();
     @FXML
     private Button linkInVideo = new Button();
     @FXML
-    private TableView tableViewListOfVideo = new TableView();
+    private TableView<ListOfVideo> tableViewListOfVideo = new TableView<ListOfVideo>();
     private ObservableList<ListOfVideo> listOfVideoData = FXCollections.<ListOfVideo>observableArrayList();
     @FXML
     TableColumn<ListOfVideo, String> id_video = new TableColumn<ListOfVideo, String>("№");
@@ -66,6 +67,7 @@ public class ClientController implements Initializable {
     TableColumn<ListOfVideo, String> videoLink = new TableColumn<ListOfVideo, String>("Ссылка");
     //_____________________________________________________________________________________________________________//
     //Элементы вкладки "Администратор"
+    String valueOfStudent;
     @FXML
     private TextField loginAdministrator = new TextField();
     @FXML
@@ -82,7 +84,7 @@ public class ClientController implements Initializable {
     private FileChooser fileChooser = new FileChooser();
     private ObservableList<Students> listOfStudentsData = FXCollections.<Students>observableArrayList();
     @FXML
-    private TableView tableViewStudents = new TableView();
+    private TableView<Students> tableViewStudents = new TableView<Students>();
     @FXML
     private TableColumn<Students, String> id_student = new TableColumn<Students, String>("№");
     @FXML
@@ -131,11 +133,20 @@ public class ClientController implements Initializable {
         tableViewListOfMaterial.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             try {
                 valueOfMaterial = newSelection.getId();
-                logger.info(valueOfMaterial);
             } catch (NullPointerException e) {
                 valueOfMaterial = null;
             }
         });
+        //Фиксируем строку в таблице для видеоматериалов
+        tableViewListOfVideo.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            try {
+                valueOfVideo = newSelection.getLinkInVideo();
+            } catch (NullPointerException e) {
+                valueOfVideo = null;
+            }
+        });
+        //Фиксируем строку в таблице для учеников
+        
     }
     /**
      * При нажатии кнопки "Добавить материал" выбираем
