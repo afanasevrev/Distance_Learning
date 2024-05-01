@@ -69,7 +69,7 @@ public class ServerController {
     @PostMapping(value = "/upload/{textCreateMaterialName}", consumes = MediaType.APPLICATION_PDF_VALUE)
     private ResponseEntity<String> uploadPDF(@RequestBody byte[] file, @PathVariable String textCreateMaterialName) {
         writeMaterial(new Materials(textCreateMaterialName, file));
-        return ResponseEntity.ok("OK");
+        return ResponseEntity.ok("Материал успешно добавлен");
     }
     /**
      * Метод вытягивает из БД список администраторов системы

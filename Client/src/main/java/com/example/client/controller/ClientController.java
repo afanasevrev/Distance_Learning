@@ -125,7 +125,7 @@ public class ClientController implements Initializable {
                 byte[] pdfContents = Files.readAllBytes(path);
                 HttpEntity<byte[]> entity = new HttpEntity<>(pdfContents, headers);
                 ResponseEntity<String> response = restTemplate.exchange(url_upload, HttpMethod.POST, entity, String.class);
-                logger.info(response.getStatusCode());
+                logger.info(response.getBody());
             }
         }
     }
