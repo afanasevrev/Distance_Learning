@@ -2,6 +2,7 @@ package com.example.client.controller;
 
 import com.example.client.Variables;
 import com.example.client.material.ListOfMaterial;
+import com.example.client.material.ListOfMaterialTemp;
 import com.example.client.video.ListOfVideo;
 import com.example.client.students.Students;
 import javafx.collections.FXCollections;
@@ -144,11 +145,18 @@ public class ClientController implements Initializable {
         ResponseEntity<String> response = null;
         try {
             response = restTemplate.exchange(url_materials, HttpMethod.GET, null, String.class);
+            logger.info(response.getBody());
             listOfMaterialData.clear();
             JsonParser jsonParser = new JsonParser();
             try {
-                JsonArray jsonArray = jsonParser.parse(response.toString()).getAsJsonArray();
-                
+                JsonArray jsonArray = jsonParser.parse(response.getBody()).getAsJsonArray();
+                for (JsonElement jsonElement: jsonArray) {
+                    ListOfMaterialTemp listOfMaterialTemp = gson.fromJson(jsonElement, ListOfMaterialTemp.class);
+                    ListOfMaterial listOfMaterial = new ListOfMaterial(String.valueOf(listOfMaterialTemp.getId()), listOfMaterialTemp.getMaterialName());
+                    listOfMaterialData.add(listOfMaterial);
+                    id_material.setCellValueFactory(cellData -> cellData.getValue().idProperty());
+                    materialName.setCellValueFactory(cellData -> cellData.getValue().materialNameProperty());
+                }
             } catch (JsonSyntaxException e) {
                 logger.error(e);
             }
