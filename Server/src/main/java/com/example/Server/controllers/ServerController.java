@@ -5,6 +5,7 @@ import com.example.Server.db.Admins;
 import com.example.Server.db.Materials;
 import com.example.Server.db.Students;
 import com.example.Server.hibernate.HibernateUtil;
+import com.example.Server.messaging.MaterialsTemp;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -73,6 +74,20 @@ public class ServerController {
     private ResponseEntity<String> uploadPDF(@RequestBody byte[] file, @PathVariable String textCreateMaterialName) {
         writeMaterial(new Materials(textCreateMaterialName, file));
         return ResponseEntity.ok("Материал успешно добавлен");
+    }
+    /**
+     * GET - запрос от клиента на получение списка материалов
+     * @return список материалов
+     */
+    @GetMapping("/materials")
+    private List<MaterialsTemp> getMaterialsTemp() {
+        List<Materials> materials = new ArrayList<>();
+        List<MaterialsTemp> materialsTemp = new ArrayList<>();
+        materials = getMaterials();
+        for (Materials material: materials) {
+            materialsTemp.add(new MaterialsTemp(material.getId(), material.getName()));
+        }
+        return materialsTemp;
     }
     /**
      * Метод вытягивает из БД список администраторов системы
@@ -210,5 +225,26 @@ public class ServerController {
             }
             e.printStackTrace();
         }
+    }
+    /**
+     * Метод вытягивает из БД список учебных материалов
+     * @return учебные материалы (Materials)
+     */
+    private List<Materials> getMaterials() {
+        List<Materials> materials = new ArrayList<>();
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            materials = session.createQuery("from Materials", Materials.class).getResultList();
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            logger.error(e);
+        }
+        return materials;
     }
 }
