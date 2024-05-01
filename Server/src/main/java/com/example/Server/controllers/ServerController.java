@@ -90,6 +90,17 @@ public class ServerController {
         return materialsTemp;
     }
     /**
+     * GET - запрос от клиента на добавление ссылки на видеоурок
+     * @param videoName имя видеоматериала
+     * @param linkInVideo ссылка на видео в интернете
+     * @return статус о выполнении запроса
+     */
+    @GetMapping("/createVideo/{videoName}&{linkInVideo}")
+    private String createVideo(@PathVariable String videoName, @PathVariable String linkInVideo) {
+
+        return null;
+    }
+    /**
      * Метод вытягивает из БД список администраторов системы
      * и проверяет поступивший логин и пароль со списком,
      * в случае положительного решения, метод возвращает true,
