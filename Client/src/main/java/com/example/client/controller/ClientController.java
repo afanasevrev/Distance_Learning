@@ -106,7 +106,7 @@ public class ClientController implements Initializable {
         }
     }
     /**
-     * При нажатии этой кнопки выбираем
+     * При нажатии кнопки "Добавить материал" выбираем
      * pdf - файл и отправляем его на сервер
      */
     @FXML
@@ -129,4 +129,5 @@ public class ClientController implements Initializable {
             }
         }
     }
+    
 }
