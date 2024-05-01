@@ -46,9 +46,9 @@ public class ClientController implements Initializable {
     private TableView tableViewListOfMaterial = new TableView();
     private ObservableList<ListOfMaterial> listOfMaterialData = FXCollections.<ListOfMaterial>observableArrayList();
     @FXML
-    TableColumn<ListOfMaterial, String> id_material = new TableColumn<ListOfMaterial, String>("№");
+    private TableColumn<ListOfMaterial, String> id_material = new TableColumn<ListOfMaterial, String>("№");
     @FXML
-    TableColumn<ListOfMaterial, String> materialName = new TableColumn<ListOfMaterial, String>("Наименование");
+    private TableColumn<ListOfMaterial, String> materialName = new TableColumn<ListOfMaterial, String>("Наименование");
     //_____________________________________________________________________________________________________________//
     //Элементы вкладки "Видеоуроки"
     @FXML
@@ -96,6 +96,8 @@ public class ClientController implements Initializable {
     private Tab adminsTab = new Tab();
     @FXML
     private TextField createMaterialName = new TextField();
+    @FXML
+    private TextField createVideoName = new TextField();
     //_____________________________________________________________________________________________________________//
     /**
      * При инициализации проверяем,
@@ -110,6 +112,19 @@ public class ClientController implements Initializable {
         } else {
             adminsTab.setDisable(true);
         }
+        tableViewListOfMaterial.setItems(listOfMaterialData);
+        id_material.setCellValueFactory(cellData -> cellData.getValue().idProperty());
+        materialName.setCellValueFactory(cellData -> cellData.getValue().materialNameProperty());
+        //Фиксируем строку в таблице для учебных материалов
+        /**
+        tableViewListOfMaterial.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            try {
+                valueOfMaterial = newSelection.
+            } catch (NullPointerException e) {
+                valueOfMaterial = null;
+            }
+        });
+         **/
     }
     /**
      * При нажатии кнопки "Добавить материал" выбираем
@@ -155,9 +170,6 @@ public class ClientController implements Initializable {
                     ListOfMaterialTemp listOfMaterialTemp = gson.fromJson(jsonElement, ListOfMaterialTemp.class);
                     ListOfMaterial listOfMaterial = new ListOfMaterial(listOfMaterialTemp.id, listOfMaterialTemp.name);
                     listOfMaterialData.add(listOfMaterial);
-                    tableViewListOfMaterial.setItems(listOfMaterialData);
-                    id_material.setCellValueFactory(cellData -> cellData.getValue().idProperty());
-                    materialName.setCellValueFactory(cellData -> cellData.getValue().materialNameProperty());
                 }
             } catch (JsonSyntaxException e) {
                 logger.error(e);

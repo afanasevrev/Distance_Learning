@@ -28,7 +28,7 @@
                             <TableColumn fx:id="materialName" prefWidth="363.20001220703125" text="Наименование" />
                           </columns>
                         </TableView>
-                        <Button fx:id="updateList" onAction="#getUpdateList" layoutX="14.0" layoutY="389.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Обновить список" />
+                        <Button fx:id="updateList" layoutX="14.0" layoutY="389.0" mnemonicParsing="false" onAction="#getUpdateList" prefHeight="25.0" prefWidth="120.0" text="Обновить список" />
                         <Button fx:id="downloadMaterial" layoutX="152.0" layoutY="389.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Скачать материал" />
                         <TextArea layoutX="502.0" layoutY="24.0" prefHeight="75.0" prefWidth="275.0" text="Чтобы скачать материал, сначала выберите &#10;его в таблице, затем нажмите кнопку &#10;&quot;Скачать материал&quot;" wrapText="true" />
                      </children></AnchorPane>
@@ -64,9 +64,9 @@
                         <Separator layoutX="295.0" layoutY="19.0" orientation="VERTICAL" prefHeight="435.0" prefWidth="5.0" />
                         <Separator layoutX="17.0" layoutY="235.0" prefHeight="2.0" prefWidth="268.0" />
                         <Label layoutX="14.0" layoutY="259.0" text="Добавить ссылку на видео" />
-                        <Label layoutX="14.0" layoutY="303.0" text="Ссылка" />
-                        <TextField fx:id="linkInVideoYoutube" layoutX="76.0" layoutY="299.0" prefHeight="26.0" prefWidth="200.0" promptText="Link in video youtube" />
-                        <Button fx:id="createVideo" layoutX="107.0" layoutY="332.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Добавить видео" />
+                        <Label layoutX="15.0" layoutY="336.0" text="Ссылка" />
+                        <TextField fx:id="linkInVideoYoutube" layoutX="67.0" layoutY="332.0" prefHeight="26.0" prefWidth="200.0" promptText="Link in video youtube" />
+                        <Button fx:id="createVideo" layoutX="67.0" layoutY="380.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Добавить видео" />
                         <Label layoutX="333.0" layoutY="14.0" text="Добавить материал для учебы" />
                         <Accordion layoutX="316.0" layoutY="68.0" />
                         <Button fx:id="createFileMaterial" layoutX="625.0" layoutY="59.0" mnemonicParsing="false" onAction="#createPdfFile" text="Добавить файл" />
@@ -82,6 +82,8 @@
                         <Button fx:id="upDateListStudents" layoutX="317.0" layoutY="393.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Обновить список" />
                         <Button fx:id="dismiss" layoutX="458.0" layoutY="393.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Отчислить" />
                         <TextField fx:id="createMaterialName" layoutX="333.0" layoutY="59.0" prefHeight="26.0" prefWidth="276.0" promptText="Напишите наименование учебного материала" />
+                        <Label layoutX="14.0" layoutY="297.0" text="Наименование" />
+                        <TextField fx:id="createVideoName" layoutX="113.0" layoutY="293.0" prefHeight="26.0" prefWidth="154.0" promptText="Введите наименование видео" />
                      </children></AnchorPane>
               </content>
             </Tab>
