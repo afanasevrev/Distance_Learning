@@ -189,7 +189,6 @@ public class ClientController implements Initializable {
         ResponseEntity<String> response = null;
         try {
             response = restTemplate.exchange(url_materials, HttpMethod.GET, null, String.class);
-            logger.info(response.getBody());
             listOfMaterialData.clear();
             JsonParser jsonParser = new JsonParser();
             try {
@@ -204,6 +203,18 @@ public class ClientController implements Initializable {
             }
         } catch (RuntimeException e) {
             logger.error(e);
+        }
+    }
+    /**
+     * Метод отправляет ссылку на видеоурок на сервер
+     */
+    @FXML
+    private void setCreateVideo() {
+        if (!createVideoName.getText().isEmpty() && !linkInVideoYoutube.getText().isEmpty()) {
+            String videoName = createVideoName.getText();
+            String linkInVideo = linkInVideoYoutube.getText();
+            String url_create_video = "http://" + Variables.ip_server + ":" + Variables.port_server + "/createVideo/" + videoName + "&" + linkInVideo;
+
         }
     }
 }
