@@ -4,6 +4,7 @@ import com.example.Server.Direction;
 import com.example.Server.db.Admins;
 import com.example.Server.db.Materials;
 import com.example.Server.db.Students;
+import com.example.Server.db.VideoLinks;
 import com.example.Server.hibernate.HibernateUtil;
 import com.example.Server.messaging.MaterialsTemp;
 import org.apache.log4j.Logger;
@@ -97,8 +98,8 @@ public class ServerController {
      */
     @GetMapping("/createVideo/{videoName}&{linkInVideo}")
     private String createVideo(@PathVariable String videoName, @PathVariable String linkInVideo) {
-
-        return null;
+        writeVideo(new VideoLinks(videoName, linkInVideo));
+        return "Видеоурок успешно добавлен";
     }
     /**
      * Метод вытягивает из БД список администраторов системы
@@ -257,5 +258,25 @@ public class ServerController {
             logger.error(e);
         }
         return materials;
+    }
+    /**
+     * Метод записывает в БД видеоурок
+     * @param videoLink передаем полученное сообщение от клиента
+     */
+    private synchronized void writeVideo(VideoLinks videoLink) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            // Добавим в БД сервер
+            session.persist(videoLink);
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
     }
 }

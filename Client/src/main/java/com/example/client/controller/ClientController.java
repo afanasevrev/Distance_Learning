@@ -214,8 +214,13 @@ public class ClientController implements Initializable {
             String videoName = createVideoName.getText();
             String linkInVideo = linkInVideoYoutube.getText();
             String url_create_video = "http://" + Variables.ip_server + ":" + Variables.port_server + "/createVideo/" + videoName + "&" + linkInVideo;
-            ResponseEntity<String> response = restTemplate.exchange(url_create_video, HttpMethod.GET, null, String.class);
-            logger.info(response.getBody());
+            ResponseEntity<String> response = null;
+            try {
+                response = restTemplate.exchange(url_create_video, HttpMethod.GET, null, String.class);
+                logger.info(response.getBody());
+            } catch (RuntimeException e) {
+                logger.error(e);
+            }
         }
     }
 }
