@@ -37,6 +37,7 @@ public class ClientController implements Initializable {
     public static String authenticated = "NOT_AUTHENTICATED";
     //_____________________________________________________________________________________________________________//
     //Элементы вкладки "Учебные материалы"
+    private String valueOfMaterial;
     @FXML
     private Button updateList = new Button();
     @FXML
