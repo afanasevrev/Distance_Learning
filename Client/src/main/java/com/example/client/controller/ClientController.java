@@ -20,14 +20,16 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
 import java.util.ResourceBundle;
+import com.google.gson.*;
 /**
  * Класс контроллер для взаимодействия с основной формой FX
  */
 public class ClientController implements Initializable {
     //Будем вести лог событий
     Logger  logger = Logger.getLogger(ClientController.class);
+    //Будем преобразовать JSON в классы
+    Gson gson = new Gson();
     //Создаем экземпляр класса RestTemplate
     RestTemplate restTemplate = new RestTemplate();
     //Добавим переменную, в которой укажем, зашёл ли пользователь под правами администратора или нет
@@ -142,7 +144,14 @@ public class ClientController implements Initializable {
         ResponseEntity<String> response = null;
         try {
             response = restTemplate.exchange(url_materials, HttpMethod.GET, null, String.class);
-            logger.info(response.getBody());
+            listOfMaterialData.clear();
+            JsonParser jsonParser = new JsonParser();
+            try {
+                JsonArray jsonArray = jsonParser.parse(response.toString()).getAsJsonArray();
+                
+            } catch (JsonSyntaxException e) {
+                logger.error(e);
+            }
         } catch (RuntimeException e) {
             logger.error(e);
         }
