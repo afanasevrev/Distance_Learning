@@ -146,7 +146,13 @@ public class ClientController implements Initializable {
             }
         });
         //Фиксируем строку в таблице для учеников
-        
+        tableViewStudents.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+           try {
+               valueOfStudent = newSelection.getId();
+           } catch (NullPointerException e) {
+               valueOfStudent = null;
+           }
+        });
     }
     /**
      * При нажатии кнопки "Добавить материал" выбираем
