@@ -20,6 +20,7 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.ResourceBundle;
 /**
  * Класс контроллер для взаимодействия с основной формой FX
@@ -31,6 +32,7 @@ public class ClientController implements Initializable {
     RestTemplate restTemplate = new RestTemplate();
     //Добавим переменную, в которой укажем, зашёл ли пользователь под правами администратора или нет
     public static String authenticated = "NOT_AUTHENTICATED";
+    //_____________________________________________________________________________________________________________//
     //Элементы вкладки "Учебные материалы"
     @FXML
     private Button updateList = new Button();
@@ -129,5 +131,20 @@ public class ClientController implements Initializable {
             }
         }
     }
-
+    /**
+     * При нажатии кнопки "Обновить список"
+     * отправляем на сервер GET - запрос на получение массива списка
+     * и заполняем таблицу FX
+     */
+    @FXML
+    private void getUpdateList() {
+        String url_materials = "http:/" + Variables.ip_server + ":" + Variables.port_server + "/materials";
+        ResponseEntity<String> response = null;
+        try {
+            response = restTemplate.exchange(url_materials, HttpMethod.GET, null, String.class);
+            logger.info(response.getBody());
+        } catch (RuntimeException e) {
+            logger.error(e);
+        }
+    }
 }

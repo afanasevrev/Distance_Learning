@@ -64,10 +64,10 @@ public class ServerController {
         }
     }
     /**
-     *
+     * Метод получает от клиента pdf файл и записывает его в БД
      * @param file полученный файл pdf
      * @param textCreateMaterialName полученное имя материала
-     * @return
+     * @return Материал успешно добавлен
      */
     @PostMapping(value = "/upload/{textCreateMaterialName}", consumes = MediaType.APPLICATION_PDF_VALUE)
     private ResponseEntity<String> uploadPDF(@RequestBody byte[] file, @PathVariable String textCreateMaterialName) {
