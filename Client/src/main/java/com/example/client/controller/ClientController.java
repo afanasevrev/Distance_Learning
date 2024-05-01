@@ -152,8 +152,9 @@ public class ClientController implements Initializable {
                 JsonArray jsonArray = jsonParser.parse(response.getBody()).getAsJsonArray();
                 for (JsonElement jsonElement: jsonArray) {
                     ListOfMaterialTemp listOfMaterialTemp = gson.fromJson(jsonElement, ListOfMaterialTemp.class);
-                    ListOfMaterial listOfMaterial = new ListOfMaterial(String.valueOf(listOfMaterialTemp.getId()), listOfMaterialTemp.getMaterialName());
+                    ListOfMaterial listOfMaterial = new ListOfMaterial(listOfMaterialTemp.id, listOfMaterialTemp.name);
                     listOfMaterialData.add(listOfMaterial);
+                    tableViewListOfMaterial.setItems(listOfMaterialData);
                     id_material.setCellValueFactory(cellData -> cellData.getValue().idProperty());
                     materialName.setCellValueFactory(cellData -> cellData.getValue().materialNameProperty());
                 }

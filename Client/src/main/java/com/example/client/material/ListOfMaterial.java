@@ -8,9 +8,9 @@ import javafx.beans.property.StringProperty;
  */
 public class ListOfMaterial {
     //Порядковый номер учебного материала
-    private StringProperty id;
+    public StringProperty id;
     //Наименование самого материала
-    private StringProperty materialName;
+    public StringProperty materialName;
     public ListOfMaterial(String id, String materialName) {
         this.id = new SimpleStringProperty(this, "id", id);
         this.materialName = new SimpleStringProperty(this, "materialName", materialName);

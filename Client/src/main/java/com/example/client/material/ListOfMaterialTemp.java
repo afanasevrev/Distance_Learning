@@ -8,11 +8,11 @@ import lombok.Setter;
 @Setter
 @Getter
 public class ListOfMaterialTemp {
-    private int id;
-    private String materialName;
+    public String id;
+    public String name;
     public ListOfMaterialTemp(){}
-    public ListOfMaterialTemp(int id, String materialName) {
+    public ListOfMaterialTemp(String id, String name) {
         this.id = id;
-        this.materialName = materialName;
+        this.name = name;
     }
 }
