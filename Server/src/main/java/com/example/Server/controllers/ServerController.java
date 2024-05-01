@@ -7,9 +7,9 @@ import com.example.Server.hibernate.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.http.MediaType;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,6 +59,12 @@ public class ServerController {
             return Direction.REGISTERED_STUDENT.toString();
         }
     }
+    @PostMapping(value = "/upload/{textCreateMaterialName}", consumes = MediaType.APPLICATION_PDF_VALUE)
+    private ResponseEntity<String> uploadPDF(@RequestBody byte[] file, @PathVariable String textCreateMaterialName) {
+        logger.info(textCreateMaterialName);
+        return ResponseEntity.ok("OK");
+    }
+
     /**
      * Метод вытягивает из БД список администраторов системы
      * и проверяет поступивший логин и пароль со списком,
