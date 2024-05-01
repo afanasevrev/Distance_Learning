@@ -69,7 +69,6 @@ public class ServerController {
     @PostMapping(value = "/upload/{textCreateMaterialName}", consumes = MediaType.APPLICATION_PDF_VALUE)
     private ResponseEntity<String> uploadPDF(@RequestBody byte[] file, @PathVariable String textCreateMaterialName) {
         writeMaterial(new Materials(textCreateMaterialName, file));
-        logger.info(textCreateMaterialName);
         return ResponseEntity.ok("OK");
     }
     /**
@@ -171,7 +170,7 @@ public class ServerController {
     }
     /**
      * Метод записывает в БД ученика
-     * @param student - передаем полученного студента
+     * @param student передаем полученного студента
      */
     private synchronized void writeStudent(Students student) {
         Transaction transaction = null;
@@ -191,7 +190,7 @@ public class ServerController {
     }
     /**
      * Метод записывает в БД материал
-     * @param material
+     * @param material передаем полученный материал
      */
     private synchronized void writeMaterial(Materials material) {
         Transaction transaction = null;
