@@ -214,14 +214,15 @@ public class ClientController implements Initializable {
         if (!createVideoName.getText().isEmpty() && !linkInVideoYoutube.getText().isEmpty()) {
             String videoName = createVideoName.getText();
             String linkInVideo = linkInVideoYoutube.getText();
-
-            String url_create_video = "http://" + Variables.ip_server + ":" + Variables.port_server + "/createVideo/";
+            String url_create_video = "http://" + Variables.ip_server + ":" + Variables.port_server + "/createVideo";
             ResponseEntity<String> response = null;
             ListOfVideoTemp listOfVideoTemp = new ListOfVideoTemp(videoName, linkInVideo);
-            
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            HttpEntity<ListOfVideoTemp> entity = new HttpEntity<>(listOfVideoTemp, headers);
             try {
-                response = restTemplate.exchange(url_create_video, HttpMethod.GET, null, String.class);
-
+                response = restTemplate.exchange(url_create_video, HttpMethod.POST, entity, String.class);
+                logger.info(response.getBody());
             } catch (RuntimeException e) {
                 logger.error(e);
             }

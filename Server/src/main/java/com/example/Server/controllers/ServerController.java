@@ -6,6 +6,7 @@ import com.example.Server.db.Materials;
 import com.example.Server.db.Students;
 import com.example.Server.db.VideoLinks;
 import com.example.Server.hibernate.HibernateUtil;
+import com.example.Server.messaging.ListOfVideoTemp;
 import com.example.Server.messaging.MaterialsTemp;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
@@ -91,14 +92,12 @@ public class ServerController {
         return materialsTemp;
     }
     /**
-     * GET - запрос от клиента на добавление ссылки на видеоурок
-     * @param videoName имя видеоматериала
-     * @param linkInVideo ссылка на видео в интернете
+     * POST - запрос от клиента на добавление ссылки на видеоурок
      * @return статус о выполнении запроса
      */
-    @GetMapping("/createVideo/{videoName}&{linkInVideo}")
-    private String createVideo(@PathVariable String videoName, @PathVariable String linkInVideo) {
-        writeVideo(new VideoLinks(videoName, linkInVideo));
+    @PostMapping("/createVideo")
+    private String createVideo(@RequestBody ListOfVideoTemp listOfVideoTemp) {
+        writeVideo(new VideoLinks(listOfVideoTemp.getNameVideo(), listOfVideoTemp.getLinkInVideo()));
         return "Видеоурок успешно добавлен";
     }
     /**
