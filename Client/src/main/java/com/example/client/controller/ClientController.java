@@ -306,4 +306,29 @@ public class ClientController implements Initializable {
             logger.error(e);
         }
     }
+    /**
+     * Метод добавляет администратора
+     */
+    @FXML
+    private void setCreateAdministrator() {
+        if (!loginAdministrator.getText().isEmpty() && !passwordAdministrator.getText().isEmpty()) {
+            String loginAdmin = loginAdministrator.getText();
+            String passwordAdmin = passwordAdministrator.getText();
+            String url_getAdmin = "http://" + Variables.ip_server + ":" + Variables.port_server + "/setAdministrator/" + loginAdmin + "&" +passwordAdmin;
+            ResponseEntity<String> response = null;
+            try {
+                response = restTemplate.exchange(url_getAdmin, HttpMethod.GET, null, String.class);
+                String text = response.getBody();
+                if (text.equals("REGISTERED_ADMIN")) {
+                    logger.info("Новый администратор успешно добавлен!");
+                } else if (text.equals("NOT_REGISTERED")) {
+                    logger.info("Администратор с таким логином уже существует!");
+                } else {
+                    logger.error("Непредвиденная ошибка");
+                }
+            } catch (RuntimeException e) {
+                logger.error(e);
+            }
+        }
+    }
 }

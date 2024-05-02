@@ -111,11 +111,24 @@ public class ServerController {
         videoLinks = getVideoLinks();
         return videoLinks;
     }
+    /**
+     * GET - запрос от клиента на получение списка учеников
+     * @return список учеников
+     */
     @GetMapping("/students")
     private List<Students> getStudentsList() {
         List<Students> studentsList = new ArrayList<>();
         studentsList = getStudents();
         return studentsList;
+    }
+    @GetMapping("/setAdministrator/{loginAdmin}&{passwordAdmin}")
+    private String getAdminsStatus(@PathVariable String loginAdmin, @PathVariable String passwordAdmin) {
+        if (!getAdmins(loginAdmin)) {
+            writeAdmin(new Admins(loginAdmin, passwordAdmin));
+            return Direction.REGISTERED_ADMIN.toString();
+        } else {
+            return Direction.NOT_REGISTERED.toString();
+        }
     }
     /**
      * Метод вытягивает из БД список администраторов системы
@@ -147,6 +160,37 @@ public class ServerController {
                 if (admin.getPassword().equals(password)) {
                     result = true;
                 }
+            }
+        }
+        return result;
+    }
+    /**
+     * Метод вытягивает из БД список администраторов системы
+     * и проверяет поступивший логин со списком,
+     * в случае положительного решения, метод возвращает true,
+     * иначе false
+     * @param login полученный логин
+     * @return boolean
+     */
+    private boolean getAdmins(String login) {
+        boolean result = false;
+        List<Admins> admins = new ArrayList<>();
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            admins = session.createQuery("from Admins", Admins.class).getResultList();
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            logger.error(e);
+        }
+        for(Admins admin: admins) {
+            if (admin.getLogin().equals(login)) {
+                    result = true;
             }
         }
         return result;
@@ -336,5 +380,25 @@ public class ServerController {
             logger.error(e);
         }
         return students;
+    }
+    /**
+     * Метод записывает в БД администратора
+     * @param admin записывает полученный от клиента данные на администратора
+     */
+    private synchronized void writeAdmin(Admins admin) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            // Добавим в БД сервер
+            session.persist(admin);
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
     }
 }

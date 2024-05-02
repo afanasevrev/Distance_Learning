@@ -60,7 +60,7 @@
                         <TextField fx:id="loginAdministrator" layoutX="77.0" layoutY="59.0" promptText="Login administrator" />
                         <Label layoutX="14.0" layoutY="109.0" text="Пароль" />
                         <PasswordField fx:id="passwordAdministrator" layoutX="77.0" layoutY="105.0" promptText="Password administrator" />
-                        <Button fx:id="createAdministrator" layoutX="107.0" layoutY="152.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Добавить" />
+                        <Button fx:id="createAdministrator" onAction="#setCreateAdministrator" layoutX="107.0" layoutY="152.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Добавить" />
                         <Separator layoutX="295.0" layoutY="19.0" orientation="VERTICAL" prefHeight="435.0" prefWidth="5.0" />
                         <Separator layoutX="17.0" layoutY="235.0" prefHeight="2.0" prefWidth="268.0" />
                         <Label layoutX="14.0" layoutY="259.0" text="Добавить ссылку на видео" />
