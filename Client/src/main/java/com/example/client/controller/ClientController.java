@@ -258,6 +258,7 @@ public class ClientController implements Initializable {
     }
     /**
      * Реализация кнопки "Перейти по ссылке"
+     * Для видеовкладки
      */
     @FXML
     public void followVideos() {
@@ -279,4 +280,5 @@ public class ClientController implements Initializable {
             e.printStackTrace();
         }
     }
+    
 }
