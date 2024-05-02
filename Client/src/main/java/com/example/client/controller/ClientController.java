@@ -281,7 +281,7 @@ public class ClientController implements Initializable {
         }
     }
     /**
-     * метод отправляет GET - запрос на получение списка студентов
+     * Метод отправляет GET - запрос на получение списка студентов
      */
     @FXML
     private void getUpdateStudents() {
@@ -294,7 +294,7 @@ public class ClientController implements Initializable {
             try {
                 JsonArray jsonArray = jsonParser.parse(response.getBody()).getAsJsonArray();
                 for(JsonElement jsonElement: jsonArray) {
-                    
+
                 }
             } catch (JsonSyntaxException e) {
                 logger.error(e);
