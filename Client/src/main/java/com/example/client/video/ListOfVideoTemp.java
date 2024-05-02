@@ -17,4 +17,8 @@ public class ListOfVideoTemp {
         this.nameVideo = nameVideo;
         this.linkInVideo = linkInVideo;
     }
+    public ListOfVideoTemp(String nameVideo, String linkInVideo) {
+        this.nameVideo = nameVideo;
+        this.linkInVideo = linkInVideo;
+    }
 }
