@@ -79,7 +79,7 @@
                           </columns>
                         </TableView>
                         <Label layoutX="317.0" layoutY="143.0" text="Ученики" />
-                        <Button fx:id="upDateListStudents" layoutX="317.0" layoutY="393.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Обновить список" />
+                        <Button fx:id="upDateListStudents" onAction="#getUpdateStudents" layoutX="317.0" layoutY="393.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Обновить список" />
                         <Button fx:id="dismiss" layoutX="458.0" layoutY="393.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Отчислить" />
                         <TextField fx:id="createMaterialName" layoutX="333.0" layoutY="59.0" prefHeight="26.0" prefWidth="276.0" promptText="Напишите наименование учебного материала" />
                         <Label layoutX="14.0" layoutY="297.0" text="Наименование" />

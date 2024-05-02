@@ -8,9 +8,9 @@ import lombok.Setter;
 @Setter
 @Getter
 public class StudentsListTemp {
-    private String id;
-    private String surname;
-    private String name;
+    public String id;
+    public String surname;
+    public String name;
     public StudentsListTemp() {}
     public StudentsListTemp(String id, String surname, String name) {
         this.id = id;

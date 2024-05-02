@@ -3,6 +3,7 @@ package com.example.client.controller;
 import com.example.client.Variables;
 import com.example.client.material.ListOfMaterial;
 import com.example.client.material.ListOfMaterialTemp;
+import com.example.client.students.StudentsListTemp;
 import com.example.client.video.ListOfVideo;
 import com.example.client.students.Students;
 import com.example.client.video.ListOfVideoTemp;
@@ -289,12 +290,14 @@ public class ClientController implements Initializable {
         ResponseEntity<String> response = null;
         try {
             response = restTemplate.exchange(url_getStudents, HttpMethod.GET, null, String.class);
-            listOfVideoData.clear();
+            listOfStudentsData.clear();
             JsonParser jsonParser = new JsonParser();
             try {
                 JsonArray jsonArray = jsonParser.parse(response.getBody()).getAsJsonArray();
                 for(JsonElement jsonElement: jsonArray) {
-
+                    StudentsListTemp studentsListTemp = gson.fromJson(jsonElement, StudentsListTemp.class);
+                    Students students = new Students(studentsListTemp.id, studentsListTemp.surname, studentsListTemp.name);
+                    listOfStudentsData.add(students);
                 }
             } catch (JsonSyntaxException e) {
                 logger.error(e);

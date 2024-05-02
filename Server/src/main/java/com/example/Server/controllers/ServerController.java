@@ -111,6 +111,12 @@ public class ServerController {
         videoLinks = getVideoLinks();
         return videoLinks;
     }
+    @GetMapping("/students")
+    private List<Students> getStudentsList() {
+        List<Students> studentsList = new ArrayList<>();
+        studentsList = getStudents();
+        return studentsList;
+    }
     /**
      * Метод вытягивает из БД список администраторов системы
      * и проверяет поступивший логин и пароль со списком,
@@ -309,5 +315,26 @@ public class ServerController {
             logger.error(e);
         }
         return videoLinks;
+    }
+    /**
+     * Метод вытягивает из БД список учеников
+     * @return студенты или ученики :)
+     */
+    private List<Students> getStudents() {
+        List<Students> students = new ArrayList<>();
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            students = session.createQuery("from Students", Students.class).getResultList();
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            logger.error(e);
+        }
+        return students;
     }
 }
