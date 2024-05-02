@@ -121,6 +121,12 @@ public class ServerController {
         studentsList = getStudents();
         return studentsList;
     }
+    /**
+     * GET - запрос от клиента на добавление в БД администратора
+     * @param loginAdmin логин
+     * @param passwordAdmin пароль
+     * @return
+     */
     @GetMapping("/setAdministrator/{loginAdmin}&{passwordAdmin}")
     private String getAdminsStatus(@PathVariable String loginAdmin, @PathVariable String passwordAdmin) {
         if (!getAdmins(loginAdmin)) {
@@ -129,6 +135,16 @@ public class ServerController {
         } else {
             return Direction.NOT_REGISTERED.toString();
         }
+    }
+    /**
+     * по GET - запросу от клиента удаляем ученика из системы
+     * @return статус выполнения запроса
+     */
+    @GetMapping("/deleteStudent/{studentId}")
+    private String getDeleteStudent(@PathVariable String studentId) {
+        int id = Integer.parseInt(studentId);
+        deleteStudent(id);
+        return "Ученик удален из БД";
     }
     /**
      * Метод вытягивает из БД список администраторов системы
@@ -406,6 +422,22 @@ public class ServerController {
      * @param studentId ID ученика
      */
     private synchronized void deleteStudent(int studentId) {
-        
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            Students student = session.get(Students.class, studentId);
+            if (student != null) {
+                //Удаляем объект
+                session.delete(student);
+            }
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
     }
 }
