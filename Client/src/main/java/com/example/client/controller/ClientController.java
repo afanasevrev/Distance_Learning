@@ -5,6 +5,7 @@ import com.example.client.material.ListOfMaterial;
 import com.example.client.material.ListOfMaterialTemp;
 import com.example.client.video.ListOfVideo;
 import com.example.client.students.Students;
+import com.example.client.video.ListOfVideoTemp;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -213,12 +214,14 @@ public class ClientController implements Initializable {
         if (!createVideoName.getText().isEmpty() && !linkInVideoYoutube.getText().isEmpty()) {
             String videoName = createVideoName.getText();
             String linkInVideo = linkInVideoYoutube.getText();
-            logger.info(linkInVideo);
-            String url_create_video = "http://" + Variables.ip_server + ":" + Variables.port_server + "/createVideo/" + videoName + "&" + linkInVideo;
+
+            String url_create_video = "http://" + Variables.ip_server + ":" + Variables.port_server + "/createVideo/";
             ResponseEntity<String> response = null;
+            ListOfVideoTemp listOfVideoTemp = new ListOfVideoTemp(videoName, linkInVideo);
+            
             try {
                 response = restTemplate.exchange(url_create_video, HttpMethod.GET, null, String.class);
-                logger.info(response.getBody());
+
             } catch (RuntimeException e) {
                 logger.error(e);
             }
