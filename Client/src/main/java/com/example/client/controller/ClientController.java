@@ -6,6 +6,7 @@ import com.example.client.material.ListOfMaterialTemp;
 import com.example.client.video.ListOfVideo;
 import com.example.client.students.Students;
 import com.example.client.video.ListOfVideoTemp;
+import com.example.client.video.VideoLinksTemp;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -232,7 +233,7 @@ public class ClientController implements Initializable {
     }
     @FXML
     private void getUpdateVideo() {
-        String url_getLinkVideos = "http:" + Variables.ip_server + ":" + Variables.port_server + "/videos";
+        String url_getLinkVideos = "http://" + Variables.ip_server + ":" + Variables.port_server + "/videos";
         ResponseEntity<String> response = null;
         try {
             response = restTemplate.exchange(url_getLinkVideos, HttpMethod.GET, null, String.class);
@@ -240,7 +241,11 @@ public class ClientController implements Initializable {
             JsonParser jsonParser = new JsonParser();
             try {
                 JsonArray jsonArray = jsonParser.parse(response.getBody()).getAsJsonArray();
-
+                for(JsonElement jsonElement: jsonArray) {
+                    VideoLinksTemp videoLinksTemp = gson.fromJson(jsonElement, VideoLinksTemp.class);
+                    ListOfVideo listOfVideo = new ListOfVideo(videoLinksTemp.id, videoLinksTemp.name, videoLinksTemp.link);
+                    listOfVideoData.add(listOfVideo);
+                }
             } catch (JsonSyntaxException e) {
                 logger.error(e);
             }

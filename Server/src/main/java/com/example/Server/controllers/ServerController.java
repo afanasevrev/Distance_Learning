@@ -279,4 +279,25 @@ public class ServerController {
             e.printStackTrace();
         }
     }
+    /**
+     * Метод вытягивает из БД список видеоматериалов
+     * @return видеоматериалы
+     */
+    private List<VideoLinks> getVideoLinks() {
+        List<VideoLinks> videoLinks = new ArrayList<>();
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            videoLinks = session.createQuery("from VideoLinks", VideoLinks.class).getResultList();
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            logger.error(e);
+        }
+        return videoLinks;
+    }
 }
