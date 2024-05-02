@@ -223,6 +223,8 @@ public class ClientController implements Initializable {
             try {
                 response = restTemplate.exchange(url_create_video, HttpMethod.POST, entity, String.class);
                 logger.info(response.getBody());
+                createVideoName.setText("");
+                linkInVideoYoutube.setText("");
             } catch (RuntimeException e) {
                 logger.error(e);
             }

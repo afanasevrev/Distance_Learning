@@ -93,6 +93,7 @@ public class ServerController {
     }
     /**
      * POST - запрос от клиента на добавление ссылки на видеоурок
+     * @param listOfVideoTemp полученный JSON класс
      * @return статус о выполнении запроса
      */
     @PostMapping("/createVideo")
