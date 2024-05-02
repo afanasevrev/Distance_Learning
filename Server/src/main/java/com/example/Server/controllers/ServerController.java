@@ -383,7 +383,7 @@ public class ServerController {
     }
     /**
      * Метод записывает в БД администратора
-     * @param admin записывает полученный от клиента данные на администратора
+     * @param admin полученный от клиента данные на администратора
      */
     private synchronized void writeAdmin(Admins admin) {
         Transaction transaction = null;
