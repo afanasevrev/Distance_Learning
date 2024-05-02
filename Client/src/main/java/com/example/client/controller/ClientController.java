@@ -256,4 +256,27 @@ public class ClientController implements Initializable {
             logger.error(e);
         }
     }
+    /**
+     * Реализация кнопки "Перейти по ссылке"
+     */
+    @FXML
+    public void followVideos() {
+        try {
+            String os = System.getProperty("os.name").toLowerCase();
+            ProcessBuilder pb;
+            if (os.contains("win")) {
+                // Для Windows
+                pb = new ProcessBuilder("cmd.exe", "/c", "start", valueOfVideo);
+            } else if (os.contains("mac")) {
+                // Для macOS
+                pb = new ProcessBuilder("open", valueOfVideo);
+            } else {
+                // Для Linux или других ОС
+                pb = new ProcessBuilder("xdg-open", valueOfVideo);
+            }
+            pb.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
