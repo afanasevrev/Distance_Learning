@@ -230,4 +230,22 @@ public class ClientController implements Initializable {
             }
         }
     }
+    @FXML
+    private void getUpdateVideo() {
+        String url_getLinkVideos = "http:" + Variables.ip_server + ":" + Variables.port_server + "/videos";
+        ResponseEntity<String> response = null;
+        try {
+            response = restTemplate.exchange(url_getLinkVideos, HttpMethod.GET, null, String.class);
+            listOfVideoData.clear();
+            JsonParser jsonParser = new JsonParser();
+            try {
+                JsonArray jsonArray = jsonParser.parse(response.getBody()).getAsJsonArray();
+
+            } catch (JsonSyntaxException e) {
+                logger.error(e);
+            }
+        } catch (RuntimeException e) {
+            logger.error(e);
+        }
+    }
 }

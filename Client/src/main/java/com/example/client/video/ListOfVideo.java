@@ -7,9 +7,9 @@ import javafx.beans.property.StringProperty;
  * Тесно связан с таблицей FX
  */
 public class ListOfVideo {
-    private StringProperty id;
-    private StringProperty videoName;
-    private StringProperty linkInVideo;
+    public StringProperty id;
+    public StringProperty videoName;
+    public StringProperty linkInVideo;
     public ListOfVideo(String id, String videoName, String linkInVideo) {
         this.id = new SimpleStringProperty(this, "id", id);
         this.videoName = new SimpleStringProperty(this, "videoName", videoName);
