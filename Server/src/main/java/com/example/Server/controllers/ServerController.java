@@ -102,6 +102,16 @@ public class ServerController {
         return "Видеоурок успешно добавлен";
     }
     /**
+     * GET - запрос от клиента на получение списка видеоуроков
+     * @return список видеоуроков
+     */
+    @GetMapping("/videos")
+    private List<VideoLinks> getVideo() {
+        List<VideoLinks> videoLinks = new ArrayList<>();
+        videoLinks = getVideoLinks();
+        return videoLinks;
+    }
+    /**
      * Метод вытягивает из БД список администраторов системы
      * и проверяет поступивший логин и пароль со списком,
      * в случае положительного решения, метод возвращает true,

@@ -231,6 +231,9 @@ public class ClientController implements Initializable {
             }
         }
     }
+    /**
+     * Метод отправляет GET - запрос на получение видеоуроков
+     */
     @FXML
     private void getUpdateVideo() {
         String url_getLinkVideos = "http://" + Variables.ip_server + ":" + Variables.port_server + "/videos";
