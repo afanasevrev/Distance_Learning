@@ -401,4 +401,11 @@ public class ServerController {
             e.printStackTrace();
         }
     }
+    /**
+     * Метод удаляет из БД ученика
+     * @param studentId ID ученика
+     */
+    private synchronized void deleteStudent(int studentId) {
+        
+    }
 }
