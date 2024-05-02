@@ -287,6 +287,20 @@ public class ClientController implements Initializable {
     private void getUpdateStudents() {
         String url_getStudents = "http://" + Variables.ip_server + ":" + Variables.port_server + "/students";
         ResponseEntity<String> response = null;
-        
+        try {
+            response = restTemplate.exchange(url_getStudents, HttpMethod.GET, null, String.class);
+            listOfVideoData.clear();
+            JsonParser jsonParser = new JsonParser();
+            try {
+                JsonArray jsonArray = jsonParser.parse(response.getBody()).getAsJsonArray();
+                for(JsonElement jsonElement: jsonArray) {
+
+                }
+            } catch (JsonSyntaxException e) {
+                logger.error(e);
+            }
+        } catch (RuntimeException e) {
+            logger.error(e);
+        }
     }
 }
