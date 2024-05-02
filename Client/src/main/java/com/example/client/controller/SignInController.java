@@ -96,7 +96,7 @@ public class SignInController {
         logs.setText("");
         if (!name.getText().isEmpty() && !surname.getText().isEmpty() && !patronymic.getText().isEmpty() && !loginForRegistration.getText().isEmpty() && !passwordForRegistration.getText().isEmpty())
         {
-            String getRegistration = registration(name.getText(), surname.getText(), patronymic.getText(), loginForRegistration.getText(), passwordForRegistration.getText());
+            String getRegistration = registration(surname.getText(), name.getText(), patronymic.getText(), loginForRegistration.getText(), passwordForRegistration.getText());
             if (getRegistration.equals("REGISTERED_STUDENT")) {
                 logs.setText("Ученик успешно зарегистрирован");
             } else {
