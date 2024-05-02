@@ -261,7 +261,7 @@ public class ClientController implements Initializable {
      * Для видеовкладки
      */
     @FXML
-    public void followVideos() {
+    private void followVideos() {
         try {
             String os = System.getProperty("os.name").toLowerCase();
             ProcessBuilder pb;
@@ -280,5 +280,13 @@ public class ClientController implements Initializable {
             e.printStackTrace();
         }
     }
-    
+    /**
+     * метод отправляет GET - запрос на получение списка студентов
+     */
+    @FXML
+    private void getUpdateStudents() {
+        String url_getStudents = "http://" + Variables.ip_server + ":" + Variables.port_server + "/students";
+        ResponseEntity<String> response = null;
+        
+    }
 }
