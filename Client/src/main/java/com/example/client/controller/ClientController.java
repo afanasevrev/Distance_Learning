@@ -326,6 +326,8 @@ public class ClientController implements Initializable {
                 } else {
                     logger.error("Непредвиденная ошибка");
                 }
+                loginAdministrator.setText("");
+                passwordAdministrator.setText("");
             } catch (RuntimeException e) {
                 logger.error(e);
             }
