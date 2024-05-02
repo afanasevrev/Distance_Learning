@@ -213,6 +213,7 @@ public class ClientController implements Initializable {
         if (!createVideoName.getText().isEmpty() && !linkInVideoYoutube.getText().isEmpty()) {
             String videoName = createVideoName.getText();
             String linkInVideo = linkInVideoYoutube.getText();
+            logger.info(linkInVideo);
             String url_create_video = "http://" + Variables.ip_server + ":" + Variables.port_server + "/createVideo/" + videoName + "&" + linkInVideo;
             ResponseEntity<String> response = null;
             try {
