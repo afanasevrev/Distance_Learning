@@ -1,6 +1,5 @@
 package com.example.client.controller;
 
-import com.example.client.Direction;
 import com.example.client.MainApplication;
 import com.example.client.Variables;
 import javafx.fxml.FXML;
