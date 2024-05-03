@@ -144,7 +144,7 @@ public class ServerController {
     private String getDeleteStudent(@PathVariable String studentId) {
         int id = Integer.parseInt(studentId);
         deleteStudent(id);
-        return "Ученик удален из БД";
+        return "Ученик отчислен";
     }
     /**
      * Метод вытягивает из БД список администраторов системы

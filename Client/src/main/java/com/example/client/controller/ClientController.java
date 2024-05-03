@@ -333,4 +333,12 @@ public class ClientController implements Initializable {
             }
         }
     }
+    @FXML
+    private void setDismiss() {
+        if (valueOfStudent != null && !valueOfStudent.isEmpty()) {
+            String studentId = valueOfStudent;
+            String url_student_dismiss = "http://" + Variables.port_server + ":" + Variables.port_server + "/deleteStudent/" + studentId;
+            
+        }
+    }
 }
