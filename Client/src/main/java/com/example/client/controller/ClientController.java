@@ -363,7 +363,13 @@ public class ClientController implements Initializable {
         if (valueOfMaterial != null && !valueOfMaterial.isEmpty()) {
             String pdfId = valueOfMaterial;
             String url_download_material = "http://" + Variables.ip_server + ":" + Variables.port_server + "/getPdfFile/" + pdfId;
-            
+            ResponseEntity<byte[]> response = null;
+            try {
+                response = restTemplate.exchange(url_download_material, HttpMethod.GET, null, byte[].class);
+                logger.info(response.getBody());
+            } catch (RuntimeException e) {
+                logger.error(e);
+            }
         }
     }
 }
