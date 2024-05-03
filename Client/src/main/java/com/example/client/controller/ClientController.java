@@ -337,7 +337,7 @@ public class ClientController implements Initializable {
     private void setDismiss() {
         if (valueOfStudent != null && !valueOfStudent.isEmpty()) {
             String studentId = valueOfStudent;
-            String url_student_dismiss = "http://" + Variables.port_server + ":" + Variables.port_server + "/deleteStudent/" + studentId;
+            String url_student_dismiss = "http://" + Variables.ip_server + ":" + Variables.port_server + "/deleteStudent/" + studentId;
             ResponseEntity<String> response = null;
             try {
                 response = restTemplate.exchange(url_student_dismiss, HttpMethod.GET, null, String.class);
