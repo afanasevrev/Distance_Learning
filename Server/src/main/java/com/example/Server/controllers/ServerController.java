@@ -14,6 +14,8 @@ import org.hibernate.Transaction;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 /**
@@ -156,6 +158,7 @@ public class ServerController {
     private byte[] getPDFFile(@PathVariable String pdfId) {
         int id = Integer.parseInt(pdfId);
         byte[] pdf_file = getPdfFile(id);
+        logger.info(pdf_file);
         return pdf_file;
     }
     /**
