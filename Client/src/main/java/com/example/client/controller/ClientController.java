@@ -360,6 +360,10 @@ public class ClientController implements Initializable {
      */
     @FXML
     private void setDownloadMaterial() {
-        
+        if (valueOfMaterial != null && !valueOfMaterial.isEmpty()) {
+            String pdfId = valueOfMaterial;
+            String url_download_material = "http://" + Variables.ip_server + ":" + Variables.port_server + "/getPdfFile/" + pdfId;
+            
+        }
     }
 }
