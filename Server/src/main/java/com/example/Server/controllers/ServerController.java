@@ -138,6 +138,7 @@ public class ServerController {
     }
     /**
      * по GET - запросу от клиента удаляем ученика из системы
+     * @param studentId Id ученика
      * @return статус выполнения запроса
      */
     @GetMapping("/deleteStudent/{studentId}")
@@ -145,6 +146,17 @@ public class ServerController {
         int id = Integer.parseInt(studentId);
         deleteStudent(id);
         return "Ученик отчислен";
+    }
+    /**
+     * по GET - запросу от клиента возвращаем pdf - файл из БД
+     * @param pdfId ID pdf - файла
+     * @return byte[]
+     */
+    @GetMapping("/getPdfFile/{pdfId}")
+    private byte[] getPDFFile(@PathVariable String pdfId) {
+        int id = Integer.parseInt(pdfId);
+        byte[] pdf_file = getPdfFile(id);
+        return pdf_file;
     }
     /**
      * Метод вытягивает из БД список администраторов системы
@@ -439,5 +451,27 @@ public class ServerController {
             }
             e.printStackTrace();
         }
+    }
+    /**
+     * Метод вытягивает из БД pdf - файл
+     * @param pdfId ID полученный от клиента
+     * @return byte[]
+     */
+    private synchronized byte[] getPdfFile(int pdfId) {
+        Transaction transaction = null;
+        Materials material = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            material = session.get(Materials.class, pdfId);
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return material.getPdf_file();
     }
 }
