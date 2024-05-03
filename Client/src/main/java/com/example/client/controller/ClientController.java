@@ -333,6 +333,10 @@ public class ClientController implements Initializable {
             }
         }
     }
+    /**
+     * При нажати кнопки "Отчислить" отправляем на сервер
+     * GET - запрос для удаления ученика из БД
+     */
     @FXML
     private void setDismiss() {
         if (valueOfStudent != null && !valueOfStudent.isEmpty()) {
