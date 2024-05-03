@@ -352,4 +352,14 @@ public class ClientController implements Initializable {
             }
         }
     }
+    /**
+     * При нажатии кнопки "Скачать материал" отправляем на сервер
+     * GET - запрос с телом запроса ID pdf файла
+     * и получаем byte[] массив, в последствии преобразуем его в pdf
+     * сохраняем на компьютер по умолчанию в папке "Загрузки"
+     */
+    @FXML
+    private void setDownloadMaterial() {
+        
+    }
 }
