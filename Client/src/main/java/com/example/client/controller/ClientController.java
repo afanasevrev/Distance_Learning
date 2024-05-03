@@ -363,20 +363,19 @@ public class ClientController implements Initializable {
     @FXML
     private void setDownloadMaterial() {
         if (valueOfMaterial != null && !valueOfMaterial.isEmpty()) {
-
+            //Определеяем наш домашний каталог
+            String userHome = System.getProperty("user.home");
             String pdfId = valueOfMaterial;
             String url_download_material = "http://" + Variables.ip_server + ":" + Variables.port_server + "/getPdfFile/" + pdfId;
             ResponseEntity<byte[]> response = null;
             try {
                 response = restTemplate.exchange(url_download_material, HttpMethod.GET, null, new ParameterizedTypeReference<byte[]>() {});
-                logger.info(response.getBody());
             } catch (RuntimeException e) {
                 logger.error(e);
             }
-
             try {
                 //Путь к файлу, который вы хотите создать
-                String outputPath = "output.pdf";
+                String outputPath = userHome + "\\Downloads\\output.pdf";
                 //Массив байтов, который необходимо записать в файл
                 byte[] pdfBytes = response.getBody();
                 //Создание потока вывода файла для записи данных в файл
