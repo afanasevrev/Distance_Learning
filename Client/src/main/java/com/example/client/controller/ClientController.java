@@ -365,6 +365,8 @@ public class ClientController implements Initializable {
         if (valueOfMaterial != null && !valueOfMaterial.isEmpty()) {
             //Определеяем наш домашний каталог
             String userHome = System.getProperty("user.home");
+            //Сгенерируем случайное название нашего файла
+            String fileName = Variables.generateRandomFileName(20);
             String pdfId = valueOfMaterial;
             String url_download_material = "http://" + Variables.ip_server + ":" + Variables.port_server + "/getPdfFile/" + pdfId;
             ResponseEntity<byte[]> response = null;
@@ -375,7 +377,7 @@ public class ClientController implements Initializable {
             }
             try {
                 //Путь к файлу, который вы хотите создать
-                String outputPath = userHome + "\\Downloads\\output.pdf";
+                String outputPath = userHome + "\\Downloads\\" + fileName + ".pdf";
                 //Массив байтов, который необходимо записать в файл
                 byte[] pdfBytes = response.getBody();
                 //Создание потока вывода файла для записи данных в файл
