@@ -379,16 +379,13 @@ public class ClientController implements Initializable {
                 String outputPath = "output.pdf";
                 //Массив байтов, который необходимо записать в файл
                 byte[] pdfBytes = response.getBody();
-
                 //Создание потока вывода файла для записи данных в файл
                 try (FileOutputStream fos = new FileOutputStream(outputPath)) {
                     fos.write(pdfBytes);
                 }
-
-                System.out.println("PDF файл успешно создан: " + outputPath);
+                logger.info("PDF файл успешно создан: " + outputPath);
             } catch (IOException e) {
-                e.printStackTrace();
-                System.err.println("Ошибка при создании PDF файла: " + e.getMessage());
+                logger.error("Ошибка при создании PDF файла: " + e.getMessage());
             }
         }
     }
