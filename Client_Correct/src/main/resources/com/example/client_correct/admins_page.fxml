@@ -40,8 +40,8 @@
       <Separator layoutX="14.0" layoutY="416.0" prefHeight="18.0" prefWidth="772.0" />
       <TableView layoutX="15.0" layoutY="451.0" prefHeight="171.0" prefWidth="772.0">
         <columns>
-          <TableColumn prefWidth="32.000030517578125" text="ID" />
-          <TableColumn prefWidth="115.19998168945312" text="Фамилия" />
+            <TableColumn prefWidth="32.000030517578125" text="ID" />
+            <TableColumn prefWidth="115.19998168945312" text="Фамилия" />
             <TableColumn prefWidth="97.60003662109375" text="Имя" />
             <TableColumn prefWidth="86.4000244140625" text="Отчество" />
             <TableColumn minWidth="9.60003662109375" prefWidth="79.99993896484375" text="Тел." />
