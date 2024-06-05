@@ -1,12 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="14.0" layoutY="20.0" prefHeight="27.0" prefWidth="511.0" text="Гражданское оружие и обучение охранников 4-5-6 разряда">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Separator layoutX="14.0" layoutY="66.0" prefHeight="3.0" prefWidth="772.0" />
+      <Label layoutX="14.0" layoutY="83.0" prefHeight="18.0" prefWidth="172.0" text="Добавить администратора" />
+      <TextField layoutX="14.0" layoutY="115.0" prefHeight="25.0" prefWidth="150.0" promptText="Введите логин" />
+      <PasswordField layoutX="14.0" layoutY="156.0" prefHeight="25.0" prefWidth="150.0" promptText="Введите пароль" />
+      <Button layoutX="14.0" layoutY="200.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Добавить" />
+      <Separator layoutX="14.0" layoutY="250.0" prefHeight="3.0" prefWidth="158.0" />
+      <Separator layoutX="199.0" layoutY="70.0" orientation="VERTICAL" prefHeight="334.0" prefWidth="6.0" />
+      <Label layoutX="14.0" layoutY="267.0" text="Добавить ссылку на видео" />
+      <TextField layoutX="14.0" layoutY="298.0" promptText="Наименование видео" />
+      <TextField layoutX="15.0" layoutY="334.0" promptText="Ссылка на видео" />
+      <Button layoutX="14.0" layoutY="370.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="178.0" text="Добавить ссылку на видео" />
+      <Label layoutX="216.0" layoutY="84.0" text="Добавить материал для обучения охранника" />
+      <TextField layoutX="216.0" layoutY="114.0" prefHeight="26.0" prefWidth="569.0" promptText="Введите наименование учебного материала для охранника" />
+      <ComboBox layoutX="216.0" layoutY="156.0" prefHeight="26.0" prefWidth="211.0" promptText="Выберите разряд" />
+      <Button layoutX="438.0" layoutY="156.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="347.0" text="Добавить материал" />
+      <Label layoutX="216.0" layoutY="204.0" prefHeight="18.0" prefWidth="249.0" text="Добвить материал для гражданского оружия" />
+      <TextField layoutX="216.0" layoutY="238.0" prefHeight="26.0" prefWidth="570.0" promptText="Введите наименование материала для гражданского оружия" />
+      <ComboBox layoutX="217.0" layoutY="286.0" prefHeight="26.0" prefWidth="166.0" promptText="Выберите вид оружия" />
+      <Button layoutX="391.0" layoutY="286.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="394.0" text="Добавить материал для оружия" />
+      <Separator layoutX="14.0" layoutY="416.0" prefHeight="18.0" prefWidth="772.0" />
+      <TableView layoutX="15.0" layoutY="451.0" prefHeight="171.0" prefWidth="772.0">
+        <columns>
+          <TableColumn prefWidth="32.000030517578125" text="ID" />
+          <TableColumn prefWidth="115.19998168945312" text="Фамилия" />
+            <TableColumn prefWidth="97.60003662109375" text="Имя" />
+            <TableColumn prefWidth="86.4000244140625" text="Отчество" />
+            <TableColumn minWidth="9.60003662109375" prefWidth="79.99993896484375" text="Тел." />
+            <TableColumn prefWidth="79.20001220703125" text="Email" />
+            <TableColumn prefWidth="84.00006103515625" text="Разряд" />
+            <TableColumn prefWidth="92.00006103515625" text="Вид оружия" />
+            <TableColumn prefWidth="102.39990234375" text="Статус по тесту" />
+        </columns>
+      </TableView>
+      <Label layoutX="14.0" layoutY="432.0" text="Ученики" />
+      <Button layoutX="14.0" layoutY="635.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="147.0" text="Обновить список" />
+      <Button layoutX="180.0" layoutY="636.0" mnemonicParsing="false" text="Отчислить" />
+   </children>
 </AnchorPane>
