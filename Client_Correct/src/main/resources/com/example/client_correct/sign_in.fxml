@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="265.0" prefWidth="305.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:controller="com.example.client_correct.controller.SignInController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="265.0" prefWidth="305.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TextField layoutX="37.0" layoutY="39.0" prefHeight="26.0" prefWidth="230.0" promptText="Логин" />
       <Button layoutX="37.0" layoutY="146.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="230.0" text="Войти в систему" />

@@ -12,5 +12,5 @@ public class SignInController {
     private Button buttonSignIn = new Button();
     @FXML
     private CheckBox checkBoxRegistration = new CheckBox();
-    
+
 }
