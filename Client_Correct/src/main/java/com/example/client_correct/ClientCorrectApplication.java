@@ -13,7 +13,7 @@ public class ClientCorrectApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(ClientCorrectApplication.class.getResource("sign_in.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 305, 265);
-        stage.setTitle("Distance Learning");
+        stage.setTitle("Войти в систему");
         stage.setScene(scene);
         stage.show();
     }

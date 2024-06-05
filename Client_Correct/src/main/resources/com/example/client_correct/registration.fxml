@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="468.0" prefWidth="294.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.client_correct.controller.RegistrationController">
+   <children>
+      <TextField layoutX="28.0" layoutY="34.0" prefHeight="25.0" prefWidth="240.0" promptText="Фамилия" />
+      <TextField layoutX="28.0" layoutY="73.0" prefHeight="25.0" prefWidth="240.0" promptText="Имя" />
+      <TextField layoutX="28.0" layoutY="114.0" prefHeight="25.0" prefWidth="240.0" promptText="Отчество" />
+      <TextField layoutX="28.0" layoutY="155.0" prefHeight="25.0" prefWidth="240.0" promptText="Логин" />
+      <PasswordField layoutX="28.0" layoutY="194.0" prefHeight="25.0" prefWidth="240.0" promptText="Пароль" />
+      <DatePicker layoutX="28.0" layoutY="234.0" prefHeight="25.0" prefWidth="240.0" promptText="Дата рождения" />
+      <ComboBox layoutX="28.0" layoutY="315.0" prefHeight="26.0" prefWidth="240.0" promptText="Выберите разряд" />
+      <ComboBox layoutX="28.0" layoutY="355.0" prefHeight="26.0" prefWidth="240.0" promptText="Выберите гражданское оружие" />
+      <TextField layoutX="28.0" layoutY="274.0" prefHeight="26.0" prefWidth="240.0" promptText="Веедите email" />
+      <Button layoutX="28.0" layoutY="401.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="240.0" text="Зарегистрироваться" />
+   </children>
+</AnchorPane>
