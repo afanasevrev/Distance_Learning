@@ -1,4 +1,4 @@
 package com.example.client_correct.material;
 
-public class ListOfMaterials {
+public class ListOfMaterial {
 }
