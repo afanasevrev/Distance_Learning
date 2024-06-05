@@ -9,6 +9,6 @@ public class SignInController {
 
     @FXML
     protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+        welcomeText.setText("Вход в систему");
     }
 }

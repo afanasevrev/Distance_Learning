@@ -11,8 +11,8 @@ public class ClientCorrectApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(ClientCorrectApplication.class.getResource("sign_in.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        Scene scene = new Scene(fxmlLoader.load(), 305, 265);
+        stage.setTitle("Distance Learning");
         stage.setScene(scene);
         stage.show();
     }
