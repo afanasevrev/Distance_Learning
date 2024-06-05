@@ -1,14 +1,16 @@
 package com.example.client_correct.controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 
 public class SignInController {
     @FXML
-    private Label welcomeText;
-
+    private TextField textFieldLogin = new TextField();
     @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Вход в систему");
-    }
+    private PasswordField passwordFieldPassword = new PasswordField();
+    @FXML
+    private Button buttonSignIn = new Button();
+    @FXML
+    private CheckBox checkBoxRegistration = new CheckBox();
+    
 }
