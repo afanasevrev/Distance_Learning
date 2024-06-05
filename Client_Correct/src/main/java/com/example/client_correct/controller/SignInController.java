@@ -1,4 +1,4 @@
-package com.example.client_correct;
+package com.example.client_correct.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

@@ -5,4 +5,6 @@ module com.example.client_correct {
 
     opens com.example.client_correct to javafx.fxml;
     exports com.example.client_correct;
+    exports com.example.client_correct.controller;
+    opens com.example.client_correct.controller to javafx.fxml;
 }

@@ -5,16 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dbad256b-6ad4-4b41-b0d6-3996523ac573" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/client_correct/AdminsPageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/client_correct/ClientsPageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/client_correct/RegistrationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/client_correct/sign_in.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/client_correct/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/client_correct/ClientCorrectApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/client_correct/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/client_correct/SignInController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/client_correct/hello-view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/client_correct/AdminsPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/client_correct/controller/AdminsPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/client_correct/ClientsPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/client_correct/controller/ClientsPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/client_correct/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/client_correct/controller/RegistrationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/client_correct/SignInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/client_correct/controller/SignInController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,12 +45,12 @@
   }
 }]]></component>
   <component name="RunManager">
-    <configuration name="ClientCorrectApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="com.example.client_correct.ClientCorrectApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.client_correct.ClientCorrectApplication" />
       <module name="Client_Correct" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.client_correct.*" />
+          <option name="PATTERN" value="com.example.client_correct.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -65,7 +60,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ClientCorrectApplication" />
+        <item itemvalue="Application.com.example.client_correct.ClientCorrectApplication" />
       </list>
     </recent_temporary>
   </component>
