@@ -1,6 +1,7 @@
 module com.example.client_correct {
     requires javafx.controls;
     requires javafx.fxml;
+    requires log4j;
 
 
     opens com.example.client_correct to javafx.fxml;

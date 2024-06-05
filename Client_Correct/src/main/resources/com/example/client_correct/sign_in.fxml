@@ -8,9 +8,9 @@
 
 <AnchorPane fx:controller="com.example.client_correct.controller.SignInController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="265.0" prefWidth="305.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextField layoutX="37.0" layoutY="39.0" prefHeight="26.0" prefWidth="230.0" promptText="Логин" />
-      <Button layoutX="37.0" layoutY="146.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="230.0" text="Войти в систему" />
-      <CheckBox layoutX="37.0" layoutY="199.0" mnemonicParsing="false" text="Регистрация" />
-      <PasswordField layoutX="37.0" layoutY="91.0" prefHeight="26.0" prefWidth="230.0" promptText="Пароль" />
+      <TextField fx:id="textFieldLogin" layoutX="37.0" layoutY="39.0" prefHeight="26.0" prefWidth="230.0" promptText="Логин" />
+      <Button fx:id="buttonSignIn" layoutX="37.0" layoutY="146.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="230.0" text="Войти в систему" />
+      <CheckBox fx:id="checkBoxRegistration" layoutX="37.0" layoutY="199.0" mnemonicParsing="false" text="Регистрация" />
+      <PasswordField fx:id="passwordFieldPassword" layoutX="37.0" layoutY="91.0" prefHeight="26.0" prefWidth="230.0" promptText="Пароль" />
    </children>
 </AnchorPane>
