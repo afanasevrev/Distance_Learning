@@ -9,7 +9,7 @@ import org.apache.log4j.Logger;
 /**
  * Контроллер для входа в систему
  */
-public class SignInController implements Initializable {
+public class SignInController {
     private Logger logger = Logger.getLogger(SignInController.class);
     @FXML
     private TextField textFieldLogin = new TextField();
@@ -19,10 +19,12 @@ public class SignInController implements Initializable {
     private Button buttonSignIn = new Button();
     @FXML
     private CheckBox checkBoxRegistration = new CheckBox();
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        if(checkBoxRegistration.isSelected()) {
-
+    @FXML
+    private void setButtonSignIn() {
+        if (checkBoxRegistration.isSelected()) {
+            logger.info("Чекбокс нажат");
+        } else {
+            logger.info("Чекбокс не нажат");
         }
     }
 }
