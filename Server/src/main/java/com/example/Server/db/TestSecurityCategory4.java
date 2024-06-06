@@ -12,13 +12,13 @@ public class TestSecurityCategory4 {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-    @Column(name = "question")
+    @Column(name = "question", columnDefinition="LONGTEXT")
     private String question;
-    @Column(name = "reply_1")
+    @Column(name = "reply_1", columnDefinition="LONGTEXT")
     private String reply_1;
-    @Column(name = "reply_2")
+    @Column(name = "reply_2",columnDefinition="LONGTEXT")
     private String reply_2;
-    @Column(name = "reply_3")
+    @Column(name = "reply_3", columnDefinition="LONGTEXT")
     private String reply_3;
     @Column(name = "true_reply")
     private int true_reply;
