@@ -2,7 +2,7 @@ module com.example.client_correct {
     requires javafx.controls;
     requires javafx.fxml;
     requires log4j;
-    requires lombok;
+    requires static lombok;
 
 
     opens com.example.client_correct to javafx.fxml;

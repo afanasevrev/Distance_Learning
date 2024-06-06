@@ -11,7 +11,7 @@ import java.io.IOException;
 public class ClientCorrectApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(ClientCorrectApplication.class.getResource("sign_in.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(ClientCorrectApplication.class.getResource("test.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 305, 265);
         stage.setTitle("Войти в систему");
         stage.setScene(scene);
