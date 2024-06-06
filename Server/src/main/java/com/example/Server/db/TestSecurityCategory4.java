@@ -16,7 +16,7 @@ public class TestSecurityCategory4 {
     private String question;
     @Column(name = "reply_1", columnDefinition="LONGTEXT")
     private String reply_1;
-    @Column(name = "reply_2",columnDefinition="LONGTEXT")
+    @Column(name = "reply_2", columnDefinition="LONGTEXT")
     private String reply_2;
     @Column(name = "reply_3", columnDefinition="LONGTEXT")
     private String reply_3;
