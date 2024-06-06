@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="485.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:controller="com.example.client_correct.controller.ClientsPageController" prefHeight="485.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="36.0" layoutY="31.0" text="Гражданское оружие и обучение охранников 4-5-6 разряда">
          <font>
@@ -24,16 +24,16 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="348.0" prefWidth="747.0">
                      <children>
-                        <Button layoutX="170.0" layoutY="300.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Скачать материал" />
-                        <Button layoutX="14.0" layoutY="300.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Обновить список" />
-                        <TableView layoutX="14.0" layoutY="14.0" prefHeight="267.0" prefWidth="548.0">
+                        <Button fx:id="buttonDownloadMaterial" layoutX="170.0" layoutY="300.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Скачать материал" />
+                        <Button fx:id="buttonUpdateList" layoutX="14.0" layoutY="300.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Обновить список" />
+                        <TableView fx:id="tableViewMaterials" layoutX="14.0" layoutY="14.0" prefHeight="267.0" prefWidth="548.0">
                           <columns>
-                            <TableColumn prefWidth="89.60003662109375" text="ID" />
-                            <TableColumn prefWidth="444.0" text="Наименование" />
+                            <TableColumn fx:id="tableColumnMaterialId" prefWidth="89.60003662109375" text="ID" />
+                            <TableColumn fx:id="tableColumnMaterialName" prefWidth="444.0" text="Наименование" />
                           </columns>
                         </TableView>
                         <TextArea layoutX="572.0" layoutY="14.0" prefHeight="82.0" prefWidth="168.0" text="Чтобы скачать материал, сначала выберите его в таблице, затем нажмите кнопку &quot;Скачать материал&quot;" wrapText="true" />
-                        <Button layoutX="320.0" layoutY="300.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Пройти тест" />
+                        <Button fx:id="buttonGetTest" layoutX="320.0" layoutY="300.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Пройти тест" />
                      </children>
                   </AnchorPane>
             </content>
@@ -42,15 +42,15 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="241.0" prefWidth="365.0">
                      <children>
-                        <TableView layoutX="14.0" layoutY="14.0" prefHeight="247.0" prefWidth="491.0">
+                        <TableView fx:id="tableViewListOfVideo" layoutX="14.0" layoutY="14.0" prefHeight="247.0" prefWidth="491.0">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="№" />
-                            <TableColumn prefWidth="140.79998779296875" text="Наименование" />
-                              <TableColumn prefWidth="269.5999755859375" text="Ссылка" />
+                            <TableColumn fx:id="tableColumnVideoId" prefWidth="75.0" text="№" />
+                            <TableColumn fx:id="tableColumnVideoName" prefWidth="140.79998779296875" text="Наименование" />
+                              <TableColumn fx:id="tableColumnVideoLink" prefWidth="269.5999755859375" text="Ссылка" />
                           </columns>
                         </TableView>
-                        <Button layoutX="14.0" layoutY="284.0" mnemonicParsing="false" text="Обновить список" />
-                        <Button layoutX="149.0" layoutY="284.0" mnemonicParsing="false" text="Перейти по ссылке" />
+                        <Button fx:id="buttonUpdateListOfVideo" layoutX="14.0" layoutY="284.0" mnemonicParsing="false" text="Обновить список" />
+                        <Button fx:id="buttonLinkInVideo" layoutX="149.0" layoutY="284.0" mnemonicParsing="false" text="Перейти по ссылке" />
                         <TextArea layoutX="515.0" layoutY="14.0" prefHeight="87.0" prefWidth="200.0" text="Чтобы перейти по ссылке, сначала выберите урок из таблицы, потом нажмите кнопку перейти по ссылке" wrapText="true" />
                      </children>
                   </AnchorPane>

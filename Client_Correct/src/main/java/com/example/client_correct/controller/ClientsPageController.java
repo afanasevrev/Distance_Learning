@@ -45,4 +45,5 @@ public class ClientsPageController {
     @FXML
     private Button buttonLinkInVideo = new Button();
     //-----------------------------------------------------------------------------//
+    
 }
