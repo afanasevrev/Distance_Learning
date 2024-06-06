@@ -4,11 +4,16 @@ import com.example.client_correct.students.Students;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
 /**
  * Класс контроллер для взаимодействия с формой "admins_page.fxml"
  */
-public class AdminsPageController {
+public class AdminsPageController implements Initializable {
     @FXML
     private TextField textFieldSetLogin = new TextField();
     @FXML
@@ -58,5 +63,8 @@ public class AdminsPageController {
     private Button buttonUpdateStudentsList = new Button();
     @FXML
     private Button buttonDismiss = new Button();
-
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        
+    }
 }
