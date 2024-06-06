@@ -592,5 +592,64 @@ public class ServerController {
             e.printStackTrace();
         }
     }
-    
+    /**
+     * Метод записывает в БД материалы для пистолетов
+     * @param materialsForTypePistols
+     */
+    private synchronized void writeMaterialsForTypePistols(MaterialsForTypePistols materialsForTypePistols) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            // Добавим в БД сервер
+            session.persist(materialsForTypePistols);
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
+    /**
+     * Метод записывает в БД материалы для помповых оружий
+     * @param materialsForTypePumps
+     */
+    private synchronized void writeMaterialsForTypePumps(MaterialsForTypePumps materialsForTypePumps) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            // Добавим в БД сервер
+            session.persist(materialsForTypePumps);
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
+    /**
+     * Метод записывает в БД материалы для пистолетов
+     * @param materialsForTypeSmoothBore
+     */
+    private synchronized void writeMaterialsForTypeSmoothBore(MaterialsForTypeSmoothBore materialsForTypeSmoothBore) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            // Добавим в БД сервер
+            session.persist(materialsForTypeSmoothBore);
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
 }
