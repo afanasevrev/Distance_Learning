@@ -65,6 +65,7 @@ public class AdminsPageController implements Initializable {
     private Button buttonDismiss = new Button();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        
+        comboBoxCategory.getItems().addAll("4", "5", "6");
+        comboBoxType.getItems().addAll("Пистолет", "Помповое", "Гладкоствольное");
     }
 }
