@@ -5,7 +5,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-
+/**
+ * Класс контроллер для взаимодействия с формой "admins_page.fxml"
+ */
 public class AdminsPageController {
     @FXML
     private TextField textFieldSetLogin = new TextField();
@@ -34,5 +36,27 @@ public class AdminsPageController {
     @FXML
     private TableView<Students> tableViewStudents = new TableView<Students>();
     private ObservableList<Students> studentsData = FXCollections.<Students>observableArrayList();
+    @FXML
+    private TableColumn<Students, String> tableColumnStudentId = new TableColumn<Students, String>("№");
+    @FXML
+    private TableColumn<Students, String> tableColumnStudentFirstName = new TableColumn<Students, String>("Фамилия");
+    @FXML
+    private TableColumn<Students, String> tableColumnStudentMiddleName = new TableColumn<Students, String>("Имя");
+    @FXML
+    private TableColumn<Students, String> tableColumnStudentLastName = new TableColumn<Students, String>("Отчество");
+    @FXML
+    private TableColumn<Students, String> tableColumnStudentTelephoneNumber = new TableColumn<Students, String>("Тел.");
+    @FXML
+    private TableColumn<Students, String> tableColumnStudentEmail = new TableColumn<Students, String>("Email");
+    @FXML
+    private TableColumn<Students, String> tableColumnStudentCategory = new TableColumn<Students, String>("Разряд");
+    @FXML
+    private TableColumn<Students, String> tableColumnStudentType = new TableColumn<Students, String>("Вид оружия");
+    @FXML
+    private TableColumn<Students, String> tableColumnStudentTest = new TableColumn<Students, String>("Тест");
+    @FXML
+    private Button buttonUpdateStudentsList = new Button();
+    @FXML
+    private Button buttonDismiss = new Button();
 
 }
