@@ -6,30 +6,30 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.client_correct.controller.TestController">
    <children>
-      <Label layoutX="50.0" layoutY="30.0" prefHeight="20.0" prefWidth="452.0" text="1.">
+      <Label fx:id="question" layoutX="50.0" layoutY="30.0" prefHeight="20.0" prefWidth="452.0" text="1.">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <RadioButton layoutX="50.0" layoutY="100.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="1100.0" text="1." wrapText="true">
+      <RadioButton fx:id="radioButtonReply_1" layoutX="50.0" layoutY="100.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="1100.0" text="1." wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </RadioButton>
-      <RadioButton layoutX="50.0" layoutY="200.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="1100.0" text="2." wrapText="true">
+      <RadioButton fx:id="radioButtonReply_2" layoutX="50.0" layoutY="200.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="1100.0" text="2." wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </RadioButton>
-      <RadioButton layoutX="50.0" layoutY="300.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="1100.0" text="3.">
+      <RadioButton fx:id="radioButtonReply_3" layoutX="50.0" layoutY="300.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="1100.0" text="3." wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </RadioButton>
-      <Button layoutX="50.0" layoutY="400.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" text="Отправить" />
-      <Label layoutX="50.0" layoutY="500.0" text="1 вопрос" />
+      <Button layoutX="200.0" layoutY="400.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" text="Отправить ответ" />
+      <Label fx:id="questionNumber" layoutX="50.0" layoutY="500.0" text="1 вопрос" />
+      <Button layoutX="50.0" layoutY="400.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" text="Начать тест" />
    </children>
 </AnchorPane>
