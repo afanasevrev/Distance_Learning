@@ -1,13 +1,19 @@
 package com.example.client_correct.controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
 /**
  * Класс для загрузки теста в форму
  */
-public class TestController {
+public class TestController implements Initializable {
     @FXML
     private Label question = new Label();
     @FXML
@@ -22,4 +28,11 @@ public class TestController {
     private Button buttonSetQuestion = new Button();
     @FXML
     private Button buttonStartTest = new Button();
+    private ToggleGroup toggleGroup = new ToggleGroup();
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        radioButtonReply_1.setToggleGroup(toggleGroup);
+        radioButtonReply_2.setToggleGroup(toggleGroup);
+        radioButtonReply_3.setToggleGroup(toggleGroup);
+    }
 }
