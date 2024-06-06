@@ -23,9 +23,14 @@ public class ServerController {
     Logger logger = Logger.getLogger(ServerController.class);
     @GetMapping("/writeTests")
     private String writeTests() {
-        List<TestSecurityCategory4> tests = new ArrayList<>();
-        tests.add(new TestSecurityCategory4("Какие меры принуждения могут применять частные охранники?", "Задержание на месте правонарушения лиц, совершивших противоправное посягательство на охраняемое имущество либо нарушающих внутриобъектовый и (или) пропускной режимы, применение физической силы, специальных средств и огнестрельного оружия, разрешенных в частной охранной деятельности.","Проверка документов, досмотр переносимых вещей, применение физической силы, специальных средств и огнестрельного оружия, разрешенных в частной охранной деятельности.","Изъятие предметов, досмотр транспорта, применение огнестрельного и холодного оружия.",1));
-        writeTestSecurityCategory4(tests.get(0));
+        List<TestSecurityCategory6> tests = new ArrayList<>();
+        tests.add(new TestSecurityCategory6("Вред, причиненный в состоянии крайней необходимости:","Не подлежит возмещению.","Во всех случаях подлежит возмещению в полном объеме лицом, причинившим вред.","Подлежит возмещению по решению суда.",3));
+        tests.add(new TestSecurityCategory6("Причинение вреда, менее значительного, чем предотвращенный вред, является обязательным условием правомерности действий:","В состоянии необходимой обороны.","В состоянии крайней необходимости.","Как в состоянии необходимой обороны, так и в состоянии крайней необходимости.",2));
+        tests.add(new TestSecurityCategory6("При необходимой обороне причинение посягающему лицу любого вреда правомерно","В случае группового посягательства.","Если это посягательство сопряжено с насилием, опасным для жизни обороняющегося или другого лица, либо с непосредственной угрозой применения такого насилия.","Если посягательство сопряжено с насилием, опасным для здоровья обороняющегося.",2));
+        
+        for (TestSecurityCategory6 testSecurityCategory6: tests) {
+            writeTestSecurityCategory6(testSecurityCategory6);
+        }
         return "Тесты успешно записаны";
     }
     /**
@@ -523,7 +528,7 @@ public class ServerController {
      * Метод записывает в БД тест для охранника категории 6
      * @param testSecurityCategory6
      */
-    private synchronized void writeTestSecurityCategory6(TestSecurityCategory5 testSecurityCategory6) {
+    private synchronized void writeTestSecurityCategory6(TestSecurityCategory6 testSecurityCategory6) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             // Старт транзакции
