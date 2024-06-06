@@ -13,5 +13,14 @@
         <mapping class="com.example.Server.db.Materials"/>
         <mapping class="com.example.Server.db.Students"/>
         <mapping class="com.example.Server.db.VideoLinks"/>
+        <mapping class="com.example.Server.db.MaterialsFor4Category"/>
+        <mapping class="com.example.Server.db.MaterialsFor5Category"/>
+        <mapping class="com.example.Server.db.MaterialsFor6Category"/>
+        <mapping class="com.example.Server.db.MaterialsForTypePistols"/>
+        <mapping class="com.example.Server.db.MaterialsForTypePumps"/>
+        <mapping class="com.example.Server.db.MaterialsForTypeSmoothBore"/>
+        <mapping class="com.example.Server.db.TestSecurityCategory4"/>
+        <mapping class="com.example.Server.db.TestSecurityCategory5"/>
+        <mapping class="com.example.Server.db.TestSecurityCategory6"/>
     </session-factory>
 </hibernate-configuration>
