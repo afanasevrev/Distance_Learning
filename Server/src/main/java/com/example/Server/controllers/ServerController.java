@@ -532,5 +532,65 @@ public class ServerController {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Метод записывает в БД материалы для охранников 4 разряда
+     * @param materialsFor4Category
+     */
+    private synchronized void writeMaterialsFor4Category(MaterialsFor4Category materialsFor4Category) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            // Добавим в БД сервер
+            session.persist(materialsFor4Category);
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
+    /**
+     * Метод записывает в БД материалы для охранников 5 разряда
+     * @param materialsFor5Category
+     */
+    private synchronized void writeMaterialsFor5Category(MaterialsFor5Category materialsFor5Category) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            // Добавим в БД сервер
+            session.persist(materialsFor5Category);
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
+    /**
+     * Метод записывает в БД материалы для охранников 6 разряда
+     * @param materialsFor6Category
+     */
+    private synchronized void writeMaterialsFor6Category(MaterialsFor6Category materialsFor6Category) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            // Добавим в БД сервер
+            session.persist(materialsFor6Category);
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
+    
 }
