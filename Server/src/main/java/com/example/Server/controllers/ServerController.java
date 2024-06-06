@@ -1,10 +1,7 @@
 package com.example.Server.controllers;
 
 import com.example.Server.Direction;
-import com.example.Server.db.Admins;
-import com.example.Server.db.Materials;
-import com.example.Server.db.Students;
-import com.example.Server.db.VideoLinks;
+import com.example.Server.db.*;
 import com.example.Server.hibernate.HibernateUtil;
 import com.example.Server.messaging.ListOfVideoTemp;
 import com.example.Server.messaging.MaterialsTemp;
@@ -475,4 +472,65 @@ public class ServerController {
         }
         return material.getPdf_file();
     }
+    /**
+     * Метод записывает в БД тест для охранника категории 4
+     * @param testSecurityCategory4
+     */
+    private synchronized void writeTestSecurityCategory4(TestSecurityCategory4 testSecurityCategory4) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            // Добавим в БД сервер
+            session.persist(testSecurityCategory4);
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
+    /**
+     * Метод записывает в БД тест для охранника категории 5
+     * @param testSecurityCategory5
+     */
+    private synchronized void writeTestSecurityCategory5(TestSecurityCategory5 testSecurityCategory5) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            // Добавим в БД сервер
+            session.persist(testSecurityCategory5);
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
+    /**
+     * Метод записывает в БД тест для охранника категории 6
+     * @param testSecurityCategory6
+     */
+    private synchronized void writeTestSecurityCategory6(TestSecurityCategory5 testSecurityCategory6) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            // Добавим в БД сервер
+            session.persist(testSecurityCategory6);
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
+    
 }

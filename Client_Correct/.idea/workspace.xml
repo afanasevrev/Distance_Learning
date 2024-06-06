@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dbad256b-6ad4-4b41-b0d6-3996523ac573" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/client_correct/controller/TestController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/client_correct/test/TestSecurity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/client_correct/variables/Variables.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Server/src/main/java/com/example/Server/db/TestSecurityCategory4.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Server/src/main/java/com/example/Server/db/TestSecurityCategory5.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Server/src/main/java/com/example/Server/db/TestSecurityCategory6.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/client_correct/test.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/client_correct/test.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/src/main/java/com/example/Server/controllers/ServerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/src/main/java/com/example/Server/controllers/ServerController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
