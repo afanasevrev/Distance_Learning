@@ -4,7 +4,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-
+/**
+ * Форма уведомляет о том, что ученик прошел регистрацию
+ */
 public class RegisteredController {
     @FXML
     private Label labelIsRegistered = new Label();

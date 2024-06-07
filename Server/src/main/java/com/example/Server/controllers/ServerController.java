@@ -22,12 +22,27 @@ public class ServerController {
     //Ведём лог событий этого класса
     Logger logger = Logger.getLogger(ServerController.class);
     /**
-     * Возвращает клиенту список тестов, в зависимости какой разряд он запросил
-     * @param category
+     * Возвращает клиенту тест на 6 разряд
      * @return
      */
-    @GetMapping("/getTestCategory/{category}")
-    private List<TestSecurityCategory4> getTest4Category(@PathVariable String category) {
+    @GetMapping("/getTestCategory6")
+    private List<TestSecurityCategory6> getTest6Category() {
+        return getTestSecurityCategory6();
+    }
+    /**
+     * Возвращает клиенту тест на 5 разряд
+     * @return ArrayList
+     */
+    @GetMapping("/getTestCategory5")
+    private List<TestSecurityCategory5> getTest5Category() {
+        return getTestSecurityCategory5();
+    }
+    /**
+     * Возвращает клиенту тест на 4 разряд
+     * @return ArrayList
+     */
+    @GetMapping("/getTestCategory4")
+    private List<TestSecurityCategory4> getTest4Category() {
         return getTestSecurityCategory4();
     }
     /**

@@ -3,6 +3,7 @@ module com.example.client_correct {
     requires javafx.fxml;
     requires log4j;
     requires static lombok;
+    requires spring.web;
 
 
     opens com.example.client_correct to javafx.fxml;

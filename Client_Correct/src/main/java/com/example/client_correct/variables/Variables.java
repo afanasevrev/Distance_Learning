@@ -7,6 +7,12 @@ public class Variables {
     public static String ip_server = "localhost";
     //Порт сервера
     public static String port_server = "8080";
+    //Разряд ученика
+    public static int category;
+    //Вид оружия
+    public static String type;
+    //ID ученика вошедшего в систему
+    public static int student_id;
     private static final String LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     private static final SecureRandom RANDOM = new SecureRandom();
     public static String generateRandomFileName(int length) {

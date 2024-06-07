@@ -6,14 +6,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
-
+import org.apache.log4j.Logger;
 import java.net.URL;
 import java.util.ResourceBundle;
-
+import org.springframework.web.client.RestTemplate;
 /**
  * Класс для загрузки теста в форму
  */
 public class TestController implements Initializable {
+    private Logger logger = Logger.getLogger(TestController.class);
+    //Создаем экземпляр класса RestTemplate для соединения с сервером
+    private RestTemplate restTemplate = new RestTemplate();
     @FXML
     private Label question = new Label();
     @FXML

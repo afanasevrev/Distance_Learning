@@ -3,10 +3,11 @@ package com.example.client_correct.controller;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-
 import java.net.URL;
 import java.util.ResourceBundle;
-
+/**
+ * Форма для регистрации ученика в системе
+ */
 public class RegistrationController implements Initializable {
     @FXML
     private TextField textFieldFirstName = new TextField();
