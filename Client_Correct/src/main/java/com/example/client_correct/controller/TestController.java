@@ -73,6 +73,6 @@ public class TestController implements Initializable {
         questionNumber.setText("Вопрос №" + count);
         radioButtonReply_1.setText("");
         radioButtonReply_1.setText(testSecurities.get(0).getReply_1());
-        
+
     }
 }
