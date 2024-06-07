@@ -28,8 +28,8 @@
             <Font size="14.0" />
          </font>
       </RadioButton>
-      <Button layoutX="200.0" layoutY="400.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" text="Отправить ответ" />
+      <Button fx:id="buttonSetQuestion" layoutX="200.0" layoutY="400.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" text="Отправить ответ" />
       <Label fx:id="questionNumber" layoutX="50.0" layoutY="500.0" text="1 вопрос" />
-      <Button layoutX="50.0" layoutY="400.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" text="Начать тест" />
+      <Button fx:id="buttonStartTest" onAction="#setButtonStartTest" layoutX="50.0" layoutY="400.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" text="Начать тест" />
    </children>
 </AnchorPane>
