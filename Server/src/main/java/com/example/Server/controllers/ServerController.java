@@ -21,8 +21,13 @@ import java.util.List;
 public class ServerController {
     //Ведём лог событий этого класса
     Logger logger = Logger.getLogger(ServerController.class);
-    @GetMapping("/getTest4Category")
-    private List<TestSecurityCategory4> getTest4Category() {
+    /**
+     * Возвращает клиенту список тестов, в зависимости какой разряд он запросил
+     * @param category
+     * @return
+     */
+    @GetMapping("/getTestCategory/{category}")
+    private List<TestSecurityCategory4> getTest4Category(@PathVariable String category) {
         return getTestSecurityCategory4();
     }
     /**
@@ -676,5 +681,47 @@ public class ServerController {
             logger.error(e);
         }
         return testSecurityCategory4;
+    }
+    /**
+     * Возвращает тестовое задание для охранников 5 разряда
+     * @return List
+     */
+    private List<TestSecurityCategory5> getTestSecurityCategory5() {
+        List<TestSecurityCategory5> testSecurityCategory5 = new ArrayList<>();
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            testSecurityCategory5 = session.createQuery("from TestSecurityCategory5", TestSecurityCategory5.class).getResultList();
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            logger.error(e);
+        }
+        return testSecurityCategory5;
+    }
+    /**
+     * Возвращает тестовое задание для охранников 6 разряда
+     * @return List
+     */
+    private List<TestSecurityCategory6> getTestSecurityCategory6() {
+        List<TestSecurityCategory6> testSecurityCategory6 = new ArrayList<>();
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            testSecurityCategory6 = session.createQuery("from TestSecurityCategory6", TestSecurityCategory6.class).getResultList();
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            logger.error(e);
+        }
+        return testSecurityCategory6;
     }
 }
