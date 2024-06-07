@@ -10,6 +10,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import org.apache.log4j.Logger;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import org.springframework.http.HttpMethod;
@@ -23,6 +24,8 @@ public class TestController implements Initializable {
     private Logger logger = Logger.getLogger(TestController.class);
     //Создаем экземпляр класса RestTemplate для соединения с сервером
     private RestTemplate restTemplate = new RestTemplate();
+    private int count = 0;
+    private List<TestSecurity> testSecurities = new ArrayList<>();
     @FXML
     private Label question = new Label();
     @FXML
@@ -62,6 +65,14 @@ public class TestController implements Initializable {
         }
         url_start_test = url_start_test + url_category;
         ResponseEntity<List<TestSecurity>> response = restTemplate.exchange(url_start_test, HttpMethod.GET, null, new ParameterizedTypeReference<List<TestSecurity>>(){});
-        logger.info(response.getBody().get(0).getQuestion());
+        testSecurities = response.getBody();
+        count = 1;
+        question.setText("");
+        question.setText(testSecurities.get(0).getQuestion());
+        questionNumber.setText("");
+        questionNumber.setText("Вопрос №" + count);
+        radioButtonReply_1.setText("");
+        radioButtonReply_1.setText(testSecurities.get(0).getReply_1());
+        
     }
 }
