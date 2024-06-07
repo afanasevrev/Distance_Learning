@@ -38,4 +38,11 @@ public class TestController implements Initializable {
         radioButtonReply_2.setToggleGroup(toggleGroup);
         radioButtonReply_3.setToggleGroup(toggleGroup);
     }
+    /**
+     * Реализация кнопки "Начать тест"
+     */
+    @FXML
+    private void setButtonStartTest() {
+        
+    }
 }
