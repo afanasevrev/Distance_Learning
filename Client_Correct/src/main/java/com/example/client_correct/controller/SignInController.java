@@ -31,7 +31,7 @@ public class SignInController {
     private void setButtonSignIn() throws IOException {
         if (checkBoxRegistration.isSelected()) {
             FXMLLoader fxmlLoader = new FXMLLoader(ClientCorrectApplication.class.getResource("registration.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 300, 460);
+            Scene scene = new Scene(fxmlLoader.load(), 300, 500);
             stage.setTitle("Регистрация");
             stage.setScene(scene);
             stage.show();

@@ -71,19 +71,14 @@ public class ServerController {
     }
     /**
      * Метод регистрирует студента в системе
-     * @param surname полученная от пользователя фамилия
-     * @param name полученное от пользователя имя
-     * @param patronymic полученное от пользователя отчество
-     * @param login полученный от пользователя логин
-     * @param password полученный от пользователя пароль
      * @return REGISTERED_STUDENT, NOT_REGISTERED
      */
-    @GetMapping("/registration/{surname}&{name}&{patronymic}&{login}&{password}")
-    private String setRegistrationStudent(@PathVariable String surname, @PathVariable String name, @PathVariable String patronymic, @PathVariable String login, @PathVariable String password) {
-        if (getStudents(login)) {
+    @PostMapping("/registration")
+    private String setRegistrationStudent(@RequestBody Students student) {
+        if (getStudents(student.getLogin())) {
             return Direction.NOT_REGISTERED.toString();
         } else {
-            writeStudent(new Students(surname, name, patronymic, login, password));
+            writeStudent(student);
             return Direction.REGISTERED_STUDENT.toString();
         }
     }

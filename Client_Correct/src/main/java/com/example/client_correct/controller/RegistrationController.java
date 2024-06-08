@@ -28,9 +28,9 @@ public class RegistrationController implements Initializable {
     @FXML
     private ComboBox<String> comboBoxType = new ComboBox<>();
     @FXML
-    private Button buttonRegistration = new Button();
-    @FXML
     private TextField textFieldTelephoneNumber = new TextField();
+    @FXML
+    private Button buttonRegistration = new Button();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         comboBoxCategory.getItems().addAll("4", "5", "6");
