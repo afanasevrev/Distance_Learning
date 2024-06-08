@@ -47,4 +47,25 @@ public class RegistrationController implements Initializable {
     private void setButtonRegistration() {
         
     }
+    /**
+     * Метод проверяет, заполнены ли все поля для регистрации студента
+     * @return true или false
+     */
+    private boolean filledIn() {
+        if(!textFieldFirstName.getText().isEmpty()
+        && !textFieldMiddleName.getText().isEmpty()
+        && !textFieldLastName.getText().isEmpty()
+        && !textFieldLogin.getText().isEmpty()
+        && !passwordFieldPassword.getText().isEmpty()
+        && !datePickerBirth.getValue().toString().isEmpty()
+        && !textFieldEmail.getText().isEmpty()
+        && !comboBoxCategory.getValue().isEmpty()
+        && !comboBoxType.getValue().isEmpty()
+        && !textFieldTelephoneNumber.getText().isEmpty())
+        {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
