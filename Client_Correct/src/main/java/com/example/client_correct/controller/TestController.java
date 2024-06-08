@@ -52,27 +52,38 @@ public class TestController implements Initializable {
      */
     @FXML
     private void setButtonStartTest() {
-        String url_start_test = "http://" + Variables.ip_server + ":" +Variables.port_server + "/getTestCategory";
-        String url_category = "4";
-        if (Variables.category == 4) {
-            url_category = "4";
-        } else if (Variables.category == 5) {
-            url_category = "5";
-        } else if (Variables.category == 6) {
-            url_category = "6";
-        } else {
-            url_category = "4";
+        try {
+            if (count == 0) {
+                String url_start_test = "http://" + Variables.ip_server + ":" + Variables.port_server + "/getTestCategory";
+                String url_category = "4";
+                if (Variables.category == 4) {
+                    url_category = "4";
+                } else if (Variables.category == 5) {
+                    url_category = "5";
+                } else if (Variables.category == 6) {
+                    url_category = "6";
+                } else {
+                    url_category = "4";
+                }
+                url_start_test = url_start_test + url_category;
+                ResponseEntity<List<TestSecurity>> response = restTemplate.exchange(url_start_test, HttpMethod.GET, null, new ParameterizedTypeReference<List<TestSecurity>>() {
+                });
+                testSecurities = response.getBody();
+                count = 1;
+                question.setText("");
+                question.setText(testSecurities.get(0).getQuestion());
+                questionNumber.setText("");
+                questionNumber.setText("Вопрос №" + count);
+                radioButtonReply_1.setText("");
+                radioButtonReply_1.setText(testSecurities.get(0).getReply_1());
+                radioButtonReply_2.setText("");
+                radioButtonReply_2.setText(testSecurities.get(0).getReply_2());
+                radioButtonReply_3.setText("");
+                radioButtonReply_3.setText(testSecurities.get(0).getReply_3());
+            }
+        } catch (RuntimeException e) {
+            logger.error("Сервер не доступен");
         }
-        url_start_test = url_start_test + url_category;
-        ResponseEntity<List<TestSecurity>> response = restTemplate.exchange(url_start_test, HttpMethod.GET, null, new ParameterizedTypeReference<List<TestSecurity>>(){});
-        testSecurities = response.getBody();
-        count = 1;
-        question.setText("");
-        question.setText(testSecurities.get(0).getQuestion());
-        questionNumber.setText("");
-        questionNumber.setText("Вопрос №" + count);
-        radioButtonReply_1.setText("");
-        radioButtonReply_1.setText(testSecurities.get(0).getReply_1());
-
     }
+
 }

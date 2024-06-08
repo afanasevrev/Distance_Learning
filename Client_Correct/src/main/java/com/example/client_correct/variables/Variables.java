@@ -13,6 +13,8 @@ public class Variables {
     public static String type;
     //ID ученика вошедшего в систему
     public static int student_id;
+    //Баллы за тест
+    public static int scores;
     private static final String LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     private static final SecureRandom RANDOM = new SecureRandom();
     public static String generateRandomFileName(int length) {
