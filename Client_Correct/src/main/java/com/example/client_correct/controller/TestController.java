@@ -92,9 +92,32 @@ public class TestController implements Initializable {
     private void setButtonSetQuestion() {
         if (count != 0) {
             if (count < 10) {
-                
+                int trueReply = 0;
+                if (radioButtonReply_1.isSelected()) {
+                    trueReply = 1;
+                } else if (radioButtonReply_2.isSelected()) {
+                    trueReply = 2;
+                } else if (radioButtonReply_3.isSelected()) {
+                    trueReply = 3;
+                }
+                if (trueReply == testSecurities.get(count - 1).getTrue_reply()) {
+                    Variables.scores++;
+                }
+                count++;
+                question.setText("");
+                question.setText(testSecurities.get(count - 1).getQuestion());
+                radioButtonReply_1.setText("");
+                radioButtonReply_1.setText(testSecurities.get(count - 1).getReply_1());
+                radioButtonReply_2.setText("");
+                radioButtonReply_2.setText(testSecurities.get(count - 1).getReply_2());
+                radioButtonReply_3.setText("");
+                radioButtonReply_3.setText(testSecurities.get(count - 1).getReply_3());
+                questionNumber.setText("");
+                questionNumber.setText("Вопрос №" + count);
             } else {
+                if (Variables.scores > 8) Variables.pass = "Сдал";
 
+                logger.info(Variables.pass);
             }
         }
     }
