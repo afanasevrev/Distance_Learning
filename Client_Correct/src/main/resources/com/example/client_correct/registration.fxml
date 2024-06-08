@@ -18,7 +18,7 @@
       <ComboBox fx:id="comboBoxCategory" layoutX="28.0" layoutY="368.0" prefHeight="26.0" prefWidth="240.0" promptText="Выберите разряд" />
       <ComboBox fx:id="comboBoxType" layoutX="28.0" layoutY="414.0" prefHeight="26.0" prefWidth="240.0" promptText="Выберите гражданское оружие" />
       <TextField fx:id="textFieldEmail" layoutX="28.0" layoutY="321.0" prefHeight="26.0" prefWidth="240.0" promptText="Введите email" />
-      <Button fx:id="buttonRegistration" layoutX="28.0" layoutY="459.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="240.0" text="Зарегистрироваться" />
+      <Button fx:id="buttonRegistration" onAction="#setButtonRegistration" layoutX="28.0" layoutY="459.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="240.0" text="Зарегистрироваться" />
       <TextField fx:id="textFieldTelephoneNumber" layoutX="28.0" layoutY="277.0" prefHeight="26.0" prefWidth="240.0" promptText="Введите номер телефона" />
    </children>
 </AnchorPane>

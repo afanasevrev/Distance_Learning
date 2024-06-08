@@ -1,11 +1,18 @@
 package com.example.client_correct.controller;
 
+import com.example.client_correct.ClientCorrectApplication;
+import com.example.client_correct.students.Students;
+import com.example.client_correct.variables.Variables;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import org.apache.log4j.Logger;
+import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
-
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 /**
@@ -13,6 +20,7 @@ import java.util.ResourceBundle;
  */
 public class RegistrationController implements Initializable {
     Logger logger = Logger.getLogger(RegisteredController.class);
+    Stage stage = new Stage();
     //Создаем экземпляр класса RestTemplate
     private RestTemplate restTemplate = new RestTemplate();
     @FXML
@@ -46,9 +54,33 @@ public class RegistrationController implements Initializable {
      * Реализация кнопки "Зарегистрироваться"
      */
     @FXML
-    private void setButtonRegistration() {
+    private void setButtonRegistration() throws IOException {
         if (filledIn()) {
-            
+            String url_registration = "http://" + Variables.ip_server + ":" + Variables.port_server + "/registration";
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            Students student = new Students();
+            student.setFirst_name(textFieldFirstName.getText());
+            student.setMiddle_name(textFieldMiddleName.getText());
+            student.setLast_name(textFieldLastName.getText());
+            student.setLogin(textFieldLogin.getText());
+            student.setPassword(passwordFieldPassword.getText());
+            student.setBirth(datePickerBirth.getValue().toString());
+            student.setTelephone_number(textFieldTelephoneNumber.getText());
+            student.setEmail(textFieldEmail.getText());
+            student.setCategory(Integer.parseInt(comboBoxCategory.getValue()));
+            student.setType(comboBoxType.getValue());
+            HttpEntity<Students> request = new HttpEntity<>(student, headers);
+            ResponseEntity<String> response = restTemplate.exchange(url_registration, HttpMethod.POST, request, String.class);
+            if (response.getBody().equals("NOT_REGISTERED")) {
+                logger.info("Студент с таким логином уже зарегистрирован");
+            } else if (response.getBody().equals("REGISTERED_STUDENT")) {
+                FXMLLoader fxmlLoader = new FXMLLoader(ClientCorrectApplication.class.getResource("registered.fxml"));
+                Scene scene = new Scene(fxmlLoader.load(), 100, 200);
+                stage.setTitle("Регистрация");
+                stage.setScene(scene);
+                stage.show();
+            }
         } else {
             logger.info("Заполните все поля");
         }

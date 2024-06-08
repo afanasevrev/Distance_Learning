@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dbad256b-6ad4-4b41-b0d6-3996523ac573" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Client/src/main/java/com/example/client/controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/main/java/com/example/client/controller/ClientController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/client_correct/controller/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/client_correct/controller/RegistrationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/client_correct/registration.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/client_correct/registration.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +43,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "E:/Java_Projects/!!!SPRING/Distance_Learning/Client_Correct"
+    "last_opened_file_path": "E:/Java_Projects/!!!SPRING/Distance_Learning/Client"
   }
 }]]></component>
   <component name="RunManager">

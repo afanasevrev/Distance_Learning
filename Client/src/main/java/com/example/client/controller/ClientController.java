@@ -363,7 +363,7 @@ public class ClientController implements Initializable {
     @FXML
     private void setDownloadMaterial() {
         if (valueOfMaterial != null && !valueOfMaterial.isEmpty()) {
-            //Определеяем наш домашний каталог
+            //Определяем наш домашний каталог
             String userHome = System.getProperty("user.home");
             //Сгенерируем случайное название нашего файла
             String fileName = Variables.generateRandomFileName(20);
