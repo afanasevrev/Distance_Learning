@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.stage.Stage;
 import org.apache.log4j.Logger;
 import java.net.URL;
 import java.util.ArrayList;
@@ -103,6 +104,9 @@ public class TestController implements Initializable {
                 if (trueReply == testSecurities.get(count - 1).getTrue_reply()) {
                     Variables.scores++;
                 }
+                radioButtonReply_1.setSelected(false);
+                radioButtonReply_2.setSelected(false);
+                radioButtonReply_3.setSelected(false);
                 count++;
                 question.setText("");
                 question.setText(testSecurities.get(count - 1).getQuestion());
@@ -115,10 +119,17 @@ public class TestController implements Initializable {
                 questionNumber.setText("");
                 questionNumber.setText("Вопрос №" + count);
             } else {
-                if (Variables.scores > 8) Variables.pass = "Сдал";
-                String url_pass = "http://" + Variables.ip_server + ":" + Variables.port_server + "/pass/" + Variables.pass;
-                ResponseEntity<String> response = restTemplate.exchange(url_pass, HttpMethod.GET, null, String.class);
-                logger.info(response.getBody());
+                try {
+                    if (Variables.scores > 8) Variables.pass = "Сдал";
+                    String url_pass = "http://" + Variables.ip_server + ":" + Variables.port_server + "/pass/" + Variables.pass;
+                    ResponseEntity<String> response = restTemplate.exchange(url_pass, HttpMethod.GET, null, String.class);
+                    logger.info(response.getBody());
+                } catch (RuntimeException e) {
+                    logger.error("Сервер не доступен");
+                } finally {
+                    Stage stage = (Stage) buttonSetQuestion.getScene().getWindow();
+                    stage.close();
+                }
             }
         }
     }
