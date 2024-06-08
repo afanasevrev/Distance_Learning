@@ -1,6 +1,7 @@
 package com.example.Server.controllers;
 
 import com.example.Server.Direction;
+import com.example.Server.authorization.Login;
 import com.example.Server.db.*;
 import com.example.Server.hibernate.HibernateUtil;
 import com.example.Server.messaging.ListOfVideoTemp;
@@ -55,18 +56,21 @@ public class ServerController {
     }
     /**
      * Метод проверяет, прошёл ли пользователь аутентификацию или нет
-     * @param login полученный от пользователя логин
-     * @param password полученный от пользователя пароль
+     * @param login полученный от пользователя класс для аутентификации
      * @return AUTHENTICATED_ADMIN, AUTHENTICATED_STUDENT, NOT_AUTHENTICATED
      */
-    @GetMapping("/authenticate/{login}&{password}")
-    private String getAuthentication(@PathVariable String login, @PathVariable String password) {
-        if (getAdmins(login, password)) {
-            return Direction.AUTHENTICATED_ADMIN.toString();
-        } else if (getStudents(login, password)) {
-            return Direction.AUTHENTICATED_STUDENT.toString();
+    @PostMapping("/authenticate")
+    private Login getAuthentication(@RequestBody Login login) {
+        Login login1 = new Login();
+        if (getAdmins(login.getLogin(), login.getPassword())) {
+            login1.setAuthentic_status(Direction.AUTHENTICATED_ADMIN.toString());
+            return login1;
+        } else if (getStudents(login1, login.getLogin(), login.getPassword())) {
+            login1.setAuthentic_status(Direction.AUTHENTICATED_STUDENT.toString());
+            return login1;
         } else {
-            return Direction.NOT_AUTHENTICATED.toString();
+            login1.setAuthentic_status(Direction.NOT_AUTHENTICATED.toString());
+            return login1;
         }
     }
     /**
@@ -249,7 +253,7 @@ public class ServerController {
      * @param password - полученный пароль
      * @return тип boolean
      */
-    private boolean getStudents(String login, String password) {
+    private boolean getStudents(Login login1, String login, String password) {
         boolean result = false;
         List<Students> students = new ArrayList<>();
         Transaction transaction = null;
@@ -268,6 +272,9 @@ public class ServerController {
         for(Students student: students) {
             if (student.getLogin().equals(login)) {
                 if (student.getPassword().equals(password)) {
+                    login1.setCategory(student.getCategory());
+                    login1.setType(student.getType());
+                    login1.setStudent_id(student.getId());
                     result = true;
                 }
             }
