@@ -3,6 +3,7 @@ package com.example.client_correct.controller;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import org.apache.log4j.Logger;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URL;
@@ -11,6 +12,7 @@ import java.util.ResourceBundle;
  * Форма для регистрации ученика в системе
  */
 public class RegistrationController implements Initializable {
+    Logger logger = Logger.getLogger(RegisteredController.class);
     //Создаем экземпляр класса RestTemplate
     private RestTemplate restTemplate = new RestTemplate();
     @FXML
@@ -45,7 +47,11 @@ public class RegistrationController implements Initializable {
      */
     @FXML
     private void setButtonRegistration() {
-        
+        if (filledIn()) {
+            
+        } else {
+            logger.info("Заполните все поля");
+        }
     }
     /**
      * Метод проверяет, заполнены ли все поля для регистрации студента
