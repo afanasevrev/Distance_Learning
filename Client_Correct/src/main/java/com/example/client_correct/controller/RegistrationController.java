@@ -70,16 +70,19 @@ public class RegistrationController implements Initializable {
             student.setEmail(textFieldEmail.getText());
             student.setCategory(Integer.parseInt(comboBoxCategory.getValue()));
             student.setType(comboBoxType.getValue());
+            student.setPass("Не сдал");
             HttpEntity<Students> request = new HttpEntity<>(student, headers);
             ResponseEntity<String> response = restTemplate.exchange(url_registration, HttpMethod.POST, request, String.class);
             if (response.getBody().equals("NOT_REGISTERED")) {
                 logger.info("Студент с таким логином уже зарегистрирован");
             } else if (response.getBody().equals("REGISTERED_STUDENT")) {
                 FXMLLoader fxmlLoader = new FXMLLoader(ClientCorrectApplication.class.getResource("registered.fxml"));
-                Scene scene = new Scene(fxmlLoader.load(), 100, 200);
+                Scene scene = new Scene(fxmlLoader.load(), 200, 100);
                 stage.setTitle("Регистрация");
                 stage.setScene(scene);
                 stage.show();
+                Stage stage1 = (Stage) buttonRegistration.getScene().getWindow();
+                stage1.close();
             }
         } else {
             logger.info("Заполните все поля");

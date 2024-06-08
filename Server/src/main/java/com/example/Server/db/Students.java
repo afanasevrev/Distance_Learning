@@ -35,8 +35,10 @@ public class Students {
     private String type;
     @Column(name = "telephone_number")
     private String telephone_number;
+    @Column(name = "pass")
+    private String pass;
     public Students() {}
-    public Students(String first_name, String middle_name, String last_name, String login, String password, String birth, String email, int category, String type, String telephone_number) {
+    public Students(String first_name, String middle_name, String last_name, String login, String password, String birth, String email, int category, String type, String telephone_number, String pass) {
         this.first_name = first_name;
         this.middle_name = middle_name;
         this.last_name = last_name;
@@ -47,5 +49,6 @@ public class Students {
         this.category = category;
         this.type = type;
         this.telephone_number = telephone_number;
+        this.pass = pass;
     }
 }
