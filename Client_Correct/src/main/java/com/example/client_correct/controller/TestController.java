@@ -85,5 +85,17 @@ public class TestController implements Initializable {
             logger.error("Сервер не доступен");
         }
     }
+    /**
+     * Кнопка отправляет результат теста на сервер
+     */
+    @FXML
+    private void setButtonSetQuestion() {
+        if (count != 0) {
+            if (count < 10) {
+                
+            } else {
 
+            }
+        }
+    }
 }
