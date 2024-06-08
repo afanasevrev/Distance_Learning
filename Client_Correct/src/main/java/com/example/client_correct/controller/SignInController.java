@@ -5,19 +5,13 @@ import com.example.client_correct.authorization.Login;
 import com.example.client_correct.variables.Variables;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.stage.Stage;
 import org.apache.log4j.Logger;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
-
 /**
  * Контроллер для входа в систему
  */

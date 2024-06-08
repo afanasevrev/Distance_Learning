@@ -9,10 +9,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-
 import java.net.URL;
 import java.util.ResourceBundle;
-
 /**
  * Класс контроллер для взаимодействия с формой "clients_page.fxml"
  */
