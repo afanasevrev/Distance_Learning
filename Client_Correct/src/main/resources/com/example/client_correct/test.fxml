@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.client_correct.controller.TestController">
    <children>
-      <Label fx:id="question" layoutX="50.0" layoutY="30.0" prefHeight="20.0" prefWidth="452.0" text="1.">
+      <Label fx:id="question" layoutX="50.0" layoutY="30.0" prefHeight="60.0" prefWidth="900.0" text="1." wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
@@ -28,8 +28,8 @@
             <Font size="14.0" />
          </font>
       </RadioButton>
-      <Button fx:id="buttonSetQuestion" onAction="#setButtonSetQuestion" layoutX="200.0" layoutY="400.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" text="Отправить ответ" />
+      <Button fx:id="buttonSetQuestion" layoutX="200.0" layoutY="400.0" mnemonicParsing="false" onAction="#setButtonSetQuestion" prefHeight="40.0" prefWidth="120.0" text="Отправить ответ" />
       <Label fx:id="questionNumber" layoutX="50.0" layoutY="500.0" text="1 вопрос" />
-      <Button fx:id="buttonStartTest" onAction="#setButtonStartTest" layoutX="50.0" layoutY="400.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" text="Начать тест" />
+      <Button fx:id="buttonStartTest" layoutX="50.0" layoutY="400.0" mnemonicParsing="false" onAction="#setButtonStartTest" prefHeight="40.0" prefWidth="120.0" text="Начать тест" />
    </children>
 </AnchorPane>
