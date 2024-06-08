@@ -116,8 +116,9 @@ public class TestController implements Initializable {
                 questionNumber.setText("Вопрос №" + count);
             } else {
                 if (Variables.scores > 8) Variables.pass = "Сдал";
-
-                logger.info(Variables.pass);
+                String url_pass = "http://" + Variables.ip_server + ":" + Variables.port_server + "/pass/" + Variables.pass;
+                ResponseEntity<String> response = restTemplate.exchange(url_pass, HttpMethod.GET, null, String.class);
+                logger.info(response.getBody());
             }
         }
     }
