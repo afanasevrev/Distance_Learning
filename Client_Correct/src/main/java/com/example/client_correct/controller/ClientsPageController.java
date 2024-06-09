@@ -251,7 +251,7 @@ public class ClientsPageController implements Initializable {
             String userHome = System.getProperty("user.home");
             //Сгенерируем случайное название нашего файла
             String fileName = Variables.generateRandomFileName(20);
-            String pdfId = valueOfMaterial;
+            String pdfId = valueOfArmMaterial;
             String url_download_material = "http://" + Variables.ip_server + ":" + Variables.port_server + "/getPdfFile/" + type + "/" + pdfId;
             ResponseEntity<byte[]> response = null;
             try {
