@@ -22,6 +22,7 @@ import java.util.ResourceBundle;
  * Класс контроллер для взаимодействия с формой "admins_page.fxml"
  */
 public class AdminsPageController implements Initializable {
+    private String valueOfStudent;
     private Logger logger = Logger.getLogger(AdminsPageController.class);
     //Создаем экземпляр класса RestTemplate
     private RestTemplate restTemplate = new RestTemplate();
@@ -31,6 +32,33 @@ public class AdminsPageController implements Initializable {
     private PasswordField passwordFieldSetPassword = new PasswordField();
     @FXML
     private Button buttonSetAdmin = new Button();
+    /**
+     * Реализация кнопки "Добавить администратора"
+     */
+    @FXML
+    private void setButtonSetAdmin() {
+        if (!textFieldSetLogin.getText().isEmpty() && !passwordFieldSetPassword.getText().isEmpty()) {
+            String loginAdmin = textFieldSetLogin.getText();
+            String passwordAdmin = passwordFieldSetPassword.getText();
+            String url_getAdmin = "http://" + Variables.ip_server + ":" + Variables.port_server + "/setAdministrator/" + loginAdmin + "&" +passwordAdmin;
+            ResponseEntity<String> response = null;
+            try {
+                response = restTemplate.exchange(url_getAdmin, HttpMethod.GET, null, String.class);
+                String text = response.getBody();
+                if (text.equals("REGISTERED_ADMIN")) {
+                    logger.info("Новый администратор успешно добавлен!");
+                } else if (text.equals("NOT_REGISTERED")) {
+                    logger.info("Администратор с таким логином уже существует!");
+                } else {
+                    logger.error("Непредвиденная ошибка");
+                }
+                textFieldSetLogin.setText("");
+                passwordFieldSetPassword.setText("");
+            } catch (RuntimeException e) {
+                logger.error(e);
+            }
+        }
+    }
     //---------------------------------------------------------------------------------//
     @FXML
     private TextField textFieldVideoName = new TextField();
@@ -85,11 +113,30 @@ public class AdminsPageController implements Initializable {
         studentsData.clear();
         ResponseEntity<List<Students>> response = restTemplate.exchange(url_getStudentsList, HttpMethod.GET, null, new ParameterizedTypeReference<List<Students>>() {});
         for (Students student: response.getBody()) {
-            
+            StudentsData studentData = new StudentsData(String.valueOf(student.getId()), student.getFirst_name(), student.getMiddle_name(), student.getLast_name(), student.getLogin(), student.getPassword(), student.getBirth(), student.getEmail(), String.valueOf(student.getCategory()), student.getType(), student.getTelephone_number(), student.getPass());
+            studentsData.add(studentData);
         }
     }
     @FXML
     private Button buttonDismiss = new Button();
+    /**
+     * Реализация кнопки "Отчислить"
+     */
+    @FXML
+    private void setButtonDismiss() {
+        if (valueOfStudent != null && !valueOfStudent.isEmpty()) {
+            String studentId = valueOfStudent;
+            String url_student_dismiss = "http://" + Variables.ip_server + ":" + Variables.port_server + "/deleteStudent/" + studentId;
+            ResponseEntity<String> response = null;
+            try {
+                response = restTemplate.exchange(url_student_dismiss, HttpMethod.GET, null, String.class);
+                String text = response.getBody();
+                logger.info(text);
+            } catch (RuntimeException e) {
+                logger.error(e);
+            }
+        }
+    }
     //---------------------------------------------------------------------------------//
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -106,5 +153,13 @@ public class AdminsPageController implements Initializable {
         tableColumnStudentCategory.setCellValueFactory(cellData -> cellData.getValue().categoryProperty());
         tableColumnStudentType.setCellValueFactory(cellData -> cellData.getValue().typeProperty());
         tableColumnStudentTest.setCellValueFactory(cellData -> cellData.getValue().passProperty());
+        //Фиксируем строку в таблице для учеников
+        tableViewStudents.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            try {
+                valueOfStudent = newSelection.getId();
+            } catch (NullPointerException e) {
+                valueOfStudent = null;
+            }
+        });
     }
 }
