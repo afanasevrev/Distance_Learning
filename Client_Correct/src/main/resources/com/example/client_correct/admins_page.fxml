@@ -52,7 +52,7 @@
         </columns>
       </TableView>
       <Label layoutX="14.0" layoutY="432.0" text="Ученики" />
-      <Button fx:id="buttonUpdateStudentsList" layoutX="14.0" layoutY="635.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="147.0" text="Обновить список" />
+      <Button fx:id="buttonUpdateStudentsList" onAction="#setButtonUpdateStudentsList" layoutX="14.0" layoutY="635.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="147.0" text="Обновить список" />
       <Button fx:id="buttonDismiss" layoutX="180.0" layoutY="636.0" mnemonicParsing="false" text="Отчислить" />
    </children>
 </AnchorPane>
