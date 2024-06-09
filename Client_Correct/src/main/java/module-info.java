@@ -16,5 +16,4 @@ module com.example.client_correct {
     exports com.example.client_correct.video;
     exports com.example.client_correct.material;
     opens com.example.client_correct.controller to javafx.fxml;
-
 }
