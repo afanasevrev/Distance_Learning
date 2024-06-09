@@ -237,6 +237,43 @@ public class ClientsPageController implements Initializable {
     }
     @FXML
     private Button buttonDownloadArmMaterial = new Button();
+    /**
+     * Реализовываем кнопку "Скачать материал по оружию"
+     */
+    @FXML
+    private void setButtonDownloadArmMaterial() {
+        if (valueOfArmMaterial != null && !valueOfArmMaterial.isEmpty()) {
+            String type = "pistols";
+            if (Variables.type.equals("Пистолет")) type = "typePistols";
+            else if (Variables.type.equals("Помповое")) type = "typePumps";
+            else if (Variables.type.equals("Гладкоствольное")) type = "typeSmoothBore";
+            //Определяем наш домашний каталог
+            String userHome = System.getProperty("user.home");
+            //Сгенерируем случайное название нашего файла
+            String fileName = Variables.generateRandomFileName(20);
+            String pdfId = valueOfMaterial;
+            String url_download_material = "http://" + Variables.ip_server + ":" + Variables.port_server + "/getPdfFile/" + type + "/" + pdfId;
+            ResponseEntity<byte[]> response = null;
+            try {
+                response = restTemplate.exchange(url_download_material, HttpMethod.GET, null, new ParameterizedTypeReference<byte[]>() {});
+            } catch (RuntimeException e) {
+                logger.error(e);
+            }
+            try {
+                //Путь к файлу, который вы хотите создать
+                String outputPath = userHome + "\\Downloads\\" + fileName + ".pdf";
+                //Массив байтов, который необходимо записать в файл
+                byte[] pdfBytes = response.getBody();
+                //Создание потока вывода файла для записи данных в файл
+                try (FileOutputStream fos = new FileOutputStream(outputPath)) {
+                    fos.write(pdfBytes);
+                }
+                logger.info("PDF файл успешно создан: " + outputPath);
+            } catch (IOException e) {
+                logger.error("Ошибка при создании PDF файла: " + e.getMessage());
+            }
+        }
+    }
     //-----------------------------------------------------------------------------//
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

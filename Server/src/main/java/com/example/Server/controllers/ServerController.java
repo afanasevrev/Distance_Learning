@@ -366,6 +366,42 @@ public class ServerController {
         return pdf_file;
     }
     /**
+     * по GET - запросу от клиента возвращаем pdf - файл из БД
+     * @param pdfId ID pdf - файла
+     * @return byte[]
+     */
+    @GetMapping("/getPdfFile/typePistols/{pdfId}")
+    private byte[] getPDFFilePistols(@PathVariable String pdfId) {
+        int id = Integer.parseInt(pdfId);
+        byte[] pdf_file = getPdfFileTypePistols(id);
+        logger.info(pdf_file);
+        return pdf_file;
+    }
+    /**
+     * по GET - запросу от клиента возвращаем pdf - файл из БД
+     * @param pdfId ID pdf - файла
+     * @return byte[]
+     */
+    @GetMapping("/getPdfFile/typePumps/{pdfId}")
+    private byte[] getPDFFilePumps(@PathVariable String pdfId) {
+        int id = Integer.parseInt(pdfId);
+        byte[] pdf_file = getPdfFileTypePumps(id);
+        logger.info(pdf_file);
+        return pdf_file;
+    }
+    /**
+     * по GET - запросу от клиента возвращаем pdf - файл из БД
+     * @param pdfId ID pdf - файла
+     * @return byte[]
+     */
+    @GetMapping("/getPdfFile/typeSmoothBore/{pdfId}")
+    private byte[] getPDFFileSmoothBore(@PathVariable String pdfId) {
+        int id = Integer.parseInt(pdfId);
+        byte[] pdf_file = getPdfFileTypeSmoothBore(id);
+        logger.info(pdf_file);
+        return pdf_file;
+    }
+    /**
      * Метод вытягивает из БД список администраторов системы
      * и проверяет поступивший логин и пароль со списком,
      * в случае положительного решения, метод возвращает true,
@@ -866,6 +902,72 @@ public class ServerController {
             // Старт транзакции
             transaction = session.beginTransaction();
             material = session.get(MaterialsFor6Category.class, pdfId);
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return material.getPdf_file();
+    }
+    /**
+     * Метод вытягивает из БД pdf - файл
+     * @param pdfId ID полученный от клиента
+     * @return byte[]
+     */
+    private synchronized byte[] getPdfFileTypePistols(int pdfId) {
+        Transaction transaction = null;
+        MaterialsForTypePistols material = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            material = session.get(MaterialsForTypePistols.class, pdfId);
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return material.getPdf_file();
+    }
+    /**
+     * Метод вытягивает из БД pdf - файл
+     * @param pdfId ID полученный от клиента
+     * @return byte[]
+     */
+    private synchronized byte[] getPdfFileTypePumps(int pdfId) {
+        Transaction transaction = null;
+        MaterialsForTypePumps material = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            material = session.get(MaterialsForTypePumps.class, pdfId);
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return material.getPdf_file();
+    }
+    /**
+     * Метод вытягивает из БД pdf - файл
+     * @param pdfId ID полученный от клиента
+     * @return byte[]
+     */
+    private synchronized byte[] getPdfFileTypeSmoothBore(int pdfId) {
+        Transaction transaction = null;
+        MaterialsForTypeSmoothBore material = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            material = session.get(MaterialsForTypeSmoothBore.class, pdfId);
             // Коммит транзакции
             transaction.commit();
         } catch (Exception e) {

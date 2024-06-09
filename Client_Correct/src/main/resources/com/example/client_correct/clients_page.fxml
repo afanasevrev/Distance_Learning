@@ -48,7 +48,7 @@
                           </columns>
                         </TableView>
                         <Button fx:id="buttonUpdateListArmMaterial" onAction="#setButtonUpdateListArmMaterial" layoutX="14.0" layoutY="290.0" mnemonicParsing="false" text="Обновить список " />
-                        <Button fx:id="buttonDownloadArmMaterial" layoutX="166.0" layoutY="290.0" mnemonicParsing="false" text="Скачать материал" />
+                        <Button fx:id="buttonDownloadArmMaterial" onAction="#setButtonDownloadArmMaterial" layoutX="166.0" layoutY="290.0" mnemonicParsing="false" text="Скачать материал" />
                      </children>
                   </AnchorPane>
               </content>
