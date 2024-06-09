@@ -98,6 +98,72 @@ public class ServerController {
         return ResponseEntity.ok("Материал успешно добавлен");
     }
     /**
+     * Метод получает от клиента pdf файл и записывает его в БД для охранников 4 категории
+     * @param file полученный файл pdf
+     * @param textCreateMaterialName полученное имя материала
+     * @return Материал успешно добавлен
+     */
+    @PostMapping(value = "/upload/category4/{textCreateMaterialName}", consumes = MediaType.APPLICATION_PDF_VALUE)
+    private ResponseEntity<String> uploadPDFCategory4(@RequestBody byte[] file, @PathVariable String textCreateMaterialName) {
+        writeMaterialsFor4Category(new MaterialsFor4Category(textCreateMaterialName, file));
+        return ResponseEntity.ok("Материал успешно добавлен");
+    }
+    /**
+     * Метод получает от клиента pdf файл и записывает его в БД для охранников 5 категории
+     * @param file полученный файл pdf
+     * @param textCreateMaterialName полученное имя материала
+     * @return Материал успешно добавлен
+     */
+    @PostMapping(value = "/upload/category5/{textCreateMaterialName}", consumes = MediaType.APPLICATION_PDF_VALUE)
+    private ResponseEntity<String> uploadPDFCategory5(@RequestBody byte[] file, @PathVariable String textCreateMaterialName) {
+        writeMaterialsFor5Category(new MaterialsFor5Category(textCreateMaterialName, file));
+        return ResponseEntity.ok("Материал успешно добавлен");
+    }
+    /**
+     * Метод получает от клиента pdf файл и записывает его в БД для охранников 6 категории
+     * @param file полученный файл pdf
+     * @param textCreateMaterialName полученное имя материала
+     * @return Материал успешно добавлен
+     */
+    @PostMapping(value = "/upload/category6/{textCreateMaterialName}", consumes = MediaType.APPLICATION_PDF_VALUE)
+    private ResponseEntity<String> uploadPDFCategory6(@RequestBody byte[] file, @PathVariable String textCreateMaterialName) {
+        writeMaterialsFor6Category(new MaterialsFor6Category(textCreateMaterialName, file));
+        return ResponseEntity.ok("Материал успешно добавлен");
+    }
+    /**
+     * Метод получает от клиента pdf файл и записывает его в БД для гражданского оружия вида пистолет
+     * @param file полученный файл pdf
+     * @param textCreateMaterialName полученное имя материала
+     * @return Материал успешно добавлен
+     */
+    @PostMapping(value = "/upload/pistols/{textCreateMaterialName}", consumes = MediaType.APPLICATION_PDF_VALUE)
+    private ResponseEntity<String> uploadPDFPistols(@RequestBody byte[] file, @PathVariable String textCreateMaterialName) {
+        writeMaterialsForTypePistols(new MaterialsForTypePistols(textCreateMaterialName, file));
+        return ResponseEntity.ok("Материал успешно добавлен");
+    }
+    /**
+     * Метод получает от клиента pdf файл и записывает его в БД для гражданского оружия вида помповые
+     * @param file полученный файл pdf
+     * @param textCreateMaterialName полученное имя материала
+     * @return Материал успешно добавлен
+     */
+    @PostMapping(value = "/upload/pumps/{textCreateMaterialName}", consumes = MediaType.APPLICATION_PDF_VALUE)
+    private ResponseEntity<String> uploadPDFPumps(@RequestBody byte[] file, @PathVariable String textCreateMaterialName) {
+        writeMaterialsForTypePumps(new MaterialsForTypePumps(textCreateMaterialName, file));
+        return ResponseEntity.ok("Материал успешно добавлен");
+    }
+    /**
+     * Метод получает от клиента pdf файл и записывает его в БД для гражданского оружия вида гладкоствольные
+     * @param file полученный файл pdf
+     * @param textCreateMaterialName полученное имя материала
+     * @return Материал успешно добавлен
+     */
+    @PostMapping(value = "/upload/smoothBore/{textCreateMaterialName}", consumes = MediaType.APPLICATION_PDF_VALUE)
+    private ResponseEntity<String> uploadPDFSmoothBore(@RequestBody byte[] file, @PathVariable String textCreateMaterialName) {
+        writeMaterialsForTypeSmoothBore(new MaterialsForTypeSmoothBore(textCreateMaterialName, file));
+        return ResponseEntity.ok("Материал успешно добавлен");
+    }
+    /**
      * GET - запрос от клиента на получение списка материалов
      * @return список материалов
      */

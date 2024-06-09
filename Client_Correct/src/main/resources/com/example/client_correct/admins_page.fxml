@@ -28,7 +28,7 @@
       <Label layoutX="14.0" layoutY="267.0" text="Добавить ссылку на видео" />
       <TextField fx:id="textFieldVideoName" layoutX="14.0" layoutY="298.0" promptText="Наименование видео" />
       <TextField fx:id="textFieldLinkInVideo" layoutX="15.0" layoutY="334.0" promptText="Ссылка на видео" />
-      <Button fx:id="buttonSetLinkInVideo" layoutX="14.0" layoutY="370.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="178.0" text="Добавить ссылку на видео" />
+      <Button fx:id="buttonSetLinkInVideo" onAction="#setButtonSetLinkInVideo" layoutX="14.0" layoutY="370.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="178.0" text="Добавить ссылку на видео" />
       <Label layoutX="216.0" layoutY="84.0" text="Добавить материал для обучения охранника" />
       <TextField fx:id="textFieldMaterialName" layoutX="216.0" layoutY="114.0" prefHeight="26.0" prefWidth="569.0" promptText="Введите наименование учебного материала для охранника" />
       <ComboBox fx:id="comboBoxCategory" layoutX="216.0" layoutY="156.0" prefHeight="26.0" prefWidth="211.0" promptText="Выберите разряд" />

@@ -12,5 +12,6 @@ module com.example.client_correct {
     exports com.example.client_correct.test;
     exports com.example.client_correct.students;
     exports com.example.client_correct.authorization;
+    exports com.example.client_correct.video;
     opens com.example.client_correct.controller to javafx.fxml;
 }

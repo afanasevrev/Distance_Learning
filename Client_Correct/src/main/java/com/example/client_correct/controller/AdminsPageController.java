@@ -4,6 +4,7 @@ import com.example.client_correct.students.Students;
 import com.example.client_correct.students.StudentsData;
 import com.example.client_correct.test.TestSecurity;
 import com.example.client_correct.variables.Variables;
+import com.example.client_correct.video.ListOfVideoTemp;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -11,8 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import org.apache.log4j.Logger;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URL;
@@ -30,6 +30,7 @@ public class AdminsPageController implements Initializable {
     private TextField textFieldSetLogin = new TextField();
     @FXML
     private PasswordField passwordFieldSetPassword = new PasswordField();
+    //---------------------------------------------------------------------------------//
     @FXML
     private Button buttonSetAdmin = new Button();
     /**
@@ -66,6 +67,30 @@ public class AdminsPageController implements Initializable {
     private TextField textFieldLinkInVideo = new TextField();
     @FXML
     private Button buttonSetLinkInVideo = new Button();
+    /**
+     * Реализация кнопки "Отправить ссылку на видео"
+     */
+    @FXML
+    private void setButtonSetLinkInVideo() {
+        if (!textFieldVideoName.getText().isEmpty() && !textFieldLinkInVideo.getText().isEmpty()) {
+            String videoName = textFieldVideoName.getText();
+            String linkInVideo = textFieldLinkInVideo.getText();
+            String url_create_video = "http://" + Variables.ip_server + ":" + Variables.port_server + "/createVideo";
+            ResponseEntity<String> response = null;
+            ListOfVideoTemp listOfVideoTemp = new ListOfVideoTemp(videoName, linkInVideo);
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            HttpEntity<ListOfVideoTemp> entity = new HttpEntity<>(listOfVideoTemp, headers);
+            try {
+                response = restTemplate.exchange(url_create_video, HttpMethod.POST, entity, String.class);
+                logger.info(response.getBody());
+                textFieldVideoName.setText("");
+                textFieldLinkInVideo.setText("");
+            } catch (RuntimeException e) {
+                logger.error(e);
+            }
+        }
+    }
     //---------------------------------------------------------------------------------//
     @FXML
     private TextField textFieldMaterialName = new TextField();
