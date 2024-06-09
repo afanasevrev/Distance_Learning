@@ -121,7 +121,7 @@ public class TestController implements Initializable {
             } else {
                 try {
                     if (Variables.scores > 8) Variables.pass = "Сдал";
-                    String url_pass = "http://" + Variables.ip_server + ":" + Variables.port_server + "/pass/" + Variables.pass;
+                    String url_pass = "http://" + Variables.ip_server + ":" + Variables.port_server + "/pass/" + Variables.pass + "&" + Variables.student_id;
                     ResponseEntity<String> response = restTemplate.exchange(url_pass, HttpMethod.GET, null, String.class);
                     logger.info(response.getBody());
                 } catch (RuntimeException e) {

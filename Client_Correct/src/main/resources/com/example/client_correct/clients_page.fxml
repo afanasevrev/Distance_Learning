@@ -33,7 +33,7 @@
                           </columns>
                         </TableView>
                         <TextArea layoutX="572.0" layoutY="14.0" prefHeight="82.0" prefWidth="168.0" text="Чтобы скачать материал, сначала выберите его в таблице, затем нажмите кнопку &quot;Скачать материал&quot;" wrapText="true" />
-                        <Button fx:id="buttonGetTest" layoutX="320.0" layoutY="300.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Пройти тест" />
+                        <Button fx:id="buttonGetTest" onAction="#setButtonGetTest" layoutX="320.0" layoutY="300.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Пройти тест" />
                      </children>
                   </AnchorPane>
             </content>
