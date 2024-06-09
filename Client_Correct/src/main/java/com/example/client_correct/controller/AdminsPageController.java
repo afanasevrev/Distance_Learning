@@ -1,6 +1,7 @@
 package com.example.client_correct.controller;
 
 import com.example.client_correct.students.Students;
+import com.example.client_correct.students.StudentsData;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -38,25 +39,25 @@ public class AdminsPageController implements Initializable {
     private Button buttonSetMaterialArm = new Button();
     @FXML
     private TableView<Students> tableViewStudents = new TableView<Students>();
-    private ObservableList<Students> studentsData = FXCollections.<Students>observableArrayList();
+    private ObservableList<StudentsData> studentsData = FXCollections.<StudentsData>observableArrayList();
     @FXML
-    private TableColumn<Students, String> tableColumnStudentId = new TableColumn<Students, String>("№");
+    private TableColumn<StudentsData, String> tableColumnStudentId = new TableColumn<StudentsData, String>("№");
     @FXML
-    private TableColumn<Students, String> tableColumnStudentFirstName = new TableColumn<Students, String>("Фамилия");
+    private TableColumn<StudentsData, String> tableColumnStudentFirstName = new TableColumn<StudentsData, String>("Фамилия");
     @FXML
-    private TableColumn<Students, String> tableColumnStudentMiddleName = new TableColumn<Students, String>("Имя");
+    private TableColumn<StudentsData, String> tableColumnStudentMiddleName = new TableColumn<StudentsData, String>("Имя");
     @FXML
-    private TableColumn<Students, String> tableColumnStudentLastName = new TableColumn<Students, String>("Отчество");
+    private TableColumn<StudentsData, String> tableColumnStudentLastName = new TableColumn<StudentsData, String>("Отчество");
     @FXML
-    private TableColumn<Students, String> tableColumnStudentTelephoneNumber = new TableColumn<Students, String>("Тел.");
+    private TableColumn<StudentsData, String> tableColumnStudentTelephoneNumber = new TableColumn<StudentsData, String>("Тел.");
     @FXML
-    private TableColumn<Students, String> tableColumnStudentEmail = new TableColumn<Students, String>("Email");
+    private TableColumn<StudentsData, String> tableColumnStudentEmail = new TableColumn<StudentsData, String>("Email");
     @FXML
-    private TableColumn<Students, String> tableColumnStudentCategory = new TableColumn<Students, String>("Разряд");
+    private TableColumn<StudentsData, String> tableColumnStudentCategory = new TableColumn<StudentsData, String>("Разряд");
     @FXML
-    private TableColumn<Students, String> tableColumnStudentType = new TableColumn<Students, String>("Вид оружия");
+    private TableColumn<StudentsData, String> tableColumnStudentType = new TableColumn<StudentsData, String>("Вид оружия");
     @FXML
-    private TableColumn<Students, String> tableColumnStudentTest = new TableColumn<Students, String>("Тест");
+    private TableColumn<StudentsData, String> tableColumnStudentTest = new TableColumn<StudentsData, String>("Тест");
     @FXML
     private Button buttonUpdateStudentsList = new Button();
     @FXML

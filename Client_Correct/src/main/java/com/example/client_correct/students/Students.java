@@ -5,6 +5,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Students {
+    private int id;
     private String first_name;
     private String middle_name;
     private String last_name;
