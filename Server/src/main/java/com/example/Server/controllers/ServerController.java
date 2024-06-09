@@ -220,6 +220,48 @@ public class ServerController {
         return materialsTemp;
     }
     /**
+     * GET - запрос от клиента на получение списка материалов для оружий вида пистолеты
+     * @return список материалов
+     */
+    @GetMapping("/armMaterials/typePistols")
+    private List<MaterialsTemp> getMaterialsTempTypePistols() {
+        List<MaterialsForTypePistols> materials = new ArrayList<>();
+        List<MaterialsTemp> materialsTemp = new ArrayList<>();
+        materials = getMaterialsPistols();
+        for (MaterialsForTypePistols material: materials) {
+            materialsTemp.add(new MaterialsTemp(material.getId(), material.getName()));
+        }
+        return materialsTemp;
+    }
+    /**
+     * GET - запрос от клиента на получение списка материалов для оружий вида помповые
+     * @return список материалов
+     */
+    @GetMapping("/armMaterials/typePumps")
+    private List<MaterialsTemp> getMaterialsTempTypePumps() {
+        List<MaterialsForTypePumps> materials = new ArrayList<>();
+        List<MaterialsTemp> materialsTemp = new ArrayList<>();
+        materials = getMaterialsPumps();
+        for (MaterialsForTypePumps material: materials) {
+            materialsTemp.add(new MaterialsTemp(material.getId(), material.getName()));
+        }
+        return materialsTemp;
+    }
+    /**
+     * GET - запрос от клиента на получение списка материалов для оружий вида гладкоствольные
+     * @return список материалов
+     */
+    @GetMapping("/armMaterials/typeSmoothBore")
+    private List<MaterialsTemp> getMaterialsTempTypeSmoothBore() {
+        List<MaterialsForTypeSmoothBore> materials = new ArrayList<>();
+        List<MaterialsTemp> materialsTemp = new ArrayList<>();
+        materials = getMaterialsSmoothBore();
+        for (MaterialsForTypeSmoothBore material: materials) {
+            materialsTemp.add(new MaterialsTemp(material.getId(), material.getName()));
+        }
+        return materialsTemp;
+    }
+    /**
      * POST - запрос от клиента на добавление ссылки на видеоурок
      * @param listOfVideoTemp полученный JSON класс
      * @return статус о выполнении запроса
@@ -568,6 +610,69 @@ public class ServerController {
             // Старт транзакции
             transaction = session.beginTransaction();
             materials = session.createQuery("from MaterialsFor6Category", MaterialsFor6Category.class).getResultList();
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            logger.error(e);
+        }
+        return materials;
+    }
+    /**
+     * Метод вытягивает из БД список учебных материалов для оружия в категории пистолеты
+     * @return учебные материалы (Materials)
+     */
+    private List<MaterialsForTypePistols> getMaterialsPistols() {
+        List<MaterialsForTypePistols> materials = new ArrayList<>();
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            materials = session.createQuery("from MaterialsForTypePistols", MaterialsForTypePistols.class).getResultList();
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            logger.error(e);
+        }
+        return materials;
+    }
+    /**
+     * Метод вытягивает из БД список учебных материалов для оружия в категории помповые
+     * @return учебные материалы (Materials)
+     */
+    private List<MaterialsForTypePumps> getMaterialsPumps() {
+        List<MaterialsForTypePumps> materials = new ArrayList<>();
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            materials = session.createQuery("from MaterialsForTypePumps", MaterialsForTypePumps.class).getResultList();
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            logger.error(e);
+        }
+        return materials;
+    }
+    /**
+     * Метод вытягивает из БД список учебных материалов для оружия в категории гладкоствольные
+     * @return учебные материалы (Materials)
+     */
+    private List<MaterialsForTypeSmoothBore> getMaterialsSmoothBore() {
+        List<MaterialsForTypeSmoothBore> materials = new ArrayList<>();
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            materials = session.createQuery("from MaterialsForTypeSmoothBore", MaterialsForTypeSmoothBore.class).getResultList();
             // Коммит транзакции
             transaction.commit();
         } catch (Exception e) {
