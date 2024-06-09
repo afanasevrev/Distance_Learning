@@ -14,4 +14,5 @@ module com.example.client_correct {
     exports com.example.client_correct.authorization;
     exports com.example.client_correct.video;
     opens com.example.client_correct.controller to javafx.fxml;
+
 }

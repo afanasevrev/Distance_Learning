@@ -32,11 +32,11 @@
       <Label layoutX="216.0" layoutY="84.0" text="Добавить материал для обучения охранника" />
       <TextField fx:id="textFieldMaterialName" layoutX="216.0" layoutY="114.0" prefHeight="26.0" prefWidth="569.0" promptText="Введите наименование учебного материала для охранника" />
       <ComboBox fx:id="comboBoxCategory" layoutX="216.0" layoutY="156.0" prefHeight="26.0" prefWidth="211.0" promptText="Выберите разряд" />
-      <Button fx:id="buttonSetMaterial" layoutX="438.0" layoutY="156.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="347.0" text="Добавить материал" />
+      <Button fx:id="buttonSetMaterial" onAction = "#setButtonSetMaterial" layoutX="438.0" layoutY="156.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="347.0" text="Добавить материал" />
       <Label layoutX="216.0" layoutY="204.0" prefHeight="18.0" prefWidth="249.0" text="Добавить материал для гражданского оружия" />
       <TextField fx:id="textFieldMaterialArmName" layoutX="216.0" layoutY="238.0" prefHeight="26.0" prefWidth="570.0" promptText="Введите наименование материала для гражданского оружия" />
       <ComboBox fx:id="comboBoxType" layoutX="217.0" layoutY="286.0" prefHeight="26.0" prefWidth="166.0" promptText="Выберите вид оружия" />
-      <Button fx:id="buttonSetMaterialArm" layoutX="391.0" layoutY="286.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="394.0" text="Добавить материал для оружия" />
+      <Button fx:id="buttonSetMaterialArm" onAction="#setButtonSetMaterialArm" layoutX="391.0" layoutY="286.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="394.0" text="Добавить материал для оружия" />
       <Separator layoutX="14.0" layoutY="416.0" prefHeight="18.0" prefWidth="772.0" />
       <TableView fx:id="tableViewStudents" layoutX="15.0" layoutY="451.0" prefHeight="171.0" prefWidth="772.0">
         <columns>

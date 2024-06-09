@@ -10,12 +10,19 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import org.apache.log4j.Logger;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.ResourceBundle;
 /**
@@ -23,6 +30,7 @@ import java.util.ResourceBundle;
  */
 public class AdminsPageController implements Initializable {
     private String valueOfStudent;
+    private FileChooser fileChooser = new FileChooser();
     private Logger logger = Logger.getLogger(AdminsPageController.class);
     //Создаем экземпляр класса RestTemplate
     private RestTemplate restTemplate = new RestTemplate();
@@ -98,6 +106,33 @@ public class AdminsPageController implements Initializable {
     private ComboBox<String> comboBoxCategory = new ComboBox<String>();
     @FXML
     private Button buttonSetMaterial = new Button();
+    /**
+     * Реализация кнопки "Добавить материал на сервер"
+     */
+    @FXML
+    private void setButtonSetMaterial() throws IOException {
+        if (!textFieldMaterialName.getText().isEmpty() && !comboBoxCategory.getValue().isEmpty() && comboBoxCategory.getValue() != null) {
+            String textCreateMaterialName = textFieldMaterialName.getText();
+            String categoryName = "category4";
+            if (comboBoxCategory.getValue().equals("4")) categoryName = "category4";
+            else if (comboBoxCategory.getValue().equals("5")) categoryName = "category5";
+            else if (comboBoxCategory.getValue().equals("6")) categoryName = "category6";
+            String url_upload = "http://" + Variables.ip_server + ":" + Variables.port_server + "/upload/" + categoryName + "/" + textCreateMaterialName;
+            fileChooser.setTitle("Выберите файл");
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
+            File file = fileChooser.showOpenDialog(new Stage());
+            if (file != null) {
+                logger.info("Выбран файл: " + file.getAbsolutePath());
+                HttpHeaders headers = new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_PDF);
+                Path path = Paths.get(file.getAbsolutePath());
+                byte[] pdfContents = Files.readAllBytes(path);
+                HttpEntity<byte[]> entity = new HttpEntity<>(pdfContents, headers);
+                ResponseEntity<String> response = restTemplate.exchange(url_upload, HttpMethod.POST, entity, String.class);
+                logger.info(response.getBody());
+            }
+        }
+    }
     //---------------------------------------------------------------------------------//
     @FXML
     private TextField textFieldMaterialArmName = new TextField();
@@ -105,6 +140,33 @@ public class AdminsPageController implements Initializable {
     private ComboBox<String> comboBoxType =new ComboBox<String>();
     @FXML
     private Button buttonSetMaterialArm = new Button();
+    /**
+     * Реализация кнопки "Добавить материал по виду оружия на сервер
+     */
+    @FXML
+    private void setButtonSetMaterialArm() throws IOException {
+        if (!textFieldMaterialArmName.getText().isEmpty() && !comboBoxType.getValue().isEmpty() && comboBoxType.getValue() != null) {
+            String textCreateMaterialName = textFieldMaterialArmName.getText();
+            String typeName = "pistols";
+            if (comboBoxType.getValue().equals("Пистолет")) typeName = "pistols";
+            else if (comboBoxType.getValue().equals("Помповое")) typeName = "pumps";
+            else if (comboBoxType.getValue().equals("Гладкоствольное")) typeName = "smoothBore";
+            String url_upload = "http://" + Variables.ip_server + ":" + Variables.port_server + "/upload/" + typeName + "/" + textCreateMaterialName;
+            fileChooser.setTitle("Выберите файл");
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
+            File file = fileChooser.showOpenDialog(new Stage());
+            if (file != null) {
+                logger.info("Выбран файл: " + file.getAbsolutePath());
+                HttpHeaders headers = new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_PDF);
+                Path path = Paths.get(file.getAbsolutePath());
+                byte[] pdfContents = Files.readAllBytes(path);
+                HttpEntity<byte[]> entity = new HttpEntity<>(pdfContents, headers);
+                ResponseEntity<String> response = restTemplate.exchange(url_upload, HttpMethod.POST, entity, String.class);
+                logger.info(response.getBody());
+            }
+        }
+    }
     //---------------------------------------------------------------------------------//
     @FXML
     private TableView<StudentsData> tableViewStudents = new TableView<StudentsData>();
