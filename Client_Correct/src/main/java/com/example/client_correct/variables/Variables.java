@@ -4,7 +4,7 @@ import java.security.SecureRandom;
 
 public class Variables {
     //IP - адрес сервера
-    public static String ip_server = "localhost";
+    public static String ip_server = "46.226.166.233";
     //Порт сервера
     public static String port_server = "8080";
     //Разряд ученика
