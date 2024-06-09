@@ -402,6 +402,48 @@ public class ServerController {
         return pdf_file;
     }
     /**
+     * Меняем статус сдачи студентом теста в БД
+     * @param pass
+     * @param student_id
+     * @return
+     */
+    @GetMapping("/pass/{pass}&{student_id}")
+    private String passStatus(@PathVariable String pass, @PathVariable String student_id) {
+        int studentID = Integer.parseInt(student_id);
+        if (updatePassStatus(studentID, pass)) return "Статус по тесту изменён";
+        else return "Статус не изменён";
+    }
+    /**
+     * Метод записывает в БД результат теста
+     * @param studentId
+     * @param pass
+     * @return
+     */
+    private boolean updatePassStatus(int studentId, String pass) {
+        boolean response = false;
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            Students student = session.get(Students.class, studentId);
+            if (student != null) {
+                student.setPass(pass);
+                session.update(student);
+                // Коммит транзакции
+                transaction.commit();
+                response = true;
+            } else {
+                logger.error("Запрашиваемого объекта нет");
+            }
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return response;
+    }
+    /**
      * Метод вытягивает из БД список администраторов системы
      * и проверяет поступивший логин и пароль со списком,
      * в случае положительного решения, метод возвращает true,
