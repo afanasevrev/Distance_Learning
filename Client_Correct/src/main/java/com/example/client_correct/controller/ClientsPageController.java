@@ -49,6 +49,9 @@ public class ClientsPageController implements Initializable {
     private TableColumn<ListOfMaterial, String> tableColumnMaterialName = new TableColumn<ListOfMaterial, String>("Наименование");
     @FXML
     private Button buttonUpdateList = new Button();
+    /**
+     * Реализация кнопки "Обновить список материалов"
+     */
     @FXML
     private void setButtonUpdateList() {
         String category = "category4";
@@ -193,7 +196,47 @@ public class ClientsPageController implements Initializable {
     }
     //-----------------------------------------------------------------------------//
     //Элементы вкладки "Материалы по оружию"
-
+    private String valueOfArmMaterial;
+    @FXML
+    private TableView<ListOfMaterial> tableViewArmMaterials = new TableView<ListOfMaterial>();
+    private ObservableList<ListOfMaterial> listOfArmMaterialsData = FXCollections.<ListOfMaterial>observableArrayList();
+    @FXML
+    private TableColumn<ListOfMaterial, String> tableColumnArmMaterialId = new TableColumn<ListOfMaterial, String>("№");
+    @FXML
+    private TableColumn<ListOfMaterial, String> tableColumnArmMaterialName = new TableColumn<ListOfMaterial, String>("Наименование");
+    @FXML
+    private Button buttonUpdateListArmMaterial = new Button();
+    /**
+     * Реализовываем кнопку "Обновить список материалов по оружиям"
+     */
+    @FXML
+    private void setButtonUpdateListArmMaterial() {
+        String type = "typePistols";
+        if (Variables.type.equals("Пистолет")) type = "typePistols";
+        else if(Variables.type.equals("Помповое")) type = "typePumps";
+        else if(Variables.type.equals("Гладкоствольное")) type = "typeSmoothBore";
+        String url_getListMaterials = "http://" + Variables.ip_server + ":" + Variables.port_server + "/armMaterials/" + type;
+        ResponseEntity<String> response = null;
+        try {
+            response = restTemplate.exchange(url_getListMaterials, HttpMethod.GET, null, String.class);
+            listOfArmMaterialsData.clear();
+            JsonParser jsonParser = new JsonParser();
+            try {
+                JsonArray jsonArray = jsonParser.parse(response.getBody()).getAsJsonArray();
+                for(JsonElement jsonElement: jsonArray) {
+                    ListOfMaterialTemp listOfMaterialTemp = gson.fromJson(jsonElement, ListOfMaterialTemp.class);
+                    ListOfMaterial listOfMaterial = new ListOfMaterial(listOfMaterialTemp.getId(), listOfMaterialTemp.getName());
+                    listOfArmMaterialsData.add(listOfMaterial);
+                }
+            } catch (JsonSyntaxException e) {
+                logger.error(e);
+            }
+        } catch (RuntimeException e) {
+            logger.error(e);
+        }
+    }
+    @FXML
+    private Button buttonDownloadArmMaterial = new Button();
     //-----------------------------------------------------------------------------//
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -210,6 +253,7 @@ public class ClientsPageController implements Initializable {
                 valueOfVideo = null;
             }
         });
+        //Обновляем таблицу для материалов для охранников
         tableViewMaterials.setItems(listOfMaterialsData);
         tableColumnMaterialId.setCellValueFactory(cellData -> cellData.getValue().idProperty());
         tableColumnMaterialName.setCellValueFactory(cellData -> cellData.getValue().materialNameProperty());
@@ -219,6 +263,18 @@ public class ClientsPageController implements Initializable {
                 valueOfMaterial = newSelection.getId();
             } catch (NullPointerException e) {
                 valueOfMaterial = null;
+            }
+        });
+        //Обновляем таблицу для материалов для оружий
+        tableViewArmMaterials.setItems(listOfArmMaterialsData);
+        tableColumnArmMaterialId.setCellValueFactory(cellData -> cellData.getValue().idProperty());
+        tableColumnArmMaterialName.setCellValueFactory(cellData -> cellData.getValue().materialNameProperty());
+        //Фиксируем строку в таблице для материалов для оружий
+        tableViewArmMaterials.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            try {
+                valueOfArmMaterial = newSelection.getId();
+            } catch (NullPointerException e) {
+                valueOfArmMaterial = null;
             }
         });
     }

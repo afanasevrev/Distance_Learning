@@ -41,14 +41,14 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutX="14.0" layoutY="14.0" prefHeight="249.0" prefWidth="655.0">
+                        <TableView fx:id="tableViewArmMaterials" layoutX="14.0" layoutY="14.0" prefHeight="249.0" prefWidth="655.0">
                           <columns>
-                            <TableColumn prefWidth="86.39999389648438" text="ID" />
-                            <TableColumn prefWidth="563.2000427246094" text="Наименование" />
+                            <TableColumn fx:id="tableColumnArmMaterialId" prefWidth="86.39999389648438" text="ID" />
+                            <TableColumn fx:id="tableColumnArmMaterialName" prefWidth="563.2000427246094" text="Наименование" />
                           </columns>
                         </TableView>
-                        <Button layoutX="14.0" layoutY="290.0" mnemonicParsing="false" text="Обновить список " />
-                        <Button layoutX="166.0" layoutY="290.0" mnemonicParsing="false" text="Скачать материал" />
+                        <Button fx:id="buttonUpdateListArmMaterial" onAction="#setButtonUpdateListArmMaterial" layoutX="14.0" layoutY="290.0" mnemonicParsing="false" text="Обновить список " />
+                        <Button fx:id="buttonDownloadArmMaterial" layoutX="166.0" layoutY="290.0" mnemonicParsing="false" text="Скачать материал" />
                      </children>
                   </AnchorPane>
               </content>
