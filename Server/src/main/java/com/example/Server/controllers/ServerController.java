@@ -178,6 +178,48 @@ public class ServerController {
         return materialsTemp;
     }
     /**
+     * GET - запрос от клиента на получение списка материалов для охранников 4 разряда
+     * @return список материалов
+     */
+    @GetMapping("/materials/category4")
+    private List<MaterialsTemp> getMaterialsTempCategory4() {
+        List<MaterialsFor4Category> materials = new ArrayList<>();
+        List<MaterialsTemp> materialsTemp = new ArrayList<>();
+        materials = getMaterialsCategory4();
+        for (MaterialsFor4Category material: materials) {
+            materialsTemp.add(new MaterialsTemp(material.getId(), material.getName()));
+        }
+        return materialsTemp;
+    }
+    /**
+     * GET - запрос от клиента на получение списка материалов для охранников 5 разряда
+     * @return список материалов
+     */
+    @GetMapping("/materials/category5")
+    private List<MaterialsTemp> getMaterialsTempCategory5() {
+        List<MaterialsFor5Category> materials = new ArrayList<>();
+        List<MaterialsTemp> materialsTemp = new ArrayList<>();
+        materials = getMaterialsCategory5();
+        for (MaterialsFor5Category material: materials) {
+            materialsTemp.add(new MaterialsTemp(material.getId(), material.getName()));
+        }
+        return materialsTemp;
+    }
+    /**
+     * GET - запрос от клиента на получение списка материалов для охранников 4 разряда
+     * @return список материалов
+     */
+    @GetMapping("/materials/category6")
+    private List<MaterialsTemp> getMaterialsTempCategory6() {
+        List<MaterialsFor6Category> materials = new ArrayList<>();
+        List<MaterialsTemp> materialsTemp = new ArrayList<>();
+        materials = getMaterialsCategory6();
+        for (MaterialsFor6Category material: materials) {
+            materialsTemp.add(new MaterialsTemp(material.getId(), material.getName()));
+        }
+        return materialsTemp;
+    }
+    /**
      * POST - запрос от клиента на добавление ссылки на видеоурок
      * @param listOfVideoTemp полученный JSON класс
      * @return статус о выполнении запроса
@@ -242,6 +284,42 @@ public class ServerController {
     private byte[] getPDFFile(@PathVariable String pdfId) {
         int id = Integer.parseInt(pdfId);
         byte[] pdf_file = getPdfFile(id);
+        logger.info(pdf_file);
+        return pdf_file;
+    }
+    /**
+     * по GET - запросу от клиента возвращаем pdf - файл из БД
+     * @param pdfId ID pdf - файла
+     * @return byte[]
+     */
+    @GetMapping("/getPdfFile/category4/{pdfId}")
+    private byte[] getPDFFileCategory4(@PathVariable String pdfId) {
+        int id = Integer.parseInt(pdfId);
+        byte[] pdf_file = getPdfFileCategory4(id);
+        logger.info(pdf_file);
+        return pdf_file;
+    }
+    /**
+     * по GET - запросу от клиента возвращаем pdf - файл из БД
+     * @param pdfId ID pdf - файла
+     * @return byte[]
+     */
+    @GetMapping("/getPdfFile/category5/{pdfId}")
+    private byte[] getPDFFileCategory5(@PathVariable String pdfId) {
+        int id = Integer.parseInt(pdfId);
+        byte[] pdf_file = getPdfFileCategory5(id);
+        logger.info(pdf_file);
+        return pdf_file;
+    }
+    /**
+     * по GET - запросу от клиента возвращаем pdf - файл из БД
+     * @param pdfId ID pdf - файла
+     * @return byte[]
+     */
+    @GetMapping("/getPdfFile/category6/{pdfId}")
+    private byte[] getPDFFileCategory6(@PathVariable String pdfId) {
+        int id = Integer.parseInt(pdfId);
+        byte[] pdf_file = getPdfFileCategory6(id);
         logger.info(pdf_file);
         return pdf_file;
     }
@@ -438,6 +516,69 @@ public class ServerController {
         return materials;
     }
     /**
+     * Метод вытягивает из БД список учебных материалов для охранников 4 разряда
+     * @return учебные материалы (Materials)
+     */
+    private List<MaterialsFor4Category> getMaterialsCategory4() {
+        List<MaterialsFor4Category> materials = new ArrayList<>();
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            materials = session.createQuery("from MaterialsFor4Category", MaterialsFor4Category.class).getResultList();
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            logger.error(e);
+        }
+        return materials;
+    }
+    /**
+     * Метод вытягивает из БД список учебных материалов для охранников 5 разряда
+     * @return учебные материалы (Materials)
+     */
+    private List<MaterialsFor5Category> getMaterialsCategory5() {
+        List<MaterialsFor5Category> materials = new ArrayList<>();
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            materials = session.createQuery("from MaterialsFor5Category", MaterialsFor5Category.class).getResultList();
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            logger.error(e);
+        }
+        return materials;
+    }
+    /**
+     * Метод вытягивает из БД список учебных материалов для охранников 6 разряда
+     * @return учебные материалы (Materials)
+     */
+    private List<MaterialsFor6Category> getMaterialsCategory6() {
+        List<MaterialsFor6Category> materials = new ArrayList<>();
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            materials = session.createQuery("from MaterialsFor6Category", MaterialsFor6Category.class).getResultList();
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            logger.error(e);
+        }
+        return materials;
+    }
+    /**
      * Метод записывает в БД видеоурок
      * @param videoLink передаем полученное сообщение от клиента
      */
@@ -554,6 +695,72 @@ public class ServerController {
             // Старт транзакции
             transaction = session.beginTransaction();
             material = session.get(Materials.class, pdfId);
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return material.getPdf_file();
+    }
+    /**
+     * Метод вытягивает из БД pdf - файл
+     * @param pdfId ID полученный от клиента
+     * @return byte[]
+     */
+    private synchronized byte[] getPdfFileCategory4(int pdfId) {
+        Transaction transaction = null;
+        MaterialsFor4Category material = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            material = session.get(MaterialsFor4Category.class, pdfId);
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return material.getPdf_file();
+    }
+    /**
+     * Метод вытягивает из БД pdf - файл
+     * @param pdfId ID полученный от клиента
+     * @return byte[]
+     */
+    private synchronized byte[] getPdfFileCategory5(int pdfId) {
+        Transaction transaction = null;
+        MaterialsFor5Category material = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            material = session.get(MaterialsFor5Category.class, pdfId);
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return material.getPdf_file();
+    }
+    /**
+     * Метод вытягивает из БД pdf - файл
+     * @param pdfId ID полученный от клиента
+     * @return byte[]
+     */
+    private synchronized byte[] getPdfFileCategory6(int pdfId) {
+        Transaction transaction = null;
+        MaterialsFor6Category material = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            material = session.get(MaterialsFor6Category.class, pdfId);
             // Коммит транзакции
             transaction.commit();
         } catch (Exception e) {

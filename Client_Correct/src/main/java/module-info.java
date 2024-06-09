@@ -7,6 +7,7 @@ module com.example.client_correct {
     requires spring.core;
     requires com.google.gson;
     opens com.example.client_correct to javafx.fxml;
+    opens com.example.client_correct.material to com.google.gson;
     exports com.example.client_correct;
     exports com.example.client_correct.controller;
     exports com.example.client_correct.test;
